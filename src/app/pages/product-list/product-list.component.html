@@ -1,90 +1,40 @@
-<div class=" content">
-  <div class=" row">
-    <div class=" col-md-12">
-      <div class=" card">
-        <div class=" card-header">
-          <h4 class=" card-title">Product List</h4>
+<div class="content">
+  <div class="row">
+    <div *ngFor="let prod of products" class="col-md-4 col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title float-left">
+            <a href="#">{{prod.id}}</a> {{prod.productTitle}}
+          </h4>
+          <img data-toggle="tooltip" data-placement="top" title="Featured" *ngIf="prod.featured"
+            style="height:35px; width:35px;" class="float-right" src="../../../assets/img/Featured.png">
         </div>
-        <div class=" card-body">
-          <div class=" table-responsive">
-            <table class=" table tablesorter" id="">
-              <thead class=" text-danger">
-                <tr>
-                  <th width="90px">ID</th>
-                  <th>Product</th>
-                  <th>Category</th>
-                  <th>Stock</th>
-                  <th>Sale</th>
-                  <th>Whole Sale Rate</th>
-                  <th>Retail Rate</th>
-                  <th>Tex</th>
-                  <th>Shipment Charges</th>
-                  <th>Description</th>
-                  <th>Image</th>
-                  <!-- Featured Product Color will be Blue  -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr style="background-image: linear-gradient(0deg, rgba(255, 217, 0, 0.719), rgba(0, 255, 149, 0.589));">
-                  <td>
-                    101
-                    <a href="#"><span class="tim-icons icon-pencil" style="margin-left:5px"></span></a>
-                    <a href="#"><span class="tim-icons icon-trash-simple" style="margin-left:5px"></span></a>
-                    <!-- <a href="#"><span class="tim-icons icon-simple-add"></span></a> -->
-                  </td>
-                  <td>Pepsi</td>
-                  <td>Drink</td>
-                  <td>20</td>
-                  <td>10</td>
-                  <td class="text-right">{{50 | currency:'USD'}}</td>
-                  <td class="text-right">{{55 | currency:'USD'}}</td>
-                  <td class="text-right">17 %</td>
-                  <td class="text-right">5 %</td>
-                  <td class="text-justified">Yet Not Defined</td>
-                  <td class="text-justified"> <img src="../../../assets/img/angular2-logo-red.png" width="80px" alt="">
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    102
-                    <a href="#"><span class="tim-icons icon-pencil" style="margin-left:5px"></span></a>
-                    <a href="#"><span class="tim-icons icon-trash-simple" style="margin-left:5px"></span></a>
-                    <!-- <a href="#"><span class="tim-icons icon-simple-add"></span></a> -->
-                  </td>
-                  <td>Lays</td>
-                  <td>Food</td>
-                  <td>50</td>
-                  <td>30</td>
-                  <td class="text-right">{{100 | currency:'USD'}}</td>
-                  <td class="text-right">{{90 | currency:'USD'}}</td>
-                  <td class="text-right">17 %</td>
-                  <td class="text-right">5 %</td>
-                  <td class="text-justified">Yet Not Defined</td>
-                  <td class="text-justified"> <img src="../../../assets/img/angular2-logo-white.png" width="80px" alt="">
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    103
-                    <a href="#"><span class="tim-icons icon-pencil" style="margin-left:5px"></span></a>
-                    <a href="#"><span class="tim-icons icon-trash-simple" style="margin-left:5px"></span></a>
-                    <!-- <a href="#"><span class="tim-icons icon-simple-add"></span></a> -->
-                  </td>
-                  <td>Wavy</td>
-                  <td>Food</td>
-                  <td>70</td>
-                  <td>80</td>
-                  <td class="text-right">{{90 | currency:'USD'}}</td>
-                  <td class="text-right">{{80 | currency:'USD'}}</td>
-                  <td class="text-right">17 %</td>
-                  <td class="text-right">5 %</td>
-                  <td class="text-justified">Hmm...</td>
-                  <td class="text-justified"> <img src="../../../assets/img/anime6.png" width="80px" alt="">
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <img class="card-img-top ml-3 float-left" style="width:75px; height:75px;" [src]="prod.image"
+          alt="Card image cap">
+        <h6 class="card-title mb-2 mr-3" style="font-size:18px; margin-top:-20px">
+          <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+            <span class="tim-icons icon-trash-simple float-right"></span>
+          </a>
+          <a href="#" data-toggle="tooltip" data-placement="top" title="Edit">
+            <span class="tim-icons icon-pencil float-right mr-2"></span>
+          </a>
+        </h6>
+        <div class="card-body" style="position: relative;">
+          <h6 class="card-title mb-2"> Categories
+            <span *ngFor="let category of prod.productCategory; let l = last; let f = first" class="float-right">
+              <span *ngIf="!l">{{', '}}</span> {{category.productCategory}}</span>
+            <!-- *ngIf="!(f && l) && !l" -->
+          </h6>
+          <h6 class="card-title mb-2"> Stock <span class="float-right">{{prod.stock}}</span> </h6>
+          <h6 class="card-title mb-2"> Sale <span class="float-right">{{prod.sale}}</span></h6>
+          <h6 class="card-title mb-2"> Whole Sale Rate <span class="float-right">{{prod.wholeSaleRate}}</span></h6>
+          <h6 class="card-title mb-2"> Retail Rate<span class="float-right">{{prod.retailRate}}</span></h6>
+          <h6 class="card-title mb-2"> Tex GST %age<span class="float-right">{{prod.tex}}</span></h6>
+          <h6 class="card-title mb-2"> Shipmnet Charges <span class="float-right">{{prod.shipmentCharges}}</span></h6>
+          <h6 id="descrition" class="card-title mb-2">Description</h6>
+          <p for="descrition" class="mt-0 mb-0" style="text-align: justify; font-size: xx-small;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{prod.description}}</p>
         </div>
       </div>
     </div>

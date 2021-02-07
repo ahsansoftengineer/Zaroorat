@@ -1,0 +1,10 @@
+form {
+  .ng-valid {
+    border: 1px solid lightgreen;
+  }
+}
+form {
+  .ng-invalid .touched {
+    border: 1px solid red;
+  }
+}

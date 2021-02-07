@@ -11,63 +11,57 @@ export const ROUTES: RouteInfo[] = [
     path: "/dashboard",
     title: "Dashboard",
     icon: "icon-chart-pie-36",
-    class: "active"
+    class: "active",
   },
   {
     path: "/products",
     title: "Products",
     icon: "icon-molecule-40",
-    class: ""
+    class: "",
   },
   {
     path: "/product list",
     title: "Product List",
     icon: "icon-chart-pie-36",
-    class: ""
+    class: "",
   },
-  // {
-  //   path: "/maps",
-  //   title: "Maps",
-  //   icon: "icon-pin",
-  //   class: ""
-  // },
+  {
+    path: "/orders & review",
+    title: "Orders & Review",
+    icon: "icon-paper",
+    class: "",
+  },
   {
     path: "/notifications",
     title: "Notifications",
     icon: "icon-bell-55",
-    class: ""
+    class: "",
   },
 
   {
     path: "/user",
     title: "User Profile",
     icon: "icon-single-02",
-    class: ""
+    class: "",
   },
   {
     path: "/tables",
     title: "Table List",
     icon: "icon-puzzle-10",
-    class: ""
+    class: "",
   },
   {
     path: "/typography",
     title: "Typography",
     icon: "icon-align-center",
-    class: ""
+    class: "",
   },
-  {
-    path: "/rtl",
-    title: "RTL Support",
-    icon: "icon-world",
-    class: ""
-  }
 ];
 
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.css"]
+  styleUrls: ["./sidebar.component.css"],
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
@@ -75,7 +69,7 @@ export class SidebarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.menuItems = ROUTES.filter((menuItem) => menuItem);
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {
