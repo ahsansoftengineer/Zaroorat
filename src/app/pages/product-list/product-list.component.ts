@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { product } from 'src/app/models/interfaces/product.interface';
-import { productCategory } from 'src/app/models/interfaces/product-category.interface';
+import { ProductInterface } from '../../models/interfaces/product.interface';
+import { ProductTypeInterface } from '../../models/interfaces/product-type.interface';
 
 @Component({
   selector: 'app-product-list',
@@ -8,13 +8,13 @@ import { productCategory } from 'src/app/models/interfaces/product-category.inte
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  productCategories: productCategory[] = [
-    {id:1, productCategory:'Food'},
-    {id:2, productCategory:'Drink'},
-    {id:3, productCategory:'Bakery'}
+  productCategories: ProductTypeInterface[] = [
+    {id:1, productType:'Food'},
+    {id:2, productType:'Drink'},
+    {id:3, productType:'Bakery'}
 
   ]
-  public products: product[] = [
+  public products: ProductInterface[] = [
     {
       id: 101,
       productTitle:'Pepsi',

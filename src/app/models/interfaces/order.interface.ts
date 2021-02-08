@@ -1,10 +1,10 @@
-import { product } from "./product.interface";
-import { user } from "./user.interface";
-export interface order {
+import { ProductInterface } from "./product.interface";
+import { UserInterface } from "./user.interface";
+export interface OrderInterface {
   id: number;
-  productOrder: product;
-  orderedTo: user;
-  orderedBy: user;
+  productOrder: ProductInterface;
+  orderedTo: UserInterface;
+  orderedBy: UserInterface;
   orderDate: Date;
   deliveryDate: Date;
   address: string;

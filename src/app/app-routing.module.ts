@@ -2,41 +2,54 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
-
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+// import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "dashboard",
-    pathMatch: "full"
+    path: 'sign in',
+    loadChildren: () =>
+      import("./layouts/authentication/authentication-layout.module").then(
+        (m) => m.SignInLayoutModule
+      ),
+  },
+  {
+    path: 'sign up',
+    loadChildren: () =>
+      import("./layouts/authentication/authentication-layout.module").then(
+        (m) => m.SignInLayoutModule
+      ),
+  },
+  {
+    path: 'forget password',
+    loadChildren: () =>
+      import("./layouts/authentication/authentication-layout.module").then(
+        (m) => m.SignInLayoutModule
+      ),
   },
   {
     path: "",
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: "",
-        loadChildren:
-          "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
-      }
-    ]
-  },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
-      }
-    ]
+    loadChildren: () =>
+      import("../app/components/components.module").then(
+        (m) => m.ComponentsModule
+      ),
   },
   {
     path: "**",
-    redirectTo: "dashboard"
-  }
+    loadChildren: () =>
+      import("../app/components/components.module").then(
+        (m) => m.ComponentsModule
+      ),
+  },
+  // {
+  //   path: '',
+  //   redirectTo: 'sign up',
+  //   pathMatch: 'full'
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: 'sign up',
+  //   pathMatch:'full'
+  // },
 ];
 
 @NgModule({
@@ -44,9 +57,9 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-      useHash: true
-    })
+      useHash: true,
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

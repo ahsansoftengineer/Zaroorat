@@ -1,6 +1,6 @@
-export interface productCategory{
+export interface ProductTypeInterface{
   id:number;
-  productCategory: string;
+  productType: string;
   // productCategorybyID(id: number) :productCategory;
   // productCategorygetAll(): productCategory[];
   // productCategorySearch(id:number):productCategory[];

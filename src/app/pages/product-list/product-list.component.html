@@ -22,8 +22,7 @@
         <div class="card-body" style="position: relative;">
           <h6 class="card-title mb-2"> Categories
             <span *ngFor="let category of prod.productCategory; let l = last; let f = first" class="float-right">
-              <span *ngIf="!l">{{', '}}</span> {{category.productCategory}}</span>
-            <!-- *ngIf="!(f && l) && !l" -->
+              <span *ngIf="!l">{{', '}}</span> {{category.productType}}</span>
           </h6>
           <h6 class="card-title mb-2"> Stock <span class="float-right">{{prod.stock}}</span> </h6>
           <h6 class="card-title mb-2"> Sale <span class="float-right">{{prod.sale}}</span></h6>

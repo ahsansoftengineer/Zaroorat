@@ -14,6 +14,18 @@ export const ROUTES: RouteInfo[] = [
     class: "active",
   },
   {
+    path: "/vendor",
+    title: "Vendor",
+    icon: "icon-molecule-40",
+    class: "",
+  },
+  {
+    path: "/vendor list",
+    title: "Vendor List",
+    icon: "icon-molecule-40",
+    class: "",
+  },
+  {
     path: "/products",
     title: "Products",
     icon: "icon-molecule-40",

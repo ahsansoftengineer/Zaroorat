@@ -1,9 +1,9 @@
-import { productCategory } from "./product-category.interface";
+import { ProductTypeInterface } from "./product-type.interface";
 
-export interface product{
+export interface ProductInterface{
   id: number;
   productTitle:string;
-  productCategory:productCategory[];
+  productCategory:ProductTypeInterface[];
   stock:number;
   sale?:number;
   wholeSaleRate?:number;

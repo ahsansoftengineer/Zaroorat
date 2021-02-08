@@ -1,20 +1,17 @@
-import { userStatus } from "../enums/userStatus.enum";
-import { userType } from "../enums/userType.enums";
+import { UserTypeEnum } from "../enums/user-type.enum";
+import { UserStatusEnum } from "../enums/user-status.enum";
 
-export interface user{
+export interface UserInterface{
   id:number;
-  name:string;
+  fullName:string; // Personel Name
+  userName:string; // Login Name
   gender:string;
   email:string;
-  access:userType;
+  userType:UserTypeEnum; // Admin, Vendor
   businessName:string;
   contact:string;
   nTNNumber:string;
-  status:userStatus;
+  userStatus:UserStatusEnum; // Enabled, Disabled, Pending
   complain:string;
-  // userbyID(id: number): user;
-  // usergetAll(): user[];
-  // usergetSearch(): user[];
-  // userUpdate(user:user):void;
-  // userInsert(user:user):void;
+  image:string;
 }
