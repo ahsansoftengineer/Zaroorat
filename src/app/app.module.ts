@@ -6,21 +6,27 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from "ngx-toastr";
 import { AppRoutingModule } from "./app-routing.module";
-import { ComponentsModule } from "./components/components.module";
 import { AppComponent } from "./app.component";
+import { LayoutComponent } from './layout/layout.component';
+import { FooterComponent } from "./layout/footer/footer.component";
+import { NavbarComponent } from "./layout/navbar/navbar.component";
+import { SidebarComponent } from "./layout/sidebar/sidebar.component";
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ComponentsModule,
     NgbModule,
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent,
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

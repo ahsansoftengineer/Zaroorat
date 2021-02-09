@@ -6,6 +6,7 @@ declare interface RouteInfo {
   icon: string;
   class: string;
 }
+
 export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",

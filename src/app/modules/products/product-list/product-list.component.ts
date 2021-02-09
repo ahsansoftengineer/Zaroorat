@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductInterface } from '../../models/interfaces/product.interface';
-import { ProductTypeInterface } from '../../models/interfaces/product-type.interface';
+import { ProductInterface } from '../../../models/interfaces/product.interface';
+import { ProductTypeInterface } from '../../../models/interfaces/product-type.interface';
 
 @Component({
   selector: 'app-product-list',
