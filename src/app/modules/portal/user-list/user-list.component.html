@@ -1,0 +1,49 @@
+<div class="content">
+  <div class="row">
+    <div *ngFor="let user of users" class=" col-md-4">
+      <div class=" card card-user">
+        <div class=" card-body">
+          <p class=" card-text"></p>
+          <div class=" author">
+            <div class=" block block-one"></div>
+            <div class=" block block-two"></div>
+            <div class=" block block-three"></div>
+            <div class=" block block-four"></div>
+            <a href="javascript:void(0)">
+              <img alt="..." class=" avatar" [src]="user.image" />
+
+              <h5 class="card-title">{{user.userName}} </h5>
+            </a>
+            <p class=" description"> {{user.businessName}} </p>
+          </div>
+          <h6 class="card-title mb-2"> ID <span class="float-right">{{user.id}}</span> </h6>
+          <h6 class="card-title mb-2"> Full Name <span class="float-right">{{user.fullName}}</span></h6>
+          <h6 class="card-title mb-2"> Gender <span class="float-right">{{user.gender}}</span></h6>
+          <h6 class="card-title mb-2"> Contact <span class="float-right">{{user.contact}}</span></h6>
+          <h6 class="card-title mb-2"> Email<span class="float-right">{{user.email}}</span></h6>
+          <h6 class="card-title mb-2"> NTN Number <span class="float-right">{{user.nTNNumber}}</span></h6>
+          <h6 class="card-title mb-2"> User Status (design) <span class="float-right">{{user.userStatus}}</span>
+          </h6>
+          <h6 class="card-title mb-2"> User Type (design) <span class="float-right">{{user.userType.toString()}}</span></h6>
+          <h6 id="descrition" class="card-title mb-2">Complain</h6>
+          <p for="descrition" class="mt-0 mb-0" style="text-align: justify; font-size: xx-small;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{user.complain}}</p>
+        </div>
+        <div class=" card-footer">
+          <div class=" button-container">
+            <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+              <i class=" fab fa-facebook"> </i>
+            </button>
+            <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+              <i class=" fab fa-twitter"> </i>
+            </button>
+            <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
+              <i class=" fab fa-google-plus"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

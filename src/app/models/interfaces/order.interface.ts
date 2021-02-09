@@ -1,18 +1,14 @@
-import { ProductInterface } from "./product.interface";
-import { UserInterface } from "./user.interface";
+import { ProductService } from "src/app/services/product.service";
+import { UserService } from "src/app/services/user.service";
 export interface OrderInterface {
   id: number;
-  productOrder: ProductInterface;
-  orderedTo: UserInterface;
-  orderedBy: UserInterface;
-  orderDate: Date;
-  deliveryDate: Date;
+  productOrder: ProductService;
+  quantity: number;
+  amount: number;
+  orderedTo: UserService;
+  orderedBy: UserService;
+  orderDate: string;
+  deliveryDate: string;
   address: string;
   reciver?: string;
-  // orderbyID(id: number) :product;
-  // ordergetAll(): product[];
-  // ordergetSearch(): product[];
-  // orderUpdate(product:product):void;// Delivered, Cancel, Pending, Process
-  // orderInsert(product:product):void;
-  // orderDelete(id:number):void;
 }

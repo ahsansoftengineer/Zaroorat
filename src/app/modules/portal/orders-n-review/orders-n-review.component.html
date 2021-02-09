@@ -1,0 +1,86 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h2 class=" card-title">Orders & Reviews</h2>
+        </div>
+        <div class=" card-body">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pending</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rejected</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Deliverd</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Summary</a>
+            </li>
+          </ul>
+          <div class="table-responsive">
+            <table class="table" style="font-size:12px; width:900px; text-align: left;" id="">
+              <tr class="bg-danger" style="margin-top:20px;">
+                <td style="width:20px; text-align: center;"><span class="tim-icons icon-sound-wave"></span></td>
+                <td style="width:40px; text-align: center;">ID</td>
+                <td style="width:150px;">Product</td>
+                <td style="width:90px; text-align:right;">Quantity</td>
+                <td style="width:90px; text-align:right;">Amount <span class="tim-icons icon-money-coins"></span> </td>
+                <td style="width:90px; text-align:center;">Booking <span class="tim-icons icon-calendar-60"></span>
+                </td>
+                <td style="width:90px; text-align:center;">Delivery <span class="tim-icons icon-calendar-60"></span>
+                </td>
+                <td style="width:100px;">Order By</td>
+                <td style="width:100px;">Vendor</td>
+                <td style="width:100px;">Reciver</td>
+                <td style="width:180px;">Address <span class="tim-icons icon-square-pin"></span> </td>
+              </tr>
+              <tr *ngFor="let order of orders">
+                <td style="text-align:center;"><span class="tim-icons icon-simple-remove"></span></td>
+                <td style="text-align:center;">{{order.id}}</td>
+                <td>{{order.productOrder['productTitle']}} </td>
+                <td style="text-align:center;">{{order.quantity}}</td>
+                <td style="text-align:right;">{{order.amount}} </td>
+                <td style="text-align:center;">{{order.orderDate}} </td>
+                <td style="text-align:center;">{{order.deliveryDate}}</td>
+                <td>{{order.orderedBy}} </td>
+                <td>{{order.orderedTo}} </td>
+                <td>{{order.reciver}} </td>
+                <td>{{order.address}} </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer">
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination-sm justify-content-end">
+              <li class="page-item btn-danger">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item btn-info"><a class="page-link" href="#">1</a></li>
+              <li class="page-item btn-info"><a class="page-link" href="#">2</a></li>
+              <li class="page-item btn-info"><a class="page-link" href="#">3</a></li>
+              <li class="page-item btn-danger">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

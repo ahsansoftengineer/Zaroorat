@@ -1,74 +1,50 @@
 import { Component, OnInit } from "@angular/core";
 
 declare interface RouteInfo {
-  path: string;
-  title: string;
-  icon: string;
-  class: string;
+  // path: string;
+  // title: string;
+  // icon: string;
+  // class: string;
 }
 
 export const ROUTES: RouteInfo[] = [
-  {
-    path: "/dashboard",
-    title: "Dashboard",
-    icon: "icon-chart-pie-36",
-    class: "active",
-  },
-  {
-    path: "/vendor",
-    title: "Vendor",
-    icon: "icon-molecule-40",
-    class: "",
-  },
-  {
-    path: "/vendor list",
-    title: "Vendor List",
-    icon: "icon-molecule-40",
-    class: "",
-  },
-  {
-    path: "/products",
-    title: "Products",
-    icon: "icon-molecule-40",
-    class: "",
-  },
-  {
-    path: "/product list",
-    title: "Product List",
-    icon: "icon-chart-pie-36",
-    class: "",
-  },
-  {
-    path: "/orders & review",
-    title: "Orders & Review",
-    icon: "icon-paper",
-    class: "",
-  },
-  {
-    path: "/notifications",
-    title: "Notifications",
-    icon: "icon-bell-55",
-    class: "",
-  },
+  // {
+  //   path: "/portal/products/dashboard",
+  //   title: "Dashboard",
+  //   icon: "icon-molecule-40",
+  //   class: "",
+  // },
+  // {
+  //   path: "/portal/products/add",
+  //   title: "Add Product",
+  //   icon: "icon-chart-pie-36",
+  //   class: "active",
+  // },
+  // {
+  //   path: "/portal/products/list",
+  //   title: "List Product",
+  //   icon: "icon-molecule-40",
+  //   class: "",
+  // },
+  // {
+  //   path: "/portal/products/orders-&-review",
+  //   title: "Orders & Review",
+  //   icon: "icon-paper",
+  //   class: "",
+  // },
+  // {
+  //   path: "/portal/notifications",
+  //   title: "Notifications",
+  //   icon: "icon-bell-55",
+  //   class: "",
+  // },
 
-  {
-    path: "/user",
-    title: "User Profile",
-    icon: "icon-single-02",
-    class: "",
-  },
-  {
-    path: "/tables",
-    title: "Table List",
-    icon: "icon-puzzle-10",
-    class: "",
-  },
-  {
-    path: "/typography",
-    title: "Typography",
-    icon: "icon-align-center",
-    class: "",
-  },
+  // {
+  //   path: "/portal/user/preferences",
+  //   title: "User Profile",
+  //   icon: "icon-single-02",
+  //   class: "",
+  // },
 ];
 
 @Component({
@@ -78,11 +54,15 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-
+  currentUser:string = ''
   constructor() {}
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter((menuItem) => menuItem);
+    this.currentUser = 'admin';
+    // this.menuItems = ROUTES.filter((menuItem) => menuItem);
+  }
+  switchinguser(){
+    this.currentUser == 'admin'? this.currentUser = 'vendor': this.currentUser = 'admin';
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {

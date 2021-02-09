@@ -1,9 +1,9 @@
-import { ProductTypeInterface } from "./product-type.interface";
+import { ProductTypeService } from "src/app/services/product-type.service";
 
 export interface ProductInterface{
   id: number;
   productTitle:string;
-  productCategory:ProductTypeInterface[];
+  productType:ProductTypeService[];
   stock:number;
   sale?:number;
   wholeSaleRate?:number;

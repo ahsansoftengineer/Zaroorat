@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title float-left">
+            <a href="#">{{user.id}}</a> {{user.fullName}}
+          </h2>
+          <img title="User Title" class="card-img-full" [src]="user.imagetitle">
+        </div>
+        <img class="card-img-top ml-3 float-left" style="width:75px; height:75px;" [src]="user.image"
+          alt="Card image cap">
+        <!-- Edit -->
+        <h6 class="card-title mb-2 mr-3" style="font-size:18px; margin-top:-20px">
+          <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+            <span class="tim-icons icon-trash-simple float-right"></span>
+          </a>
+          <a href="#" data-toggle="tooltip" data-placement="top" title="Edit">
+            <span class="tim-icons icon-pencil float-right mr-2"></span>
+          </a>
+        </h6>
+        <div class="card-body" style="position: relative;">
+          <h6 class="card-title mb-2"> User Name<span class="float-right"> {{user.userName}} </span></h6>
+          <h6 class="card-title mb-2"> Business Name <span class="float-right">{{user.businessName}}</span> </h6>
+          <h6 class="card-title mb-2"> Sale <span class="float-right">{{user.password}}</span></h6>
+          <h6 class="card-title mb-2"> Whole Sale Rate <span class="float-right">{{user.gender}}</span></h6>
+          <h6 class="card-title mb-2"> Retail Rate<span class="float-right">{{user.email}}</span></h6>
+          <h6 class="card-title mb-2"> Tex GST %age<span class="float-right">{{user.contact}}</span></h6>
+          <h6 class="card-title mb-2"> Shipmnet Charges <span class="float-right">{{user.nTNNumber}}</span></h6>
+          <h6 class="card-title mb-2"> Shipmnet Charges <span class="float-right">{{user.userType}}</span></h6>
+          <h6 class="card-title mb-2"> Shipmnet Charges <span class="float-right">{{user.userStatus}}</span></h6>
+          <h6 class="card-title mb-2"> City<span class="float-right">{{user.city}}</span></h6>
+          <h6 class="card-title mb-2"> Postal <span class="float-right">{{user.postal}}</span></h6>
+          <h6 id="descrition" class="card-title mb-2">Address</h6>
+          <p for="descrition" class="mt-0 mb-0" style="text-align: justify; font-size: xx-small;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{user.address}}</p>
+          <h6 id="descrition" class="card-title mb-2">Complain</h6>
+          <p for="descrition" class="mt-0 mb-0" style="text-align: justify; font-size: xx-small;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{user.complain}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
