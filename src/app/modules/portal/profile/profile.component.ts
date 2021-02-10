@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-// import { UserStatusEnum } from '../../../models/enums/user-status.enum';
-// import { UserTypeEnum } from '../../../models/enums/user-type.enum';
-// import { UserInterface } from '../../../models/interfaces/user.interface';
+import { UserInterface } from '../../../models/interfaces/user.interface';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +9,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) { }
-  public user = this.userService.users[0];
+  public user: UserInterface;
   ngOnInit(): void {
+    this.user = this.userService.users[0]
   }
 }

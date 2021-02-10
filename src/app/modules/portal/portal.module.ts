@@ -12,10 +12,10 @@ import { ProductsComponent } from './products/products.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserService } from 'src/app/services/user.service';
-import { OrderService } from 'src/app/services/order.service';
-import { ProductService } from 'src/app/services/product.service';
-import { ProductTypeService } from 'src/app/services/product-type.service';
+import { UserService } from '../../services/user.service';
+import { OrderService } from '../../services/order.service';
+import { ProductService } from '../../services/product.service';
+import { ProductTypeService } from '../../services/product-type.service';
 
 
 @NgModule({

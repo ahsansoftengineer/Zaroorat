@@ -4,9 +4,26 @@ import { UserTypeEnum } from "../models/enums/user-type.enum";
 import { UserInterface } from "../models/interfaces/user.interface";
 
 @Injectable()
-export class UserService {
+export class UserService implements UserInterface {
+  public id: number;
+  public fullName: string;
+  public userName: string; // Login Name
+  public businessName: string; // -Admin
+  public password: string; // Only Vendor
+  public gender: string;
+  public email: string;
+  public contact: string;
+  public nTNNumber: string;
+  public userType: UserTypeEnum; // Admin, Vendor
+  public userStatus: UserStatusEnum; // Enabled, Disabled, Pending
+  public image?: string;
+  public imagetitle?: string; // -Admin
+  public complain?: string;
+  public address?: string;
+  public city?: string;
+  public postal?: number;
   constructor() {}
-  public users: UserInterface[] = [
+  public users?: UserInterface[] = [
     {
       id: 101,
       fullName: "Ahsan",

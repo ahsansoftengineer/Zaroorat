@@ -1,12 +1,12 @@
-import { ProductService } from "src/app/services/product.service";
-import { UserService } from "src/app/services/user.service";
+import { ProductInterface } from "./product.interface";
+import { UserInterface } from "./user.interface";
 export interface OrderInterface {
   id: number;
-  productOrder: ProductService;
+  productOrder: ProductInterface;
   quantity: number;
   amount: number;
-  orderedTo: UserService;
-  orderedBy: UserService;
+  orderedTo: UserInterface;
+  orderedBy: UserInterface;
   orderDate: string;
   deliveryDate: string;
   address: string;

@@ -46,13 +46,13 @@
               <tr *ngFor="let order of orders">
                 <td style="text-align:center;"><span class="tim-icons icon-simple-remove"></span></td>
                 <td style="text-align:center;">{{order.id}}</td>
-                <td>{{order.productOrder['productTitle']}} </td>
+                <td>{{order.productOrder.productTitle}} </td>
                 <td style="text-align:center;">{{order.quantity}}</td>
                 <td style="text-align:right;">{{order.amount}} </td>
                 <td style="text-align:center;">{{order.orderDate}} </td>
                 <td style="text-align:center;">{{order.deliveryDate}}</td>
-                <td>{{order.orderedBy}} </td>
-                <td>{{order.orderedTo}} </td>
+                <td>{{order.orderedBy.fullName}} </td>
+                <td>{{order.orderedTo.fullName}} </td>
                 <td>{{order.reciver}} </td>
                 <td>{{order.address}} </td>
               </tr>

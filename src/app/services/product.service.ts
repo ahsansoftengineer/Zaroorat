@@ -4,13 +4,28 @@ import { ProductInterface } from "../models/interfaces/product.interface";
 import { ProductTypeService } from "./product-type.service";
 
 @Injectable()
-export class ProductService {
-  constructor(private productType: ProductTypeService) {}
-  public products: ProductInterface[] = [
+export class ProductService implements ProductInterface {
+  public id: number;
+  public productTitle: string;
+  public productType: ProductTypeInterface[];
+  public stock: number;
+  public sale?: number;
+  public wholeSaleRate?: number;
+  public retailRate?: number;
+  public tex?: number;
+  public shipmentCharges?: number;
+  public description?: string;
+  public featured?: boolean;
+  public image?: any;
+  public productTypeService: ProductTypeService = new ProductTypeService();
+  public productTypes: ProductTypeInterface[] = this.productTypeService
+    .productTypes;
+  constructor() {}
+  public products?: ProductInterface[] = [
     {
       id: 101,
       productTitle: "Pepsi",
-      productType: [this.productType[0], this.productType[1]],
+      productType: [this.productTypes[0], this.productTypes[1]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -25,7 +40,7 @@ export class ProductService {
     {
       id: 102,
       productTitle: "Cocacola",
-      productType: [this.productType[1], this.productType[2]],
+      productType: [this.productTypes[1], this.productTypes[2]],
       stock: 120,
       sale: 30,
       wholeSaleRate: 50,
@@ -40,7 +55,7 @@ export class ProductService {
     {
       id: 103,
       productTitle: "Lays",
-      productType: [this.productType[2], this.productType[3]],
+      productType: [this.productTypes[2], this.productTypes[3]],
       stock: 150,
       sale: 40,
       wholeSaleRate: 20,
@@ -55,7 +70,7 @@ export class ProductService {
     {
       id: 104,
       productTitle: "Nugets",
-      productType: [this.productType[4], this.productType[5]],
+      productType: [this.productTypes[4], this.productTypes[5]],
       stock: 200,
       sale: 30,
       wholeSaleRate: 150,
@@ -70,7 +85,7 @@ export class ProductService {
     {
       id: 105,
       productTitle: "Pizza",
-      productType: [this.productType[6], this.productType[7]],
+      productType: [this.productTypes[6], this.productTypes[7]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -86,10 +101,10 @@ export class ProductService {
       id: 106,
       productTitle: "Merinda",
       productType: [
-        this.productType[8],
-        this.productType[1],
+        this.productTypes[8],
+        this.productTypes[1],
         ,
-        this.productType[9],
+        this.productTypes[9],
       ],
       stock: 120,
       sale: 30,
@@ -105,7 +120,7 @@ export class ProductService {
     {
       id: 107,
       productTitle: "Vawy",
-      productType: [this.productType[0], this.productType[1]],
+      productType: [this.productTypes[0], this.productTypes[1]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -120,7 +135,7 @@ export class ProductService {
     {
       id: 108,
       productTitle: "Diaper",
-      productType: [this.productType[6], this.productType[7]],
+      productType: [this.productTypes[6], this.productTypes[7]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -135,7 +150,7 @@ export class ProductService {
     {
       id: 109,
       productTitle: "Sooper",
-      productType: [this.productType[8], this.productType[9]],
+      productType: [this.productTypes[8], this.productTypes[9]],
       stock: 1000,
       sale: 200,
       wholeSaleRate: 20,
