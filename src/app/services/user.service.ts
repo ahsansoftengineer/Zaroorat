@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { UserStatusEnum } from "../models/enums/user-status.enum";
+import { UserBackgroundSettings } from "../models/enums/user-background-settings.enums";
+import { UserSidebarSettings } from "../models/enums/user-sidebar-settings.enums";
+import { UserStatusEnum } from "../models/enums/user-status.enums";
 import { UserTypeEnum } from "../models/enums/user-type.enum";
 import { UserInterface } from "../models/interfaces/user.interface";
 
@@ -22,7 +24,8 @@ export class UserService implements UserInterface {
   public address?: string;
   public city?: string;
   public postal?: number;
-  constructor() {}
+  public background: UserBackgroundSettings;
+  public sidebar: UserSidebarSettings;
   public users?: UserInterface[] = [
     {
       id: 101,
@@ -37,11 +40,13 @@ export class UserService implements UserInterface {
       userType: UserTypeEnum.Vendor, // Admin, Vendor
       userStatus: UserStatusEnum.Pending, // Enabled, Disabled, Pending
       imagetitle: "./assets/img/Banner/BlueBlue.jpg",
-      image: "./assets/img/User/User1.png", // -Admin
+      image: "./assets/img/User/User7.PNG", // -Admin
       complain: "New Vendor",
       address: "Korangi 3 1/2",
       city: "Karachi",
       postal: 74900,
+      sidebar: UserSidebarSettings.Blue,
+      background: UserBackgroundSettings.BgWhite
     },
     {
       id: 102,
@@ -61,6 +66,8 @@ export class UserService implements UserInterface {
       address: "Landhi 36/B",
       city: "Karachi",
       postal: 74900,
+      sidebar: UserSidebarSettings.Blue,
+      background: UserBackgroundSettings.BgWhite
     },
     {
       id: 103,
@@ -80,6 +87,8 @@ export class UserService implements UserInterface {
       address: "Nazimabad 48/C",
       city: "Karachi",
       postal: 74900,
+      sidebar: UserSidebarSettings.Blue,
+      background: UserBackgroundSettings.BgWhite
     },
     {
       id: 104,
@@ -99,6 +108,8 @@ export class UserService implements UserInterface {
       address: "Gulshan 48/C",
       city: "Karachi",
       postal: 74900,
+      sidebar: UserSidebarSettings.Blue,
+      background: UserBackgroundSettings.BgWhite
     },
     {
       id: 105,
@@ -118,6 +129,9 @@ export class UserService implements UserInterface {
       address: "Ibrahim Haidre",
       city: "Karachi",
       postal: 74900,
+      sidebar: UserSidebarSettings.Blue,
+      background: UserBackgroundSettings.BgWhite
     },
   ];
+  constructor() {}
 }

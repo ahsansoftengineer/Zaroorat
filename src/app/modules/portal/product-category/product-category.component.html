@@ -1,0 +1,90 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <form [formGroup]="product" (ngSubmit)="updateProduct()">
+          <div class=" card-header">
+            <h2 class="card-title">Add Product Cateogory</h2>
+          </div>
+          <div class="card-body">
+            <div class=" row">
+              <div class=" col-md-2">
+                <div class=" form-group">
+                  <label> ID (disabled) </label>
+                  <input class=" form-control" required formControlName="id" placeholder="Company" type="text"
+                    value="101" />
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Category </label>
+                  <input class=" form-control" required formControlName="category" placeholder="Electronics"
+                    type="text" />
+                </div>
+              </div>
+              <div class=" col-md-4">
+                <div class=" form-group">
+                  <label> Parent Category </label>
+                  <input class=" form-control" required formControlName="parentCategoryId" placeholder="1"
+                    type="number" />
+                </div>
+              </div>
+              <div class=" col-md-12">
+                <div class=" form-group">
+                  <label> Description</label>
+                  <input class=" form-control" required formControlName="description" type="text"
+                    placeholder="Computer, Teblets, LCD, LED" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" card-footer">
+            <div class="btn-group " role="group" aria-label="Basic example">
+              <button class=" btn btn-fill btn-secondary" type="submit">
+                New
+              </button>
+              <button class=" btn btn-fill btn-secondary" type="submit">
+                Update
+              </button>
+              <button class=" btn btn-fill btn-secondary text-danger" type="submit">
+                Delete
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h2 class="card-title">Product Cateogory List</h2>
+        </div>
+        <div class="card-body">
+          <div class=" row">
+            <div class="col-md-12">
+              <table class="table" style="font-size:14px; width: 50%;">
+                <tr class="bg-danger" style="margin-top:20px;">
+                  <td style="width:40px; text-align: center;">ID</td>
+                  <td style="width:150px;">Product Category</td>
+                  <td style="width:150px;">Parent Category</td>
+                  <td style="width:90px; text-align:center;">Description</td>
+                </tr>
+                <tr *ngFor="let cateogories of productCategories">
+                  <td class="card-title" style="text-align:center;">{{cateogories.id}}</td>
+                  <td class="card-title" style="text-align:left;">{{cateogories.category}} </td>
+                  <td class="card-title" style="text-align:left;">{{cateogories.parentCategoryId}} </td>
+                  <td class="card-title" style="text-align:left; padding-right:5px">{{cateogories.description}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  th, td{
+    padding:3px;
+  }
+</style>

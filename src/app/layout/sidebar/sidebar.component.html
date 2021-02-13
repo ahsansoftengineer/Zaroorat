@@ -42,13 +42,19 @@
         <p>Product List</p>
       </a>
     </li>
-    <li routerLinkActive="active"class="nav-item">
+    <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/' + currentUser + '/product-category']">
+        <i class="tim-icons icon-molecule-40"></i>
+        <p>Product Category</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
       <a [routerLink]="['/portal/' + currentUser + '/add-user']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>Add User</p>
       </a>
     </li>
-    <li routerLinkActive="active"class="nav-item">
+    <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
       <a [routerLink]="['/portal/' + currentUser + '/user-list']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>User List</p>

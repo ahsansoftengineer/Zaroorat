@@ -27,7 +27,9 @@ export class UserComponent implements OnInit {
       complain:new FormControl("", Validators.minLength(3)),
       address:new FormControl("", Validators.minLength(3)),
       city:new FormControl("", Validators.minLength(3)),
-      postal:new FormControl("", Validators.minLength(3))
+      postal:new FormControl("", Validators.minLength(3)),
+      background:new FormControl("Select Background Theme"),
+      sidebar:new FormControl("Select Sidebar Theme")
     });
   }
   updateUser() {

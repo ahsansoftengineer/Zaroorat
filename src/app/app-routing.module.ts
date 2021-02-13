@@ -1,37 +1,43 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { Routes, RouterModule } from "@angular/router";
+import { LayoutComponent } from "./layout/layout.component";
 // import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: "auth",
     loadChildren: () =>
-      import('./modules/authentication/authentication.module').then(
+      import("./modules/authentication/authentication.module").then(
         (m) => m.AuthenticationLayoutModule
       ),
   },
   {
-    path: 'portal',
+    path: "portal",
     component: LayoutComponent,
     children: [
       {
-        path: 'admin',
+        path: "admin",
         loadChildren: () =>
-        import('./modules/portal/portal.module').then(
-          (m) => m.PortalModule
-        ),
+          import("./modules/portal/portal.module").then((m) => m.PortalModule),
       },
       {
-        path: 'vendor',
+        path: "vendor",
         loadChildren: () =>
-        import('./modules/portal/portal.module').then(
-          (m) => m.PortalModule
-        ),
-      }
+          import("./modules/portal/portal.module").then((m) => m.PortalModule),
+      },
     ],
+  },
+  {
+    path: "",
+    redirectTo: "/portal",
+    pathMatch: "full",
+  },
+  {
+    path: "**",
+    redirectTo: "/portal",
+    pathMatch: "full",
   },
 ];
 

@@ -1,13 +1,16 @@
 import { Injectable } from "@angular/core";
-import { ProductTypeInterface } from "../models/interfaces/product-type.interface";
+import { ProductCategoryInterface } from "../models/interfaces/product-category.interface";
 import { ProductInterface } from "../models/interfaces/product.interface";
-import { ProductTypeService } from "./product-type.service";
+import { ProductCategoryService } from "./product-category.service";
 
 @Injectable()
 export class ProductService implements ProductInterface {
+  public productCategoryService?: ProductCategoryService = new ProductCategoryService();
+  public productCategories?: ProductCategoryInterface[] = this.productCategoryService.productCategories;
+
   public id: number;
   public productTitle: string;
-  public productType: ProductTypeInterface[];
+  public productType: ProductCategoryInterface[];
   public stock: number;
   public sale?: number;
   public wholeSaleRate?: number;
@@ -17,15 +20,14 @@ export class ProductService implements ProductInterface {
   public description?: string;
   public featured?: boolean;
   public image?: any;
-  public productTypeService: ProductTypeService = new ProductTypeService();
-  public productTypes: ProductTypeInterface[] = this.productTypeService
-    .productTypes;
-  constructor() {}
+  constructor() {
+  }
+
   public products?: ProductInterface[] = [
     {
       id: 101,
       productTitle: "Pepsi",
-      productType: [this.productTypes[0], this.productTypes[1]],
+      productType: [this.productCategories[0], this.productCategories[1]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -40,7 +42,7 @@ export class ProductService implements ProductInterface {
     {
       id: 102,
       productTitle: "Cocacola",
-      productType: [this.productTypes[1], this.productTypes[2]],
+      productType: [this.productCategories[1], this.productCategories[2]],
       stock: 120,
       sale: 30,
       wholeSaleRate: 50,
@@ -55,7 +57,7 @@ export class ProductService implements ProductInterface {
     {
       id: 103,
       productTitle: "Lays",
-      productType: [this.productTypes[2], this.productTypes[3]],
+      productType: [this.productCategories[2], this.productCategories[3]],
       stock: 150,
       sale: 40,
       wholeSaleRate: 20,
@@ -70,7 +72,7 @@ export class ProductService implements ProductInterface {
     {
       id: 104,
       productTitle: "Nugets",
-      productType: [this.productTypes[4], this.productTypes[5]],
+      productType: [this.productCategories[4], this.productCategories[5]],
       stock: 200,
       sale: 30,
       wholeSaleRate: 150,
@@ -85,7 +87,7 @@ export class ProductService implements ProductInterface {
     {
       id: 105,
       productTitle: "Pizza",
-      productType: [this.productTypes[6], this.productTypes[7]],
+      productType: [this.productCategories[6], this.productCategories[7]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -101,10 +103,9 @@ export class ProductService implements ProductInterface {
       id: 106,
       productTitle: "Merinda",
       productType: [
-        this.productTypes[8],
-        this.productTypes[1],
-        ,
-        this.productTypes[9],
+        this.productCategories[8],
+        this.productCategories[1],
+        this.productCategories[9],
       ],
       stock: 120,
       sale: 30,
@@ -120,7 +121,7 @@ export class ProductService implements ProductInterface {
     {
       id: 107,
       productTitle: "Vawy",
-      productType: [this.productTypes[0], this.productTypes[1]],
+      productType: [this.productCategories[0], this.productCategories[1]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -135,7 +136,7 @@ export class ProductService implements ProductInterface {
     {
       id: 108,
       productTitle: "Diaper",
-      productType: [this.productTypes[6], this.productTypes[7]],
+      productType: [this.productCategories[6], this.productCategories[7]],
       stock: 100,
       sale: 20,
       wholeSaleRate: 50,
@@ -150,7 +151,7 @@ export class ProductService implements ProductInterface {
     {
       id: 109,
       productTitle: "Sooper",
-      productType: [this.productTypes[8], this.productTypes[9]],
+      productType: [this.productCategories[8], this.productCategories[9]],
       stock: 1000,
       sale: 200,
       wholeSaleRate: 20,

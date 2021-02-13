@@ -11,11 +11,12 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsComponent } from './products/products.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user.service';
 import { OrderService } from '../../services/order.service';
 import { ProductService } from '../../services/product.service';
-import { ProductTypeService } from '../../services/product-type.service';
+import { ProductCategoryService } from '../../services/product-category.service';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ProductTypeService } from '../../services/product-type.service';
     UserListComponent,
     ProfileComponent,
     OrdersNReviewComponent,
+    ProductCategoryComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,7 @@ import { ProductTypeService } from '../../services/product-type.service';
     NgbModule
   ],
   providers:[
-    OrderService, ProductService, ProductTypeService, UserService
+    OrderService, ProductService, ProductCategoryService, UserService
   ]
 })
 export class PortalModule { }

@@ -1,5 +1,7 @@
 import { UserTypeEnum } from "../enums/user-type.enum";
-import { UserStatusEnum } from "../enums/user-status.enum";
+import { UserStatusEnum } from "../enums/user-status.enums";
+import { UserBackgroundSettings } from "../enums/user-background-settings.enums";
+import { UserSidebarSettings } from "../enums/user-sidebar-settings.enums";
 
 export interface UserInterface{
   id:number;
@@ -18,5 +20,7 @@ export interface UserInterface{
   complain?:string;
   address?:string;
   city?:string;
-  postal?:number
+  postal?:number;
+  background:UserBackgroundSettings;
+  sidebar:UserSidebarSettings;
 }
