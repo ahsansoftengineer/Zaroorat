@@ -13,4 +13,5 @@ export interface ProductInterface{
   description?:string;
   featured?:boolean;
   image?:any;
+  userId:number;
 }

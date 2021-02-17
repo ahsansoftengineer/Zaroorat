@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import { UserForm } from 'src/app/forms/user-form';
+// import { UserInterface } from 'src/app/models/interfaces/user.interface';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
+  // form: FormGroup;
+  // formService: UserForm;
+  // user: UserInterface;
+  // state: UserAuthState;
+
   user: FormGroup = new FormGroup({});
   constructor() {}
+  ngOnDestroy():void { }
   ngOnInit(): void {
     this.user = new FormGroup({
       id:new FormControl("", Validators.minLength(3)),

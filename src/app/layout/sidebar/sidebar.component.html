@@ -19,43 +19,43 @@
       </a>
     </li> -->
     <li routerLinkActive="active"class="nav-item">
-      <a [routerLink]="['/portal/' + currentUser + '/dashboard']">
+      <a [routerLink]="['/portal/dashboard']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>Dashboard</p>
       </a>
     </li>
     <li routerLinkActive="active"class="nav-item">
-      <a [routerLink]="['/portal/' + currentUser + '/order-&-review']">
+      <a [routerLink]="['/portal/order-&-review']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>Orders & Reviews</p>
       </a>
     </li>
     <li routerLinkActive="active"class="nav-item">
-      <a [routerLink]="['/portal/' + currentUser + '/add-product']">
+      <a [routerLink]="['/portal/add-product']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>Add Products</p>
       </a>
     </li>
     <li routerLinkActive="active"class="nav-item">
-      <a [routerLink]="['/portal/' + currentUser + '/product-list']">
+      <a [routerLink]="['/portal/product-list']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>Product List</p>
       </a>
     </li>
     <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
-      <a [routerLink]="['/portal/' + currentUser + '/product-category']">
+      <a [routerLink]="['/portal/product-category']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>Product Category</p>
       </a>
     </li>
     <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
-      <a [routerLink]="['/portal/' + currentUser + '/add-user']">
+      <a [routerLink]="['/portal/add-user']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>Add User</p>
       </a>
     </li>
     <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
-      <a [routerLink]="['/portal/' + currentUser + '/user-list']">
+      <a [routerLink]="['/portal/user-list']">
         <i class="tim-icons icon-molecule-40"></i>
         <p>User List</p>
       </a>

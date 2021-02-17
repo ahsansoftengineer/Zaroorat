@@ -8,61 +8,71 @@
         <div class=" card-body">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" style="cursor: pointer;">All</a>
+              <a class="nav-link" (click)="filterOrders(orderStatusEnum.All)" [ngClass]="{'active': orderStatusEnum.All === orderStatus}" style="cursor: pointer;">All</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="cursor: pointer;">Pending</a>
+              <a class="nav-link" (click)="filterOrders(orderStatusEnum.Pending)"  [ngClass]="{'active': orderStatusEnum.Pending === orderStatus}" style="cursor: pointer;">Pending</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="cursor: pointer;">History</a>
+              <a class="nav-link" (click)="filterOrders(orderStatusEnum.History)"  [ngClass]="{'active': orderStatusEnum.History === orderStatus}" style="cursor: pointer;">History</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="cursor: pointer;">Rejected</a>
+              <a class="nav-link" (click)="filterOrders(orderStatusEnum.Rejected)"  [ngClass]="{'active': orderStatusEnum.Rejected === orderStatus}" style="cursor: pointer;">Rejected</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="cursor: pointer;">Deliverd</a>
+              <a class="nav-link" (click)="filterOrders(orderStatusEnum.Delivered)"  [ngClass]="{'active': orderStatusEnum.Delivered=== orderStatus}" style="cursor: pointer;">Deliverd</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pointer">Summary</a>
+              <a class="nav-link" (click)="filterOrders(orderStatusEnum.All)"  [ngClass]="{'active': true}" style="cursor:pointer">Summary</a>
             </li>
           </ul>
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" style="overflow-x: scroll;"
               aria-labelledby="home-tab">
-              <table class="table" style="font-size:12px; width: 960px; margin:auto;" id="">
-                <tr class="bg-danger" style="margin-top:20px;">
-                  <td style="width:20px; text-align: center;"> Status </td>
-                  <td style="width:40px; text-align: center;">ID</td>
-                  <td style="width:150px;">Product</td>
-                  <td style="width:90px; text-align:right;">Quantity</td>
-                  <td style="width:90px; text-align:right;">Amount <span class="tim-icons icon-money-coins"></span>
-                  </td>
-                  <td style="width:90px; text-align:center;">Booking <span class="tim-icons icon-calendar-60"></span>
-                  </td>
-                  <td style="width:90px; text-align:center;">Delivery <span class="tim-icons icon-calendar-60"></span>
-                  </td>
-                  <td style="width:100px;">Order By</td>
-                  <td style="width:100px;">Vendor</td>
-                  <td style="width:100px;">Reciver</td>
-                  <td style="width:180px;">Address <span class="tim-icons icon-square-pin"></span> </td>
-                </tr>
-                <tr *ngFor="let order of orders">
-                  <td data-toggle="tooltip" [title]="order.orderStatus" [ngStyle]="{'color':order.orderStatus === 'icon-bell-55' || order.orderStatus === 'icon-simple-remove'?
-                    'red' : 'abc' }" style="text-align:center;" class="card-title">
-                    <span class="tim-icons {{order.orderStatus}} "></span>
-                  </td>
-                  <td class="card-title" style="text-align:center;">{{order.id}}</td>
-                  <td class="card-title" style="text-align:left;">{{order.productOrder.productTitle}} </td>
-                  <td class="card-title" style="text-align:right; padding-right:5px">{{order.quantity}}</td>
-                  <td class="card-title" style="text-align:right; padding-right:5px">{{order.amount}} </td>
-                  <td class="card-title" style="text-align:center;">{{order.orderDate}} </td>
-                  <td class="card-title" style="text-align:center;">{{order.deliveryDate}}</td>
-                  <td class="card-title" style="text-align:left;">{{order.orderedTo.fullName}} </td>
-                  <td class="card-title" style="text-align:left;">{{order.orderedBy.fullName}} </td>
-                  <td class="card-title" style="text-align:left;">{{order.reciver}} </td>
-                  <td class="card-title" style="text-align:left;">{{order.address}} </td>
-                </tr>
-              </table>
+              <div class="table-responsive">
+                <table class="table tablesorter" style="font-size: 16px">
+                  <thead>
+                    <tr style="margin-top:20px;" class="card-title">
+                      <td style="width:20px; text-align: center;"> Status </td>
+                      <td style="width:40px; text-align: center;">ID</td>
+                      <td style="width:150px;">Product</td>
+                      <td style="width:90px; text-align:right;">Quantity</td>
+                      <td style="width:90px; text-align:right;">Amount <span class="tim-icons icon-money-coins"></span>
+                      </td>
+                      <td style="width:90px; text-align:center;">Booking <span
+                          class="tim-icons icon-calendar-60"></span>
+                      </td>
+                      <td style="width:90px; text-align:center;">Delivery <span
+                          class="tim-icons icon-calendar-60"></span>
+                      </td>
+                      <td style="width:100px;">Order By</td>
+                      <td style="width:100px;">Vendor</td>
+                      <td style="width:100px;">Reciver</td>
+                      <td style="width:300px;">Address <span class="tim-icons icon-square-pin"></span> </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let order of orders" class="card-title">
+                      <td data-toggle="tooltip" [title]="order.orderStatus"
+                      [ngStyle]="{'color':order.orderStatus === 'icon-bell-55' ||
+                       order.orderStatus === 'icon-simple-remove'? 'red' : 'abc' }" style="text-align:center;">
+                        <span class="tim-icons {{order.orderStatus}} "></span>
+                      </td>
+                      <td style="text-align:center;">{{order.id}}</td>
+                      <td style="text-align:left;">{{order.productOrder.productTitle}} </td>
+                      <td style="text-align:right; padding-right:5px">{{order.quantity}}</td>
+                      <td style="text-align:right; padding-right:5px">{{order.amount}} </td>
+                      <td style="text-align:center;">{{order.orderDate}} </td>
+                      <td style="text-align:center;">{{order.deliveryDate}}</td>
+                      <td style="text-align:left;">{{order.orderedTo.fullName}} </td>
+                      <td style="text-align:left;">{{order.orderedBy.fullName}} </td>
+                      <td style="text-align:left;">{{order.reciver}} </td>
+                      <td style="text-align:left;">{{order.address}} </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -75,9 +85,9 @@
                   <span class="sr-only">Previous</span>
                 </a>
               </li>
-              <li class="page-item btn-info"><a class="page-link" href="#">1</a></li>
-              <li class="page-item btn-info"><a class="page-link" href="#">2</a></li>
-              <li class="page-item btn-info"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item btn-info"
+                *ngFor="let item of [1,2,3,4,5,6]"
+              ><a class="page-link" href="#">{{item}}</a></li>
               <li class="page-item btn-danger">
                 <a class="page-link" href="#" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
@@ -91,3 +101,4 @@
     </div>
   </div>
 </div>
+page-size total-items active-page sorted-by

@@ -11,6 +11,7 @@ import { LayoutComponent } from "./layout/layout.component";
 import { FooterComponent } from "./layout/footer/footer.component";
 import { NavbarComponent } from "./layout/navbar/navbar.component";
 import { SidebarComponent } from "./layout/sidebar/sidebar.component";
+import { ChatbootComponent } from './layout/chatboot/chatboot.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { SidebarComponent } from "./layout/sidebar/sidebar.component";
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    ChatbootComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'settings', component: UserComponent }, // Vendor
   { path: 'profile', component: ProfileComponent }, // Vendor
   { path: 'product-category', component: ProductCategoryComponent }, // Vendor
+  { path: ':id/product-list', component: ProductListComponent }, // Vendor
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Vendor
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },// Vendor
 ];

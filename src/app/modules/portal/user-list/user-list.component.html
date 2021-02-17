@@ -1,7 +1,7 @@
 <div class="content">
   <div class="row">
     <div *ngFor="let user of users" class=" col-md-4">
-      <div class=" card card-user">
+      <div [routerLink]="['/portal/' + user.id + '/product-list']" style="cursor: pointer;" class=" card card-user">
         <div class=" card-body">
           <p class=" card-text"></p>
           <div class=" author">

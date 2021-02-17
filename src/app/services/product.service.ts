@@ -9,6 +9,7 @@ export class ProductService implements ProductInterface {
   public productCategories?: ProductCategoryInterface[] = this.productCategoryService.productCategories;
 
   public id: number;
+  public userId: number;
   public productTitle: string;
   public productType: ProductCategoryInterface[];
   public stock: number;
@@ -26,6 +27,7 @@ export class ProductService implements ProductInterface {
   public products?: ProductInterface[] = [
     {
       id: 101,
+      userId: 2001,
       productTitle: "Pepsi",
       productType: [this.productCategories[0], this.productCategories[1]],
       stock: 100,
@@ -41,6 +43,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 102,
+      userId: 2001,
       productTitle: "Cocacola",
       productType: [this.productCategories[1], this.productCategories[2]],
       stock: 120,
@@ -56,6 +59,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 103,
+      userId: 2002,
       productTitle: "Lays",
       productType: [this.productCategories[2], this.productCategories[3]],
       stock: 150,
@@ -71,6 +75,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 104,
+      userId: 2005,
       productTitle: "Nugets",
       productType: [this.productCategories[4], this.productCategories[5]],
       stock: 200,
@@ -86,6 +91,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 105,
+      userId: 2004,
       productTitle: "Pizza",
       productType: [this.productCategories[6], this.productCategories[7]],
       stock: 100,
@@ -101,6 +107,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 106,
+      userId: 2003,
       productTitle: "Merinda",
       productType: [
         this.productCategories[8],
@@ -120,6 +127,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 107,
+      userId: 2001,
       productTitle: "Vawy",
       productType: [this.productCategories[0], this.productCategories[1]],
       stock: 100,
@@ -135,6 +143,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 108,
+      userId: 2004,
       productTitle: "Diaper",
       productType: [this.productCategories[6], this.productCategories[7]],
       stock: 100,
@@ -150,6 +159,7 @@ export class ProductService implements ProductInterface {
     },
     {
       id: 109,
+      userId: 2005,
       productTitle: "Sooper",
       productType: [this.productCategories[8], this.productCategories[9]],
       stock: 1000,

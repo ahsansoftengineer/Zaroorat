@@ -18,12 +18,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: "admin",
-        loadChildren: () =>
-          import("./modules/portal/portal.module").then((m) => m.PortalModule),
-      },
-      {
-        path: "vendor",
+        path: "",
         loadChildren: () =>
           import("./modules/portal/portal.module").then((m) => m.PortalModule),
       },
