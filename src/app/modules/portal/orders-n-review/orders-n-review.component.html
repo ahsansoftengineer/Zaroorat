@@ -6,25 +6,38 @@
           <h2 class=" card-title">Orders & Reviews</h2>
         </div>
         <div class=" card-body">
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs" style="font-size: 18px;">
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(orderStatusEnum.All)" [ngClass]="{'active': orderStatusEnum.All === orderStatus}" style="cursor: pointer;">All</a>
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.ALL)"
+                [ngClass]="{'active': oRDER_STATUS_ENUM.ALL == currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">All</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(orderStatusEnum.Pending)"  [ngClass]="{'active': orderStatusEnum.Pending === orderStatus}" style="cursor: pointer;">Pending</a>
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.URGENT)"
+                [ngClass]="{'active':oRDER_STATUS_ENUM.URGENT === currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">Urgent</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(orderStatusEnum.History)"  [ngClass]="{'active': orderStatusEnum.History === orderStatus}" style="cursor: pointer;">History</a>
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.ONWAY)"
+                [ngClass]="{'active':oRDER_STATUS_ENUM.ONWAY === currentORDER_STATUS_ENUM}" style="cursor:pointer">On Way</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(orderStatusEnum.Rejected)"  [ngClass]="{'active': orderStatusEnum.Rejected === orderStatus}" style="cursor: pointer;">Rejected</a>
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.PENDING)"
+                [ngClass]="{'active': oRDER_STATUS_ENUM.PENDING === currentORDER_STATUS_ENUM}" style="cursor: pointer;">
+                Pending</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(orderStatusEnum.Delivered)"  [ngClass]="{'active': orderStatusEnum.Delivered=== orderStatus}" style="cursor: pointer;">Deliverd</a>
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.COMPLETE)"
+                [ngClass]="{'active': oRDER_STATUS_ENUM.COMPLETE == currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">History</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(orderStatusEnum.All)"  [ngClass]="{'active': true}" style="cursor:pointer">Summary</a>
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.CANCEL)"
+                [ngClass]="{'active':oRDER_STATUS_ENUM.CANCEL === currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">Rejected</a>
             </li>
+
+
           </ul>
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" style="overflow-x: scroll;"
@@ -53,8 +66,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let order of orders" class="card-title">
-                      <td data-toggle="tooltip" [title]="order.orderStatus"
-                      [ngStyle]="{'color':order.orderStatus === 'icon-bell-55' ||
+                      <td data-toggle="tooltip" [title]="order.orderStatus" [ngStyle]="{'color':order.orderStatus === 'icon-bell-55' ||
                        order.orderStatus === 'icon-simple-remove'? 'red' : 'abc' }" style="text-align:center;">
                         <span class="tim-icons {{order.orderStatus}} "></span>
                       </td>
@@ -85,9 +97,8 @@
                   <span class="sr-only">Previous</span>
                 </a>
               </li>
-                            <li class="page-item btn-info"
-                *ngFor="let item of [1,2,3,4,5,6]"
-              ><a class="page-link" href="#">{{item}}</a></li>
+              <li class="page-item btn-info" *ngFor="let item of [1,2,3,4,5,6]"><a class="page-link"
+                  href="#">{{item}}</a></li>
               <li class="page-item btn-danger">
                 <a class="page-link" href="#" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>

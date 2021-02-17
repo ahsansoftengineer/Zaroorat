@@ -8,8 +8,16 @@
     Zaroorat
   </a>
 </div>
+<style>
+  ul>li>a>p{
+    font-size: 15px;
+  }
+  ul>li, ul>li>a, ul{
+    margin-left: 0px;
+  }
+</style>
 <div class="sidebar-wrapper">
-  <ul class="nav">
+  <ul class="nav" >
     <button (click)="switchinguser()" >Switch User</button>
   <!-- <li routerLinkActive="active" *ngFor="let menuItem of menuItems"
       class="{{ menuItem.class }} nav-item">
@@ -26,7 +34,7 @@
     </li>
     <li routerLinkActive="active"class="nav-item">
       <a [routerLink]="['/portal/order-&-review']">
-        <i class="tim-icons icon-molecule-40"></i>
+        <i routerLinkActive="active"  class="tim-icons icon-molecule-40"></i>
         <p>Orders & Reviews</p>
       </a>
     </li>

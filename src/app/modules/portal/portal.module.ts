@@ -39,6 +39,7 @@ import { ProductCategoryService } from '../../services/product-category.service'
     ReactiveFormsModule,
     NgbModule
   ],
+  exports: [],
   providers:[
     OrderService, ProductService, ProductCategoryService, UserService
   ]

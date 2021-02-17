@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { OrderStatusEnum } from "../models/enums/order-status.enums";
+import { ORDER_STATUS_ENUM } from "../models/enums/order-status.enums";
 import { OrderInterface } from "../models/interfaces/order.interface";
 import { ProductService } from "./product.service";
 import { UserService } from "./user.service";
@@ -11,7 +11,7 @@ export class OrderService implements OrderInterface {
 
   public id: number;
   public productOrder: ProductService;
-  public orderStatus: OrderStatusEnum;
+  public orderStatus: string;
   public quantity: number;
   public amount: number;
   public orderedTo: UserService;
@@ -25,7 +25,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1001,
       productOrder: this.productService.products[0],
-      orderStatus: OrderStatusEnum.Cancel,
+      orderStatus: ORDER_STATUS_ENUM.CANCEL,
       amount: 100,
       quantity: 50,
       orderedTo: this.userService.users[0],
@@ -38,7 +38,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1002,
       productOrder: this.productService.products[1],
-      orderStatus: OrderStatusEnum.Pending,
+      orderStatus: ORDER_STATUS_ENUM.PENDING,
       amount: 90,
       quantity: 40,
       orderedTo: this.userService.users[1],
@@ -51,7 +51,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1003,
       productOrder: this.productService.products[2],
-      orderStatus: OrderStatusEnum.Urgent,
+      orderStatus: ORDER_STATUS_ENUM.URGENT,
       amount: 200,
       quantity: 10,
       orderedTo: this.userService.users[2],
@@ -64,7 +64,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1004,
       productOrder: this.productService.products[4],
-      orderStatus: OrderStatusEnum.OnWay,
+      orderStatus: ORDER_STATUS_ENUM.ONWAY,
       amount: 300,
       quantity: 1000,
       orderedTo: this.userService.users[4],
@@ -77,7 +77,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1005,
       productOrder: this.productService.products[5],
-      orderStatus: OrderStatusEnum.Complete,
+      orderStatus: ORDER_STATUS_ENUM.COMPLETE,
       amount: 10,
       quantity: 10000,
       orderedTo: this.userService.users[1],
@@ -90,7 +90,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1006,
       productOrder: this.productService.products[6],
-      orderStatus: OrderStatusEnum.Pending,
+      orderStatus: ORDER_STATUS_ENUM.PENDING,
       amount: 150,
       quantity: 200,
       orderedTo: this.userService.users[0],
@@ -103,7 +103,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1007,
       productOrder: this.productService.products[7],
-      orderStatus: OrderStatusEnum.Cancel,
+      orderStatus: ORDER_STATUS_ENUM.CANCEL,
       amount: 5,
       quantity: 10,
       orderedTo: this.userService.users[1],
@@ -116,7 +116,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1008,
       productOrder: this.productService.products[2],
-      orderStatus: OrderStatusEnum.Urgent,
+      orderStatus: ORDER_STATUS_ENUM.URGENT,
       amount: 10,
       quantity: 15000,
       orderedTo: this.userService.users[1],
@@ -129,7 +129,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1009,
       productOrder: this.productService.products[5],
-      orderStatus: OrderStatusEnum.OnWay,
+      orderStatus: ORDER_STATUS_ENUM.ONWAY,
       amount: 100,
       quantity: 50,
       orderedTo: this.userService.users[0],
@@ -142,7 +142,7 @@ export class OrderService implements OrderInterface {
     {
       id: 1010,
       productOrder: this.productService.products[8],
-      orderStatus: OrderStatusEnum.Complete,
+      orderStatus: ORDER_STATUS_ENUM.COMPLETE,
       amount: 100,
       quantity: 50,
       orderedTo: this.userService.users[2],

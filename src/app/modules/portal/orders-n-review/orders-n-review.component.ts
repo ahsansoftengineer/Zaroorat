@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { OrderStatusEnum } from "../../../models/enums/order-status.enums";
+import { ORDER_STATUS_ENUM } from "../../../models/enums/order-status.enums";
 import { OrderInterface } from "../../../models/interfaces/order.interface";
 import { OrderService } from "../../../services/order.service";
 
@@ -10,28 +10,24 @@ import { OrderService } from "../../../services/order.service";
 })
 export class OrdersNReviewComponent implements OnInit {
   public orders: OrderInterface[];
-  public orderStatus = OrderStatusEnum.All;
-  public orderStatusEnum = OrderStatusEnum;
-  public currentFilter: string = "all";
+  public currentORDER_STATUS_ENUM = ORDER_STATUS_ENUM.ALL;
+  public oRDER_STATUS_ENUM = ORDER_STATUS_ENUM;
   constructor(private orderService: OrderService) {}
   ngOnInit(): void {
-    this.orders = this.orderService.orders;
+    if(this.orders == null){
+      this.orders = this.orderService.orders;
+    }
   }
-  getEnum(status: string): string {
-    console.log(status);
-    console.log(this.orderStatus[status]);
-    return this.orderStatus[status];
-  }
-  filterOrders(filter: OrderStatusEnum) {
-    // this.currentFilter = filter;
-    if (filter === this.orderStatusEnum.All) {
+  filterOrders(filter: string) {
+    if (filter === this.oRDER_STATUS_ENUM.ALL) {
       this.orders = this.orderService.orders;
     } else {
       this.orders = this.orderService.orders.filter(
-        (x) => x.orderStatus.valueOf() === filter.valueOf()
+        (x) => x.orderStatus === filter
       );
     }
-    console.log(filter);
+
+    this.currentORDER_STATUS_ENUM = filter;
     // console.log(this.ORDER_STATUS_ENUM.ALL == OrderStatusEnum.ALL)
   }
 }
