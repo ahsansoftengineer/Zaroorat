@@ -28,26 +28,14 @@
     </li> -->
     <li routerLinkActive="active"class="nav-item">
       <a [routerLink]="['/portal/dashboard']">
-        <i class="tim-icons icon-molecule-40"></i>
+        <i class="tim-icons icon-chart-pie-36"></i>
         <p>Dashboard</p>
       </a>
     </li>
     <li routerLinkActive="active"class="nav-item">
       <a [routerLink]="['/portal/order-&-review']">
-        <i routerLinkActive="active"  class="tim-icons icon-molecule-40"></i>
+        <i routerLinkActive="active"  class="tim-icons icon-chart-bar-32"></i>
         <p>Orders & Reviews</p>
-      </a>
-    </li>
-    <li routerLinkActive="active"class="nav-item">
-      <a [routerLink]="['/portal/add-product']">
-        <i class="tim-icons icon-molecule-40"></i>
-        <p>Add Products</p>
-      </a>
-    </li>
-    <li routerLinkActive="active"class="nav-item">
-      <a [routerLink]="['/portal/product-list']">
-        <i class="tim-icons icon-molecule-40"></i>
-        <p>Product List</p>
       </a>
     </li>
     <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
@@ -56,15 +44,34 @@
         <p>Product Category</p>
       </a>
     </li>
+    <li routerLinkActive="active"class="nav-item">
+      <a [routerLink]="['/portal/add-product']">
+        <i class="tim-icons icon-vector"></i>
+        <p>Add Products</p>
+      </a>
+    </li>
+    <li routerLinkActive="active"class="nav-item">
+      <a [routerLink]="['/portal/product-list']">
+        <i class="tim-icons icon-vector"></i>
+        <p>Product List</p>
+      </a>
+    </li>
+
     <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
       <a [routerLink]="['/portal/add-user']">
-        <i class="tim-icons icon-molecule-40"></i>
+        <i class="tim-icons icon-single-02"></i>
         <p>Add User</p>
       </a>
     </li>
     <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
       <a [routerLink]="['/portal/user-list']">
-        <i class="tim-icons icon-molecule-40"></i>
+        <i class="tim-icons icon-single-02"><i class="tim-icons icon-single-02"></i></i>
+        <p>User List</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/wallet']">
+        <i class="tim-icons icon-wallet-43"></i>
         <p>User List</p>
       </a>
     </li>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProductCategoryInterface } from '../../../models/interfaces/product-category.interface';
+import { IProductCategory } from '../../../models/interfaces/product-category.interface';
 import { ProductCategoryService } from '../../../services/product-category.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProductCategoryService } from '../../../services/product-category.servi
 })
 export class ProductCategoryComponent implements OnInit {
   product: FormGroup = new FormGroup({});
-  productCategories: ProductCategoryInterface[];
+  productCategories: IProductCategory[];
 
   constructor(public productCategoryService: ProductCategoryService) {}
   ngOnInit(): void {

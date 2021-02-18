@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
-import { ProductCategoryInterface } from "../models/interfaces/product-category.interface";
-import { ProductInterface } from "../models/interfaces/product.interface";
+import { IProductCategory } from "../models/interfaces/product-category.interface";
+import { IProduct } from "../models/interfaces/product.interface";
 import { ProductCategoryService } from "./product-category.service";
 
 @Injectable()
-export class ProductService implements ProductInterface {
+export class ProductService implements IProduct {
   public productCategoryService?: ProductCategoryService = new ProductCategoryService();
-  public productCategories?: ProductCategoryInterface[] = this.productCategoryService.productCategories;
+  public productCategories?: IProductCategory[] = this.productCategoryService.productCategories;
 
   public id: number;
   public userId: number;
   public productTitle: string;
-  public productType: ProductCategoryInterface[];
+  public productType: IProductCategory[];
   public stock: number;
   public sale?: number;
   public wholeSaleRate?: number;
@@ -24,7 +24,7 @@ export class ProductService implements ProductInterface {
   constructor() {
   }
 
-  public products?: ProductInterface[] = [
+  public products?: IProduct[] = [
     {
       id: 101,
       userId: 2001,

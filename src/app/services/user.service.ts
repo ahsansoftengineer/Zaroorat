@@ -3,10 +3,10 @@ import { UserBackgroundSettings } from "../models/enums/user-background-settings
 import { UserSidebarSettings } from "../models/enums/user-sidebar-settings.enums";
 import { UserStatusEnum } from "../models/enums/user-status.enums";
 import { UserTypeEnum } from "../models/enums/user-type.enum";
-import { UserInterface } from "../models/interfaces/user.interface";
+import { IUser } from "../models/interfaces/user.interface";
 
 @Injectable()
-export class UserService implements UserInterface {
+export class UserService implements IUser {
   public id: number;
   public fullName: string;
   public userName: string; // Login Name
@@ -26,7 +26,7 @@ export class UserService implements UserInterface {
   public postal?: number;
   public background: UserBackgroundSettings;
   public sidebar: UserSidebarSettings;
-  public users?: UserInterface[] = [
+  public users?: IUser[] = [
     {
       id: 2001,
       fullName: "Ahsan",

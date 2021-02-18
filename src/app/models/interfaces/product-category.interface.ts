@@ -1,4 +1,4 @@
-export interface ProductCategoryInterface{
+export interface IProductCategory{
   id:number;
   category: string;
   parentCategoryId?:number;

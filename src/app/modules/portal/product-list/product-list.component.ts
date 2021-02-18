@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ProductInterface } from "../../../models/interfaces/product.interface";
+import { IProduct } from "../../../models/interfaces/product.interface";
 import { ProductService } from "../../../services/product.service";
 import { ActivatedRoute } from "@angular/router";
 
@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./product-list.component.scss"],
 })
 export class ProductListComponent implements OnInit {
-  public products: ProductInterface[];
+  public products: IProduct[];
   userId: number;
   constructor(
     private productService: ProductService,

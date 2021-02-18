@@ -6,8 +6,10 @@
     <app-navbar></app-navbar>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
+    <app-contacts></app-contacts>
   </div>
 </div>
+
 <div class=" fixed-plugin">
   <div class=" show-dropdown" ngbDropdown>
     <a data-toggle="dropdown" ngbDropdownToggle>
@@ -18,18 +20,16 @@
       <li class=" adjustments-line">
         <a class=" switch-trigger background-color" href="javascript:void(0)">
           <div class=" badge-colors text-center">
-            <span
-              class=" badge filter badge-danger"
-              [ngClass]="{'active':sidebarColor==='red'}" (click)="changeSidebarColor('red')"
-            >
+            <span class=" badge filter badge-danger" [ngClass]="{'active':sidebarColor==='red'}"
+              (click)="changeSidebarColor('red')">
             </span>
-            <span
-              class=" badge filter badge-primary"
-              [ngClass]="{'active':sidebarColor==='primary'}" (click)="changeSidebarColor('primary')"
-            >
+            <span class=" badge filter badge-primary" [ngClass]="{'active':sidebarColor==='primary'}"
+              (click)="changeSidebarColor('primary')">
             </span>
-            <span class=" badge filter badge-info" [ngClass]="{'active':sidebarColor==='blue'}" (click)="changeSidebarColor('blue')"> </span>
-            <span class=" badge filter badge-success" [ngClass]="{'active':sidebarColor==='green'}" (click)="changeSidebarColor('green')">
+            <span class=" badge filter badge-info" [ngClass]="{'active':sidebarColor==='blue'}"
+              (click)="changeSidebarColor('blue')"> </span>
+            <span class=" badge filter badge-success" [ngClass]="{'active':sidebarColor==='green'}"
+              (click)="changeSidebarColor('green')">
             </span>
           </div>
           <div class=" clearfix"></div>

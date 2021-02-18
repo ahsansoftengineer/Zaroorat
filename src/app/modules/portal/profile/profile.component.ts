@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInterface } from '../../../models/interfaces/user.interface';
+import { IUser } from '../../../models/interfaces/user.interface';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserService } from '../../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) { }
-  public user: UserInterface;
+  public user: IUser;
   public userIndex:string = '0';
   ngOnInit(): void {
     this.user = this.userService.users[this.userIndex]

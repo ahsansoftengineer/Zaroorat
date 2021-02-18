@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { ORDER_STATUS_ENUM } from "../models/enums/order-status.enums";
-import { OrderInterface } from "../models/interfaces/order.interface";
+import { IOrder } from "../models/interfaces/order.interface";
 import { ProductService } from "./product.service";
 import { UserService } from "./user.service";
 
 @Injectable()
-export class OrderService implements OrderInterface {
+export class OrderService implements IOrder {
   public userService?: UserService = new UserService();
   public productService?: ProductService = new ProductService();
 
@@ -21,7 +21,7 @@ export class OrderService implements OrderInterface {
   public address: string;
   public reciver?: string;
   constructor() {}
-  public orders?: OrderInterface[] = [
+  public orders?: IOrder[] = [
     {
       id: 1001,
       productOrder: this.productService.products[0],

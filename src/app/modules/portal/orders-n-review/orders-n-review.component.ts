@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ORDER_STATUS_ENUM } from "../../../models/enums/order-status.enums";
-import { OrderInterface } from "../../../models/interfaces/order.interface";
+import { IOrder } from "../../../models/interfaces/order.interface";
 import { OrderService } from "../../../services/order.service";
 
 @Component({
@@ -9,7 +9,7 @@ import { OrderService } from "../../../services/order.service";
   styleUrls: ["./orders-n-review.component.scss"],
 })
 export class OrdersNReviewComponent implements OnInit {
-  public orders: OrderInterface[];
+  public orders: IOrder[];
   public currentORDER_STATUS_ENUM = ORDER_STATUS_ENUM.ALL;
   public oRDER_STATUS_ENUM = ORDER_STATUS_ENUM;
   constructor(private orderService: OrderService) {}

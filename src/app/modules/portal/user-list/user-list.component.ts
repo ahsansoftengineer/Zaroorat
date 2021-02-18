@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../../services/user.service";
-import { UserInterface } from "../../../models/interfaces/user.interface";
+import { IUser } from "../../../models/interfaces/user.interface";
 
 @Component({
   selector: "app-user-list",
@@ -8,7 +8,7 @@ import { UserInterface } from "../../../models/interfaces/user.interface";
   styleUrls: ["./user-list.component.scss"],
 })
 export class UserListComponent implements OnInit {
-  public users: UserInterface[];
+  public users: IUser[];
   constructor(private userService: UserService) {}
   ngOnInit(): void {
     this.users = this.userService.users

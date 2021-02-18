@@ -1,8 +1,8 @@
 <div class=" content">
-  <div class=" row">
-    <div class=" col-md-8">
-      <div class=" card">
-        <form [formGroup]="product" (ngSubmit)="updateProduct()">
+  <form [formGroup]="product" (ngSubmit)="updateProduct()">
+    <div class=" row">
+      <div class=" col-md-8">
+        <div class=" card">
           <div class=" card-header">
             <h2 class="card-title">Add Products</h2>
           </div>
@@ -27,7 +27,8 @@
               <div class=" col-md-12">
                 <div class=" form-group">
                   <label> Product Category </label>
-                  <input class=" form-control" required formControlName="category" type="text" placeholder="Car, Mobiles, PC" />
+                  <input class=" form-control" required formControlName="category" type="text"
+                    placeholder="Car, Mobiles, PC" />
                 </div>
               </div>
               <div class=" col-md-6">
@@ -47,7 +48,8 @@
               <div class=" col-md-6">
                 <div class=" form-group">
                   <label> Whole Sale Rate</label>
-                  <input class=" form-control" required formControlName="wholeSaleRate" placeholder="50.5" type="number" />
+                  <input class=" form-control" required formControlName="wholeSaleRate" placeholder="50.5"
+                    type="number" />
                 </div>
               </div>
               <div class=" col-md-6">
@@ -61,7 +63,8 @@
               <div class=" col-md-6">
                 <div class=" form-group">
                   <label> Shipment Charges</label>
-                  <input class=" form-control" required formControlName="shipmentCharges" placeholder="50.5" type="number" />
+                  <input class=" form-control" required formControlName="shipmentCharges" placeholder="50.5"
+                    type="number" />
                 </div>
               </div>
               <div class=" col-md-6">
@@ -72,30 +75,11 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
-                <div class=" form-group">
-                  <label> Product Image</label>
-                  <div class="input-group">
-                    <label class="form-control" for="productImage">Choose file</label>
-                    <input type="file" required formControlName="productImage" id="productImage">
-                    <label class="form-control" for="galleryImage"></label>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class=" form-group">
-                  <label> Gallery Image</label>
-                  <div class="input-group">
-                    <label class="form-control" for="galleryImage">Choose file</label>
-                    <input type="file" required formControlName="galleryImage" id="galleryImage">
-                    <label class="form-control" for="galleryImage"></label>
-                  </div>
-                </div>
-              </div>
               <div class="col-md-12 mb-2">
                 <div class=" form-check">
                   <label for="feature" class=" form-check-label">
-                    <input class="form-control  form-check-input" type="checkbox" formControlName="featured" id="feature" />
+                    <input class="form-control  form-check-input" type="checkbox" formControlName="featured"
+                      id="feature" />
                     <span class=" form-check-sign">
                       <span class=" check"> Mark Your Product as Featured </span>
                     </span>
@@ -126,17 +110,38 @@
               </button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class=" col-md-12">
-        uploaded image preview
-      </div>
-      <div class="col-md-12">
-        uploaded Image2 Preview
-      </div>
-    </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Upload {{' Product '}} Image
+              <span class="tim-icons icon-simple-remove float-right"></span>
+            </h5>
+          </div>
+          <div class="card-body">
+            <img class="card-img-top" *ngIf="currentFileToDisplay === 'productImage'" [src]="imgProduct" alt="">
+            <img class="card-img-top" *ngIf="currentFileToDisplay === 'galleryImage'" [src]="imgGallery" alt="">
 
-  </div>
+          </div>
+          <div class="card-footer">
+            <div class="form-group input-group mb-3">
+              <div class="custom-file">
+                <input class="custom-file-input" required (change)="onFileChange($event, 'productImage')" type="file"
+                  formControlName="productImage" id="productImage">
+                <label class="custom-file-label" id="productFileName" for="productImage">Choose file</label>
+              </div>
+            </div>
+            <div class="form-group input-group">
+              <div class="custom-file">
+                <input class="custom-file-input" required (change)="onFileChange($event, 'galleryImage')" type="file"
+                  formControlName="galleryImage" id="galleryImage">
+                <label class="custom-file-label" id="galleryFileName" for="galleryImage">Choose file</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
