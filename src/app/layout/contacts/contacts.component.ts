@@ -25,7 +25,7 @@ export class ContactsComponent implements OnInit {
 
   // Input Properties
   @Input()
-  public chatvisible: boolean = false;
+  public chatvisible: boolean = true;
   @Input()
   public meUser: IUser;
 

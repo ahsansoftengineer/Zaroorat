@@ -22,13 +22,6 @@
 <div class="sidebar-wrapper">
   <ul class="nav">
     <button (click)="switchinguser()">Switch User</button>
-    <!-- <li routerLinkActive="active" *ngFor="let menuItem of menuItems"
-      class="{{ menuItem.class }} nav-item">
-      <a [routerLink]="[menuItem.path]">
-        <i class="tim-icons  {{ menuItem.icon }}"></i>
-        <p>{{ menuItem.title }}</p>
-      </a>
-    </li> -->
     <li routerLinkActive="active" class="nav-item">
       <a [routerLink]="['/portal/dashboard']">
         <i class="tim-icons icon-chart-pie-36"></i>
@@ -60,9 +53,9 @@
       </a>
     </li>
     <li routerLinkActive="active" class="nav-item">
-      <a [routerLink]="['/portal/wallet']">
+      <a [routerLink]="['/portal/promotion']">
         <i class="tim-icons icon-gift-2"></i>
-        <p>Promotions</p>
+        <p>Promotion</p>
       </a>
     </li>
     <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
@@ -81,6 +74,12 @@
       <a [routerLink]="['/portal/wallet']">
         <i class="tim-icons icon-wallet-43"></i>
         <p>Wallet</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/chat']">
+        <i class="tim-icons icon-chat-33"></i>
+        <p>Chat</p>
       </a>
     </li>
   </ul>

@@ -18,6 +18,8 @@ import { UserService } from '../../services/user.service';
 import { OrderService } from '../../services/order.service';
 import { ProductService } from '../../services/product.service';
 import { ProductCategoryService } from '../../services/product-category.service';
+import { PromotionComponent } from './promotion/promotion.component';
+import { WalletComponent } from './wallet/wallet.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { ProductCategoryService } from '../../services/product-category.service'
     OrdersNReviewComponent,
     ProductCategoryComponent,
     AdminChatComponent,
+    PromotionComponent,
+    WalletComponent,
   ],
   imports: [
     CommonModule,

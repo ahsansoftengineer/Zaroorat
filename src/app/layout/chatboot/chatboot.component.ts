@@ -21,7 +21,7 @@ export class ChatbootComponent implements OnInit {
   public meUser: IUser;
   myChats: IChat[];
   @Input()
-  public chatBotHide: boolean = false;
+  public chatBotHide: boolean = true;
   @Input()
   public contactedUser: IUser;
   constructor(
