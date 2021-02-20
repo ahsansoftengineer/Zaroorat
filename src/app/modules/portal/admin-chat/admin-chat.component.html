@@ -1,0 +1,98 @@
+<div class="row">
+  <!-- Contacts Area -->
+  <div class="col-md-4">
+    <div class=" card card-user">
+      <!-- Current User -->
+      <div class="card-header pb-2">
+        <h4 class="card-title">Contacts </h4>
+        <div class="input-group">
+          <input [formControl]="searchControl" (keyup.enter)="filterContacts()" type="text" class="form-control"
+            placeholder="Search Contacts">
+          <button type="submit" class="btn pr-3 pl-3" (click)="filterContacts()"
+            style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+            <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
+          </button>
+        </div>
+      </div>
+      <!-- My Contects -->
+      <div class="card-body border-bottom border-top" style="height:100%; cursor: pointer;">
+        <div *ngFor="let contact of mycontacts, let ev = even" (click)="letsChat(contact)" class="row mb-1 pt-2 pb-2"
+          [style.background-color]="ev ?  'rgba(128, 128, 128, 0.363)' : 'rgba(10, 186, 255, 0.459)'">
+          <div class="col-md-3">
+            <img [src]="contact.image" style="height: 55px; width:55px" class="rounded-circle">
+            <div class="user-state " [ngClass]="contact.online ? 'user-active' : 'user-disable'"></div>
+
+          </div>
+          <div class="col-md-9 pt-2 pl-0">
+            <h4 class="m-0">{{ contact.fullName }}</h4>
+            <p class="m-0"> {{ contact.businessName }}<span class="float-right"> {{ contact.online }} </span></p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer" [ngClass]="{'d-none': minimize }">
+
+      </div>
+    </div>
+  </div>
+  <!-- Chat Area -->
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-3">
+        <div class=" card card-user">
+          <div class="card-header pb-2">
+            <div class="row">
+              <div class="col-3">
+                <img class="rounded-circle" style="height:55px"
+                  [src]="contactedUser ? contactedUser.image : '../../../assets/img/angular2-logo-white.png'"
+                  alt="Targated User">
+                <div class="user-state "
+                  [ngClass]="contactedUser ? (contactedUser.online ? 'user-active' : 'user-disable') : 'user-disable'">
+                </div>
+              </div>
+              <div class="col-9 p-0 m-0 pr-2" style="margin-left:-20px;">
+                <h4 class="card-title m-0 p-0" style>{{contactedUser ? contactedUser.fullName : 'User Name'}}
+                  <div style="cursor: pointer;" class="float-right ">
+                    <h4 class="float:right;">
+                      <span class="tim-icons icon-trash-simple pr-3 text-warning" tooltip="Delete Conversesion"></span>
+                      <span [ngClass]="{'icon-minimal-up': minimize, 'icon-minimal-down ': !minimize}"
+                        (click)="minimize = !minimize;" class="tim-icons pr-3"></span>
+                      <span class="tim-icons icon-simple-remove pr-3 text-danger" (click)="chatBotHide = true"></span>
+                    </h4>
+                  </div>
+                </h4>
+                <h5 class="card-title m-0 p-0">{{contactedUser ? contactedUser.businessName : 'Business Name'}}</h5>
+                <h5 class="card-title m-0 p-0">{{contactedUser ? contactedUser.userName : 'Business Name'}}</h5>
+              </div>
+            </div>
+          </div>
+          <!-- show Hide Toggle  -->
+          <div class="card-body  border-bottom border-top" style="height:400px" [ngClass]="{'d-none': minimize }">
+            <div class="row mb-1">
+              <div class="col-md-12 pt-2" *ngIf="myChats">
+                <div class="alert p-2" [ngClass]="chat.userA.id === meUser.id ? 'alert-warning': 'alert-info'"
+                  style="opacity: 0.7;" *ngFor="let chat of myChats">
+                  <h4 class="m-0">{{chat.userA.fullName }}<span class="float-right"> 12:00</span></h4>
+                  {{chat.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer" [ngClass]="{'d-none': minimize }">
+            <div class="input-group">
+              <button class="btn pr-3 pl-3"
+                style="border-top-right-radius: 0; border-bottom-right-radius: 0;  margin-top: 0px;">
+                <span class="tim-icons icon-attach-87" style="font-size: 16px;"></span>
+              </button>
+              <input type="text" class="form-control" placeholder="your Message"
+              style="border-top-right-radius: 0; border-bottom-right-radius: 0; border-right:0px">
+              <button class="btn pr-3 pl-3"
+                style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                <span class="tim-icons icon-send" style="font-size: 16px;"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

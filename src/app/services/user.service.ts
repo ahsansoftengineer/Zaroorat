@@ -24,6 +24,7 @@ export class UserService implements IUser {
   public address?: string;
   public city?: string;
   public postal?: number;
+  public online: boolean;
   public background: UserBackgroundSettings;
   public sidebar: UserSidebarSettings;
   public users?: IUser[] = [
@@ -45,6 +46,7 @@ export class UserService implements IUser {
       address: "Korangi 3 1/2",
       city: "Karachi",
       postal: 74900,
+      online:true,
       sidebar: UserSidebarSettings.Blue,
       background: UserBackgroundSettings.BgWhite
     },
@@ -66,6 +68,7 @@ export class UserService implements IUser {
       address: "Landhi 36/B",
       city: "Karachi",
       postal: 74900,
+      online:true,
       sidebar: UserSidebarSettings.Blue,
       background: UserBackgroundSettings.BgWhite
     },
@@ -87,6 +90,7 @@ export class UserService implements IUser {
       address: "Nazimabad 48/C",
       city: "Karachi",
       postal: 74900,
+      online:false,
       sidebar: UserSidebarSettings.Blue,
       background: UserBackgroundSettings.BgWhite
     },
@@ -108,6 +112,7 @@ export class UserService implements IUser {
       address: "Gulshan 48/C",
       city: "Karachi",
       postal: 74900,
+      online:true,
       sidebar: UserSidebarSettings.Blue,
       background: UserBackgroundSettings.BgWhite
     },
@@ -121,16 +126,17 @@ export class UserService implements IUser {
       email: "aqueela@domain.com",
       contact: "0333-2587146",
       nTNNumber: "NTN-369852",
-      userType: UserTypeEnum.Admin, // Admin, Vendor
-      userStatus: UserStatusEnum.Disabled, // Enabled, Disabled, Pending
+      userType: UserTypeEnum.Admin, // Admin, Vendor --Graphical
+      userStatus: UserStatusEnum.Disabled, // Enabled, Disabled, Pending --Graphical
       imagetitle: "./assets/img/Banner/pink.jpg",
       image: "./assets/img/User/User5.jpg", // -Admin
       complain: "Mehmood Sahab",
       address: "Ibrahim Haidre",
       city: "Karachi",
       postal: 74900,
-      sidebar: UserSidebarSettings.Blue,
-      background: UserBackgroundSettings.BgWhite
+      online:false, // Graphical
+      sidebar: UserSidebarSettings.Blue, // --Graphical
+      background: UserBackgroundSettings.BgWhite // --Graphical
     },
   ];
   constructor() {}

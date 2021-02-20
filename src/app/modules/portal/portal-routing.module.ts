@@ -9,6 +9,7 @@ import { ProductsComponent } from './products/products.component';
 import { OrdersNReviewComponent } from './orders-n-review/orders-n-review.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
+import { AdminChatComponent } from './admin-chat/admin-chat.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent }, // Vendor
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'settings', component: UserComponent }, // Vendor
   { path: 'profile', component: ProfileComponent }, // Vendor
   { path: 'product-category', component: ProductCategoryComponent }, // Vendor
+  { path: 'chat', component: AdminChatComponent }, // Admin
   { path: ':id/product-list', component: ProductListComponent }, // Vendor
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Vendor
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },// Vendor

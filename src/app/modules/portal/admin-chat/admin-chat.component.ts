@@ -1,17 +1,24 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { IContact } from "../../models/interfaces/contact.interface";
-import { IUser } from "../../models/interfaces/user.interface";
-import { UserService } from "../../services/user.service";
-import { ContactService } from "../../services/contact.service";
-import { FormControl, FormGroup } from "@angular/forms";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from "@angular/core";
+import { FormControl } from "@angular/forms";
+import { IChat } from "../../../models/interfaces/chat.interface";
+import { ChatService } from "../../../services/chat.service";
+import { IUser } from "../../../models/interfaces/user.interface";
+import { ContactService } from "../../../services/contact.service";
+import { UserService } from "../../../services/user.service";
 
 @Component({
-  selector: "app-contacts",
-  templateUrl: "./contacts.component.html",
-  styleUrls: ["./contacts.component.scss"],
+  selector: "app-admin-chat",
+  templateUrl: "./admin-chat.component.html",
+  styleUrls: ["./admin-chat.component.scss"],
 })
-export class ContactsComponent implements OnInit {
-
+export class AdminChatComponent implements OnInit {
   // Public Properties
   public minimize: boolean = true;
   public mycontacts: IUser[];
@@ -19,7 +26,8 @@ export class ContactsComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private chatService: ChatService
   ) {}
   searchControl = new FormControl("");
 
@@ -55,16 +63,34 @@ export class ContactsComponent implements OnInit {
         .map((x) => (this.mycontacts = x.contacts));
     } else {
       this.mycontacts = this.mycontacts.filter(
-        (x) => x.fullName === this.searchText ||
-         x.businessName === this.searchText ||
-         x.userName === this.searchText
+        (x) =>
+          x.fullName === this.searchText ||
+          x.businessName === this.searchText ||
+          x.userName === this.searchText
       );
     }
   }
   // Start Chating with Specific Person in List
-  letsChat(myContactedUser: IUser){
+  letsChat(myContactedUser: IUser) {
     this.chatBotContact.emit(false);
     this.chatvisible = !this.chatvisible;
     this.chatBotwithContact.emit(myContactedUser);
+  }
+
+  myChats: IChat[];
+  @Input()
+  public chatBotHide: boolean = false;
+  @Input()
+  public contactedUser: IUser;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.contactedUser) {
+      this.myChats = this.chatService.allChats.filter(
+        (x) =>
+          (x.userA.id === this.meUser.id &&
+            x.userB.id === this.contactedUser.id) ||
+          (x.userA.id === this.contactedUser.id &&
+            x.userB.id === this.meUser.id)
+      );
+    }
   }
 }

@@ -1,8 +1,10 @@
-import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
+import { Component, OnInit, ElementRef, OnDestroy, Input } from "@angular/core";
 import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { IUser } from "../../models/interfaces/user.interface";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "app-navbar",
@@ -10,17 +12,26 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  @Input()
+  public meUser: IUser;
+
+
+
+  // Template Generated Code
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
 
+
   public isCollapsed = true;
+
 
   closeResult: string;
 
   constructor(
+    public userService: UserService,
     location: Location,
     private element: ElementRef,
     private router: Router,

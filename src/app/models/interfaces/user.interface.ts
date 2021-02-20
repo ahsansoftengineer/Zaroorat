@@ -15,6 +15,7 @@ export interface IUser{
   nTNNumber:string;
   userType:UserTypeEnum; // Admin, Vendor
   userStatus:UserStatusEnum; // Enabled, Disabled, Pending
+  online:boolean;
   image?:string;
   imagetitle?:string; // -Admin
   complain?:string;

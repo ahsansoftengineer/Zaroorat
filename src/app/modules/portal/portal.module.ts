@@ -12,6 +12,7 @@ import { ProductsComponent } from './products/products.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
+import { AdminChatComponent } from './admin-chat/admin-chat.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user.service';
 import { OrderService } from '../../services/order.service';
@@ -31,6 +32,7 @@ import { ProductCategoryService } from '../../services/product-category.service'
     ProfileComponent,
     OrdersNReviewComponent,
     ProductCategoryComponent,
+    AdminChatComponent,
   ],
   imports: [
     CommonModule,

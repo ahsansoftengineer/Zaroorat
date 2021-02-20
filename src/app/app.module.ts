@@ -1,7 +1,7 @@
 // Modules
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
@@ -20,11 +20,14 @@ import { ProductService } from "./services/product.service";
 import { ProductCategoryService } from "./services/product-category.service";
 import { UserService } from "./services/user.service";
 import { ContactsComponent } from './layout/contacts/contacts.component';
+import { ContactService } from "./services/contact.service";
+import { ChatService } from "./services/chat.service";
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     RouterModule,
@@ -41,7 +44,7 @@ import { ContactsComponent } from './layout/contacts/contacts.component';
     ContactsComponent,
   ],
   providers: [
-    OrderService, ProductService, ProductCategoryService, UserService
+    OrderService, ProductService, ProductCategoryService, UserService, ContactService, ChatService
   ],
   bootstrap: [AppComponent],
 })
