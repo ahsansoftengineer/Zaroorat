@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TreeviewModule } from 'ngx-treeview';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { UserComponent } from './user/user.component';
@@ -13,7 +15,6 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { ProfileComponent } from './profile/profile.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { AdminChatComponent } from './admin-chat/admin-chat.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user.service';
 import { OrderService } from '../../services/order.service';
 import { ProductService } from '../../services/product.service';
@@ -43,7 +44,8 @@ import { WalletComponent } from './wallet/wallet.component';
     PortalRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    TreeviewModule.forRoot()
   ],
   exports: [],
   providers:[

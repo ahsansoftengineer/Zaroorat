@@ -1,10 +1,15 @@
+<style>
+  label .form-check .form-check-label {
+    padding-left: 0px !important;
+  }
+</style>
 <div class=" content">
   <div class=" row">
-    <div class=" col-md-12">
+    <div class=" col-md-6">
       <div class=" card">
         <form [formGroup]="product" (ngSubmit)="updateProduct()">
           <div class=" card-header">
-            <h2 class="card-title">Add Product Cateogory</h2>
+            <h2 class="card-title">Add New Cateogory</h2>
           </div>
           <div class="card-body">
             <div class=" row">
@@ -12,28 +17,28 @@
                 <div class=" form-group">
                   <label> ID (disabled) </label>
                   <input class=" form-control" required formControlName="id" placeholder="Company" type="text"
-                    value="101" />
+                    name="id" value="101" />
                 </div>
               </div>
               <div class=" col-md-6">
                 <div class=" form-group">
                   <label> Category </label>
                   <input class=" form-control" required formControlName="category" placeholder="Electronics"
-                    type="text" />
+                    name="cateogory" type="text" />
                 </div>
               </div>
               <div class=" col-md-4">
                 <div class=" form-group">
                   <label> Parent Category </label>
                   <input class=" form-control" required formControlName="parentCategoryId" placeholder="1"
-                    type="number" />
+                     name="parentCategoryId"   type="number" />
                 </div>
               </div>
               <div class=" col-md-12">
                 <div class=" form-group">
                   <label> Description</label>
                   <input class=" form-control" required formControlName="description" type="text"
-                    placeholder="Computer, Teblets, LCD, LED" />
+                   name="description" placeholder="Computer, Teblets, LCD, LED" />
                 </div>
               </div>
             </div>
@@ -54,27 +59,46 @@
         </form>
       </div>
     </div>
-    <div class="col-md-12">
-      <div class=" card">
-        <div class=" card-header">
-          <h2 class="card-title">Product Cateogory List</h2>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Category Hierarchy</h2>
         </div>
         <div class="card-body">
+          <ngx-treeview [config]="config" [items]="productCategoryTreeView"
+            (selectedChange)="onSelectedChange($event)" (filterChange)="onFilterChange($event)">
+          </ngx-treeview>
+        </div>
+        <div class="card-footer">
+          This is the Footer
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 overflow-y: auto;">
+      <div class=" card">
+        <div class=" card-header">
+          <h2 class="card-title">List View</h2>
+        </div>
+        <div class="card-body" style="height:650px;">
           <div class=" row">
             <div class="col-md-12">
-              <table class="table" style="font-size:14px; width: 50%;">
-                <tr class="bg-danger" style="margin-top:20px;">
-                  <td style="width:40px; text-align: center;">ID</td>
-                  <td style="width:150px;">Product Category</td>
-                  <td style="width:150px;">Parent Category</td>
-                  <td style="width:90px; text-align:center;">Description</td>
-                </tr>
-                <tr *ngFor="let cateogories of productCategories">
-                  <td class="card-title" style="text-align:center;">{{cateogories.id}}</td>
-                  <td class="card-title" style="text-align:left;">{{cateogories.category}} </td>
-                  <td class="card-title" style="text-align:left;">{{cateogories.parentCategoryId}} </td>
-                  <td class="card-title" style="text-align:left; padding-right:5px">{{cateogories.description}}</td>
-                </tr>
+              <table class="table" style="font-size:14px">
+                <thead>
+                  <tr class="bg-primary card-title" style="margin-top:20px;">
+                    <th style="width:40px; text-align: center;">ID</th>
+                    <th style="width:200px;">Prod Cat</th>
+                    <th style="width:150px;">P ID</th>
+                    <th style="text-align:center;">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cateogories of productCategories" style="padding:5px;" class="productCategoryRow">
+                    <td class="card-title" style="text-align:center;">{{cateogories.id}}</td>
+                    <td class="card-title" style="text-align:left;">{{cateogories.category}} </td>
+                    <td class="card-title" style="text-align:left;">{{cateogories.parentCategoryId}} </td>
+                    <td class="card-title" style="text-align:left; padding-right:5px">{{cateogories.description}}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -83,8 +107,8 @@
     </div>
   </div>
 </div>
-<style>
-  th, td{
-    padding:3px;
-  }
-</style>
+<table>
+  <!-- <tr *ngFor="let item of productCategoryTreeView">
+    <td>{{item}}</td>
+  </tr> -->
+</table>

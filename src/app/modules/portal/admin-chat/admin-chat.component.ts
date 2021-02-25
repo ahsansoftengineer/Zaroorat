@@ -24,6 +24,9 @@ export class AdminChatComponent implements OnInit {
   public searchText: string;
   public chatedUser: IUser;
   public myChats: IChat[];
+  // public chatScroll;
+  //   this.chatScroll = document.getElementById("chatBody");
+  //   this.chatScroll.scrollTop = this.chatScroll.scrollHeight;
 
   @Input()
   public meUser: IUser;
@@ -60,11 +63,12 @@ export class AdminChatComponent implements OnInit {
     this.chatedUser = myContactedUser;
     this.myChats = this.chatService.allChats.filter(
       (x) =>
-        (x.userA.id === this.meUser.id &&
-          x.userB.id === this.chatedUser.id) ||
-        (x.userA.id === this.chatedUser.id &&
-          x.userB.id === this.meUser.id)
+        (x.userA.id === this.meUser.id && x.userB.id === this.chatedUser.id) ||
+        (x.userA.id === this.chatedUser.id && x.userB.id === this.meUser.id)
     );
   }
-
 }
+// window.setInterval(function() {
+//   var elem = document.getElementById("chatBody");
+//   elem.scrollTop = elem.scrollHeight;
+// }, 5000);

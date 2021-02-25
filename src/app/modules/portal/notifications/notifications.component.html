@@ -6,36 +6,34 @@
           <h4 class=" card-title">Notifications Style</h4>
         </div>
         <div class=" card-body">
-          <ngb-alert [type]="'info'" [dismissible]="false">
+          <!-- <ngb-alert [type]="'info'" [dismissible]="false">
             <span> This is a plain notification </span>
-          </ngb-alert>
+          </ngb-alert> -->
           <ngb-alert [type]="'info'" *ngIf="!staticAlertClosed" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed = true">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed = true">
               <i class="tim-icons icon-simple-remove"></i>
             </button>
             <span> This is a notification with close button. </span>
           </ngb-alert>
-          <ngb-alert
-            class=" alert-with-icon"
-            data-notify="container"
-            [type]="'info'"*ngIf="!staticAlertClosed1" [dismissible]="false">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed1 = true">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
+          <ngb-alert class=" alert-with-icon" data-notify="container" [type]="'info'" *ngIf="!staticAlertClosed1"
+            [dismissible]="false">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed1 = true">
+              <i class="tim-icons icon-simple-remove"></i>
+            </button>
             <span class=" tim-icons icon-bell-55" data-notify="icon">
             </span>
             <span data-notify="message">
               This is a notification with close button and icon.
             </span>
           </ngb-alert>
-          <ngb-alert
-            class=" alert-with-icon"
-            data-notify="container"
-            [type]="'info'"
-            *ngIf="!staticAlertClosed2" [dismissible]="false">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed2 = true">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
+          <ngb-alert class=" alert-with-icon" data-notify="container" [type]="'info'" *ngIf="!staticAlertClosed2"
+            [dismissible]="false">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed2 = true">
+              <i class="tim-icons icon-simple-remove"></i>
+            </button>
             <span class=" tim-icons icon-bell-55" data-notify="icon">
             </span>
             <span data-notify="message">
@@ -55,7 +53,8 @@
         </div>
         <div class=" card-body">
           <ngb-alert [type]="'primary'" *ngIf="!staticAlertClosed3" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed3 = true">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed3 = true">
               <i class="tim-icons icon-simple-remove"></i>
             </button>
             <span>
@@ -64,7 +63,8 @@
             </span>
           </ngb-alert>
           <ngb-alert [type]="'info'" *ngIf="!staticAlertClosed4" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed4 = true">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed4 = true">
               <i class="tim-icons icon-simple-remove"></i>
             </button>
             <span>
@@ -73,7 +73,8 @@
             </span>
           </ngb-alert>
           <ngb-alert [type]="'success'" *ngIf="!staticAlertClosed5" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed5 = true">
               <i class="tim-icons icon-simple-remove"></i>
             </button>
             <span>
@@ -82,7 +83,8 @@
             </span>
           </ngb-alert>
           <ngb-alert [type]="'warning'" *ngIf="!staticAlertClosed6" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed6 = true">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed6 = true">
               <i class="tim-icons icon-simple-remove"></i>
             </button>
             <span>
@@ -91,7 +93,8 @@
             </span>
           </ngb-alert>
           <ngb-alert [type]="'danger'" *ngIf="!staticAlertClosed7" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed7 = true">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
+              (click)="staticAlertClosed7 = true">
               <i class="tim-icons icon-simple-remove"></i>
             </button>
             <span>
@@ -116,26 +119,17 @@
               <div class=" col-lg-8 ml-auto mr-auto">
                 <div class=" row">
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'left')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('top', 'left')">
                       Top Left
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'center')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('top', 'center')">
                       Top Center
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'right')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('top', 'right')">
                       Top Right
                     </button>
                   </div>
@@ -146,28 +140,19 @@
               <div class=" col-lg-8 ml-auto mr-auto">
                 <div class=" row">
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('bottom', 'left')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('bottom', 'left')">
                       Bottom Left
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="
+                    <button class=" btn btn-danger btn-block" (click)="
                         showNotification('bottom', 'center')
-                      "
-                    >
+                      ">
                       Bottom Center
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('bottom', 'right')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('bottom', 'right')">
                       Bottom Right
                     </button>
                   </div>

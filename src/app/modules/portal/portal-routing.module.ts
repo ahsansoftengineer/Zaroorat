@@ -15,7 +15,7 @@ import { WalletComponent } from './wallet/wallet.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent }, // Vendor
-  { path: 'notifications', component: NotificationsComponent }, // Vendor
+  { path: 'notification', component: NotificationsComponent }, // Vendor
   { path: 'order-&-review', component: OrdersNReviewComponent }, // Vendor
   { path: 'add-product', component: ProductsComponent }, // Vendor
   { path: 'product-list', component: ProductListComponent }, // Vendor

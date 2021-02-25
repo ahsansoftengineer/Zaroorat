@@ -76,7 +76,13 @@
         <p>Wallet</p>
       </a>
     </li>
-    <li routerLinkActive="active" class="nav-item">
+    <li *ngIf="currentUser == 'admin'"  routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/notification']">
+        <i class="tim-icons icon-bell-55"></i>
+        <p>Notification</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'"  routerLinkActive="active" class="nav-item">
       <a [routerLink]="['/portal/chat']">
         <i class="tim-icons icon-chat-33"></i>
         <p>Chat</p>

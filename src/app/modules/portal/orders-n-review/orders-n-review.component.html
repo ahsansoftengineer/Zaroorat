@@ -4,8 +4,9 @@
       <div class=" card">
         <div class=" card-header">
           <h2 class=" card-title">
-            <span class="tim-icons icon-refresh-02 text-danger" style="cursor:pointer" ></span>
-            {{' Orders & Reviews'}}</h2>
+            <span class="tim-icons icon-refresh-02 text-danger" style="cursor:pointer"></span>
+            {{' Orders & Reviews'}}
+          </h2>
         </div>
         <div class=" card-body">
           <ul class="nav nav-tabs" style="font-size: 18px;">
@@ -21,7 +22,8 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.ONWAY)"
-                [ngClass]="{'active':oRDER_STATUS_ENUM.ONWAY === currentORDER_STATUS_ENUM}" style="cursor:pointer">On Way</a>
+                [ngClass]="{'active':oRDER_STATUS_ENUM.ONWAY === currentORDER_STATUS_ENUM}" style="cursor:pointer">On
+                Way</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.PENDING)"
@@ -47,7 +49,7 @@
               <div class="table-responsive">
                 <table class="table tablesorter" style="font-size: 16px">
                   <thead>
-                    <tr style="margin-top:20px;" class="card-title">
+                    <tr style="margin-top:20px; border-top:0px" class="card-title">
                       <td style="width:20px; text-align: center;"> Status </td>
                       <td style="width:40px; text-align: center;">ID</td>
                       <td style="width:150px;">Product</td>
@@ -67,7 +69,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let order of orders" class="card-title">
+                    <tr *ngFor="let order of orders" class="card-title productCategoryRow">
                       <td data-toggle="tooltip" [title]="order.orderStatus" [ngStyle]="{'color':order.orderStatus === 'icon-bell-55' ||
                        order.orderStatus === 'icon-simple-remove'? 'red' : 'abc' }" style="text-align:center;">
                         <span class="tim-icons {{order.orderStatus}} "></span>
@@ -78,10 +80,11 @@
                       <td style="text-align:right; padding-right:5px">{{order.amount}} </td>
                       <td style="text-align:center;">{{order.orderDate}} </td>
                       <td style="text-align:center;">{{order.deliveryDate}}</td>
-                      <td style="text-align:left;">{{order.orderedTo.fullName}} </td>
-                      <td style="text-align:left;">{{order.orderedBy.fullName}} </td>
-                      <td style="text-align:left;">{{order.reciver}} </td>
-                      <td style="text-align:left;">{{order.address}} </td>
+                      <td style="text-align:left;">{{order.orderedTo.fullName.slice(0, 10) }} </td>
+                      <td style="text-align:left;">{{order.orderedBy.fullName.slice(0, 10) }} </td>
+                      <td style="text-align:left;">{{order.reciver.slice(0, 10) }} </td>
+                      <td style="text-align:left;">{{ order.address.slice(0, 40) }} <span
+                          *ngIf="order.address.length > 40">...</span> </td>
                     </tr>
                   </tbody>
 

@@ -1,6 +1,6 @@
 export interface IProductCategory{
   id:number;
   category: string;
-  parentCategoryId?:number;
+  pId?:number;
   description: string;
 }

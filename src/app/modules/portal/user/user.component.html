@@ -1,190 +1,239 @@
 <div class=" content">
-  <div class=" row">
-    <form [formGroup]="user" (ngSubmit)="updateUser()">
-      <div class=" col-md-12">
-        <div class=" card">
-          <div class=" card-header">
-            <h2 class="card-title">Add Vendor</h2>
+  <form [formGroup]="user" (ngSubmit)="updateUser()">
+    <div class="row">
+      <div class="col-md-8">
+        <div class=" row">
+          <div class=" col-md-12">
+            <div class=" card">
+              <div class=" card-header">
+                <h2 class="card-title">Add Vendor</h2>
+              </div>
+              <div class="card-body">
+                <div class=" row">
+                  <div class=" col-md-4">
+                    <div class=" form-group">
+                      <label> ID </label>
+                      <input class=" form-control" required formControlName="id" placeholder="101" type="text" />
+                    </div>
+                  </div>
+                  <div class=" col-md-8">
+                    <div class=" form-group">
+                      <label> Full Name</label>
+                      <input class=" form-control" required formControlName="fullName"
+                        placeholder="Muhammad Ahsan Ahmed" type="text" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> Business Name</label>
+                      <input class=" form-control" required formControlName="businessName"
+                        placeholder="Artistic Miliners Garments" type="text" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> User Name</label>
+                      <input class=" form-control" required formControlName="userName"
+                        placeholder="ahsanandsons@zaroorat.com" type="text" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label>Email Address</label>
+                      <input class="form-control" required formControlName="email" type="number"
+                        value="ahsan@domain.com" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class="form-group">
+                      <label for="gender">Gender</label>
+                      <select formControlName="gender" required class="form-control" id="gender">
+                        <option selected disabled class="dropdown-item">Select Gender</option>
+                        <option class="dropdown-item">Male</option>
+                        <option class="dropdown-item">Female</option>
+                        <option class="dropdown-item">Others</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> Contact</label>
+                      <input class=" form-control" required formControlName="contact" placeholder="60" type="number" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> NTN Number</label>
+                      <input class=" form-control" required formControlName="nTNNumber" placeholder="50.5"
+                        type="number" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" card-footer">
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <div class=" row">
-              <div class=" col-md-4">
-                <div class=" form-group">
-                  <label> ID </label>
-                  <input class=" form-control" required formControlName="id" placeholder="101" type="text" />
-                </div>
+          <div class=" col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">User Business Title Image
+                  <span class="tim-icons icon-simple-remove float-right"></span>
+                </h5>
               </div>
-              <div class=" col-md-8">
-                <div class=" form-group">
-                  <label> Full Name</label>
-                  <input class=" form-control" required formControlName="fullName" placeholder="Muhammad Ahsan Ahmed"
-                    type="text" />
-                </div>
+              <div class="card-body">
+                <img class="card-img-top"  style="height:300px" [src]="imagetitle" alt="">
               </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Business Name</label>
-                  <input class=" form-control" required formControlName="businessName"
-                    placeholder="Artistic Miliners Garments" type="text" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> User Name</label>
-                  <input class=" form-control" required formControlName="userName"
-                    placeholder="ahsanandsons@zaroorat.com" type="text" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label>Email Address</label>
-                  <input class="form-control" required formControlName="email" type="number" value="ahsan@domain.com" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class="form-group">
-                  <label for="gender">Gender</label>
-                  <select formControlName="gender" required class="form-control" id="gender">
-                    <option selected disabled class="dropdown-item">Select Gender</option>
-                    <option class="dropdown-item">Male</option>
-                    <option class="dropdown-item">Female</option>
-                    <option class="dropdown-item">Others</option>
-                  </select>
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Contact</label>
-                  <input class=" form-control" required formControlName="contact" placeholder="60" type="number" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> NTN Number</label>
-                  <input class=" form-control" required formControlName="nTNNumber" placeholder="50.5" type="number" />
+              <div class="card-footer">
+                <div class="form-group input-group">
+                  <div class="custom-file">
+                    <input class="custom-file-input" required (change)="onFileChange($event, 'imagetitle')" type="file"
+                      formControlName="imagetitle" id="userImage">
+                    <label class="custom-file-label" id="userTitleFileName" for="imagetitle">Choose file</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class=" card-footer">
+          <div class="col-md-12">
+            <div class=" card">
+              <div class=" card-header">
+                <h2 class=" card-title">
+                  <span class="tim-icons icon-settings-gear-63"></span>
+                  More Info
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="background">Background</label>
+                      <select formControlName="background" required class="form-control" id="background">
+                        <option selected disabled class="dropdown-item">Select Background Theme</option>
+                        <option class="dropdown-item" value="white-content">Light Mode</option>
+                        <option class="dropdown-item" value="black-content">Dark Mode</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="sidebar">Sidebar</label>
+                      <select formControlName="sidebar" required class="form-control" id="sidebar">
+                        <option selected disabled class="dropdown-item">Select Sidebar Theme</option>
+                        <option class="dropdown-item" value="blue">Blue</option>
+                        <option class="dropdown-item" value="primary">Primary</option>
+                        <option class="dropdown-item" value="red">Red</option>
+                        <option class="dropdown-item" value="green">Green</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class=" col-md-4 pr-md-1">
+                    <div class=" form-group">
+                      <label> City </label>
+                      <input class=" form-control" placeholder="Karachi" type="text" />
+                    </div>
+                  </div>
+                  <div class=" col-md-4 px-md-1">
+                    <div class=" form-group">
+                      <label> Country </label>
+                      <input class=" form-control" placeholder="Pakistan" type="text" />
+                    </div>
+                  </div>
+                  <div class=" col-md-4 pl-md-1">
+                    <div class=" form-group">
+                      <label> Postal Code </label>
+                      <input class=" form-control" placeholder="ZIP Code" type="number" />
+                    </div>
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class=" col-md-12">
+                    <div class=" form-group">
+                      <label> Address
+                        <span class="tim-icons icon-square-pin"></span>
+                      </label>
+                      <input class=" form-control" placeholder="Home Address" type="text"
+                        value="North Nazima Bad Federal B Area" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" card-footer">
+                <div class="btn-group">
+                  <button class=" btn btn-fill btn-secondary" type="submit">
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class=" card">
+              <div class=" card-header">
+                <h2 class="card-title">Admin Area</h2>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class=" col-md-6">
+                    <div class="form-group">
+                      <label for="status">User Type</label>
+                      <select formControlName="userType" required class="form-control" id="status">
+                        <option selected disabled class="dropdown-item">Select Type</option>
+                        <option class="dropdown-item">Admin</option>
+                        <option class="dropdown-item">Vendor</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class="form-group">
+                      <label for="status">User Status</label>
+                      <select formControlName="userStatus" required class="form-control" id="status">
+                        <option selected disabled class="dropdown-item">Select Status</option>
+                        <option class="dropdown-item text-success">Enabled</option>
+                        <option class="dropdown-item text-warning">Pending</option>
+                        <option class="dropdown-item text-danger">Disabled</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class=" col-md-12">
+                    <div class=" form-group">
+                      <label> Complain</label>
+                      <textarea class="form-control" formControlName="complain" style="width: 100%; max-width: 100%;"
+                        placeholder="Descriptive Complain regarding Vedor" rows="10"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                footer
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class=" card">
-          <div class=" card-header">
-            <h2 class=" card-title">
-              <span class="tim-icons icon-settings-gear-63" ></span>
-              More Info</h2>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Upload User Image
+              <span class="tim-icons icon-simple-remove float-right"></span>
+            </h5>
           </div>
           <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="background">Background</label>
-                  <select formControlName="background" required class="form-control" id="background">
-                    <option selected disabled class="dropdown-item">Select Background Theme</option>
-                    <option class="dropdown-item" value="white-content">Light Mode</option>
-                    <option class="dropdown-item" value="black-content">Dark Mode</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="sidebar">Sidebar</label>
-                  <select formControlName="sidebar" required class="form-control" id="sidebar">
-                    <option selected disabled class="dropdown-item">Select Sidebar Theme</option>
-                    <option class="dropdown-item" value="blue">Blue</option>
-                    <option class="dropdown-item" value="primary">Primary</option>
-                    <option class="dropdown-item" value="red">Red</option>
-                    <option class="dropdown-item" value="green">Green</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class=" row">
-              <div class=" col-md-4 pr-md-1">
-                <div class=" form-group">
-                  <label> City </label>
-                  <input class=" form-control" placeholder="Karachi" type="text" />
-                </div>
-              </div>
-              <div class=" col-md-4 px-md-1">
-                <div class=" form-group">
-                  <label> Country </label>
-                  <input class=" form-control" placeholder="Pakistan" type="text" />
-                </div>
-              </div>
-              <div class=" col-md-4 pl-md-1">
-                <div class=" form-group">
-                  <label> Postal Code </label>
-                  <input class=" form-control" placeholder="ZIP Code" type="number" />
-                </div>
-              </div>
-            </div>
-            <div class=" row">
-              <div class=" col-md-12">
-                <div class=" form-group">
-                  <label> Address
-                    <span class="tim-icons icon-square-pin"></span>
-                  </label>
-                  <input class=" form-control" placeholder="Home Address" type="text"
-                    value="North Nazima Bad Federal B Area" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class=" card-footer">
-            <div class="btn-group">
-              <button class=" btn btn-fill btn-secondary" type="submit">
-                Update
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class=" card">
-          <div class=" card-header">
-            <h2 class="card-title">Admin Area</h2>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class=" col-md-6">
-                <div class="form-group">
-                  <label for="status">User Type</label>
-                  <select formControlName="userType" required class="form-control" id="status">
-                    <option selected disabled class="dropdown-item">Select Type</option>
-                    <option class="dropdown-item">Admin</option>
-                    <option class="dropdown-item">Vendor</option>
-                  </select>
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class="form-group">
-                  <label for="status">User Status</label>
-                  <select formControlName="userStatus" required class="form-control" id="status">
-                    <option selected disabled class="dropdown-item">Select Status</option>
-                    <option class="dropdown-item text-success">Enabled</option>
-                    <option class="dropdown-item text-warning">Pending</option>
-                    <option class="dropdown-item text-danger">Disabled</option>
-                  </select>
-                </div>
-              </div>
-              <div class=" col-md-12">
-                <div class=" form-group">
-                  <label> Complain</label>
-                  <textarea class="form-control" formControlName="complain" style="width: 100%; max-width: 100%;"
-                    placeholder="Descriptive Complain regarding Vedor" rows="10"></textarea>
-                </div>
-              </div>
-            </div>
+            <img class="card-img-top" [src]="image" alt="">
           </div>
           <div class="card-footer">
-            footer
+            <div class="form-group input-group">
+              <div class="custom-file">
+                <input class="custom-file-input" required (change)="onFileChange($event, 'image')" type="file"
+                  formControlName="image" id="image">
+                <label class="custom-file-label" id="userFileName" for="image">Choose file</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
