@@ -26,12 +26,12 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "/portal",
+    redirectTo: "/portal/dashboard",
     pathMatch: "full",
   },
   {
     path: "**",
-    redirectTo: "/portal",
+    redirectTo: "/portal/dashboard",
     pathMatch: "full",
   },
 ];

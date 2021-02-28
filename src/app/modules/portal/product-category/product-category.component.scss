@@ -1,9 +1,20 @@
 label .form-check .form-check-label{
   padding-left:0px !important;
 }
-.productCategoryRow:hover{
-  background:rgba(128, 128, 128, 0.493)
-}
-.productCategoryRow>td{
+.productCategory{
+  list-style-type:none;
   padding:5px;
+  cursor: pointer;
+}
+.productCategory:hover{
+  background-color: rgba(128, 128, 128, 0.301);
+  -webkit-transition: background-color 400ms linear;
+  -ms-transition: background-color 400ms linear;
+  transition: background-color 400ms linear;
+}
+.productCategory:not(:hover){
+  background-color: none;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 600ms linear;
 }

@@ -10,7 +10,7 @@ import { ProductCategoryService } from "../../../services/product-category.servi
   styleUrls: ["./product-category.component.scss"],
 })
 export class ProductCategoryComponent implements OnInit {
-  product: FormGroup = new FormGroup({});
+  productCategory: FormGroup;
   productCategories: IProductCategory[];
   productCategoryTreeView: TreeviewItem[];
   constructor(public productCategoryService: ProductCategoryService) {
@@ -18,31 +18,35 @@ export class ProductCategoryComponent implements OnInit {
     this.productCategories = this.productCategoryService.productCategories;
   }
   ngOnInit(): void {
-    this.product = new FormGroup({
+    this.productCategory = new FormGroup({
       id: new FormControl(""),
       category: new FormControl("", Validators.minLength(3)),
-      parentCategoryId: new FormControl(),
+      pId: new FormControl(),
       description: new FormControl(""),
     });
   }
   updateProduct() {
-    console.log(this.product.value);
+    console.log(this.productCategory.value);
   }
   // Tree View Settings
-  config = {
-    hasAllCheckBox: false,
-    hasFilter: true,
-    hasCollapseExpand: true,
-    decoupleChildFromParent: true,
-    maxHeight: 700,
-  };
-  onSelectedChange(selectedItemId: string) {
-    console.log(selectedItemId);
-  }
-  onFilterChange(filterTreeView: string) {
-    // console.log(filterTreeView);
-  }
-  captureID(id: string) {
+  // config = {
+  //   hasAllCheckBox: false,
+  //   hasFilter: true,
+  //   hasCollapseExpand: true,
+  //   decoupleChildFromParent: true,
+  //   maxHeight: 700,
+  // };
+  // onSelectedChange(selectedItemId: string) {
+  //   console.log(selectedItemId);
+  // }
+  // onFilterChange(filterTreeView: string) {
+  //   // console.log(filterTreeView);
+  // }
+  productCategoryItemClick(id: string) {
+    this.productCategory.patchValue({
+      pId : id
+    });
+    event.stopPropagation();
     console.log(id);
   }
 }

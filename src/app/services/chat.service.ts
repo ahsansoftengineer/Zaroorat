@@ -2,6 +2,12 @@ import { Injectable } from "@angular/core";
 import { IChat } from "../models/interfaces/chat.interface";
 import { IUser } from "../models/interfaces/user.interface";
 import { UserService } from "./user.service";
+    // Date Construct in JavaScript
+    // let today = new Date()
+    // let birthday = new Date('December 17, 1995 03:24:00')
+    // let birthday = new Date('1995-12-17T03:24:00')
+    // let birthday = new Date(1995, 11, 17)            // the month is 0-indexed
+    // let birthday = new Date(1995, 11, 17, 3, 24, 0)
 
 @Injectable()
 export class ChatService implements IChat {
@@ -12,6 +18,27 @@ export class ChatService implements IChat {
   userB:IUser; // Target User
   message: string; // Self
   date: Date;
+
+  computeDuration(date: Date): string{
+    const currentDateTime = Date.now();
+    const duration = currentDateTime - date.getDate();
+    // Hours
+    if(true){
+      return ''
+    }
+    // Today
+    else if(true) {
+
+    }
+    // Yesterday
+    else if(true) {
+
+    }
+    // Before Yesterday
+    else {
+
+    }
+  }
   allChats:IChat[] = [
     {
       id: 1,

@@ -1,13 +1,8 @@
-<style>
-  label .form-check .form-check-label {
-    padding-left: 0px !important;
-  }
-</style>
 <div class=" content">
   <div class=" row">
     <div class=" col-md-6">
       <div class=" card">
-        <form [formGroup]="product" (ngSubmit)="updateProduct()">
+        <form [formGroup]="productCategory" (ngSubmit)="updateProduct()">
           <div class=" card-header">
             <h2 class="card-title">Add New Cateogory</h2>
           </div>
@@ -30,7 +25,7 @@
               <div class=" col-md-4">
                 <div class=" form-group">
                   <label> Parent Category </label>
-                  <input class=" form-control" required formControlName="parentCategoryId" placeholder="1"
+                  <input class=" form-control" required formControlName="pId" placeholder="1"
                      name="parentCategoryId"   type="number" />
                 </div>
               </div>
@@ -65,9 +60,24 @@
           <h2 class="card-title">Category Hierarchy</h2>
         </div>
         <div class="card-body">
-          <ngx-treeview [config]="config" [items]="productCategoryTreeView"
+          <!-- <ngx-treeview [config]="config" [items]="productCategoryTreeView"
             (selectedChange)="onSelectedChange($event)" (filterChange)="onFilterChange($event)">
-          </ngx-treeview>
+          </ngx-treeview> -->
+          <ul *ngFor="let f of productCategoryTreeView" style="margin-left:0px; padding-left:0px" class="card-title">
+            <li class="productCategory p-1" (click)="productCategoryItemClick(f.value)" >{{f.text}}
+              <ul *ngFor="let s of f.children">
+                <li class="productCategory p-1" (click)="productCategoryItemClick(s.value)">{{ s.text }}
+                  <ul *ngFor="let t of s.children">
+                    <li class="productCategory p-1" (click)="productCategoryItemClick(t.value)">{{ t.text }}
+                      <ul *ngFor="let ff of t.children">
+                        <li class="productCategory p-1" (click)="productCategoryItemClick(ff.value)">{{ ff.text }}</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
         <div class="card-footer">
           This is the Footer
@@ -92,11 +102,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let cateogories of productCategories" style="padding:5px;" class="productCategoryRow">
-                    <td class="card-title" style="text-align:center;">{{cateogories.id}}</td>
-                    <td class="card-title" style="text-align:left;">{{cateogories.category}} </td>
-                    <td class="card-title" style="text-align:left;">{{cateogories.parentCategoryId}} </td>
-                    <td class="card-title" style="text-align:left; padding-right:5px">{{cateogories.description}}</td>
+                  <tr *ngFor="let cateogories of productCategories" class="productCategory">
+                    <td class="card-title p-2" style="text-align:center;">{{cateogories.id}}</td>
+                    <td class="card-title p-2" style="text-align:left;">{{cateogories.category}} </td>
+                    <td class="card-title p-2" style="text-align:left;">{{cateogories.pId}} </td>
+                    <td class="card-title p-2" style="text-align:left; padding-right:5px">{{cateogories.description}}</td>
                   </tr>
                 </tbody>
               </table>
