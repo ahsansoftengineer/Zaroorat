@@ -1,0 +1,662 @@
+{
+  "User": [
+    {
+      "id": 1,
+      "name": "Ahsan",
+      "userName": "ahsanenterprises@zaroorat.com",
+      "businessName": "Ahsan Enterprises",
+      "password": "**abc**",
+      "gender": "male",
+      "email": "ahsan@domain.com",
+      "contact": "0321-2827700",
+      "nTNNumber": "NTN-25458",
+      "userType": "Vendor",
+      "userStatus": "Pending",
+      "imagetitle": "./assets/img/Banner/BlueBlue.jpg",
+      "image": "./assets/img/User/User7.PNG",
+      "complain": "New Vendor",
+      "address": "Korangi 3 1/2",
+      "city": "Karachi",
+      "postal": 74900,
+      "online": true,
+      "sidebar": "Blue",
+      "background": "BgWhite"
+    },
+    {
+      "id": 2,
+      "name": "Asim",
+      "userName": "asimenterprises@zaroorat.com",
+      "businessName": "Asim Enterprises",
+      "password": "**asim**",
+      "gender": "male",
+      "email": "asim@domain.com",
+      "contact": "0321-2358900",
+      "nTNNumber": "NTN-28900",
+      "userType": "Admin",
+      "userStatus": "Enabled",
+      "imagetitle": "./assets/img/Banner/BlueCircle.jpg",
+      "image": "./assets/img/User/User2.png",
+      "complain": "Admin",
+      "address": "Landhi 36/B",
+      "city": "Karachi",
+      "postal": 74900,
+      "online": true,
+      "sidebar": "Blue",
+      "background": "BgWhite"
+    },
+    {
+      "id": 3,
+      "name": "Asrin",
+      "userName": "asrinzeenat@zaroorat.com",
+      "businessName": "Asrin Private Limited",
+      "password": "**asim**",
+      "gender": "Female",
+      "email": "asrin@domain.com",
+      "contact": "0333-2695447",
+      "nTNNumber": "NTN-3698514",
+      "userType": "Vendor",
+      "userStatus": "Enabled",
+      "imagetitle": "./assets/img/Banner/bluepink.jpg",
+      "image": "./assets/img/User/User3.jpg",
+      "complain": "Fraud",
+      "address": "Nazimabad 48/C",
+      "city": "Karachi",
+      "postal": 74900,
+      "online": false,
+      "sidebar": "Blue",
+      "background": "BgWhite"
+    },
+    {
+      "id": 4,
+      "name": "Mehmood",
+      "userName": "mehmood@bolbola.com",
+      "businessName": "Mehmood Bol Bola",
+      "password": "**asim**",
+      "gender": "Female",
+      "email": "mehmood@domain.com",
+      "contact": "0333-1245896",
+      "nTNNumber": "NTN-258741",
+      "userType": "Vendor",
+      "userStatus": "Enabled",
+      "imagetitle": "./assets/img/Banner/clip.jpg",
+      "image": "./assets/img/User/User4.png",
+      "complain": "Mehmood Sahab",
+      "address": "Gulshan 48/C",
+      "city": "Karachi",
+      "postal": 74900,
+      "online": true,
+      "sidebar": "Blue",
+      "background": "BgWhite"
+    },
+    {
+      "id": 5,
+      "name": "Aqueela",
+      "userName": "aqueela@qudosisahabkibewa.com",
+      "businessName": "Quodosi Sahab ki Bewa",
+      "password": "**aqueela**",
+      "gender": "Female",
+      "email": "aqueela@domain.com",
+      "contact": "0333-2587146",
+      "nTNNumber": "NTN-369852",
+      "userType": "Admin",
+      "userStatus": "Disabled",
+      "imagetitle": "./assets/img/Banner/pink.jpg",
+      "image": "./assets/img/User/User5.jpg",
+      "complain": "Mehmood Sahab",
+      "address": "Ibrahim Haidre",
+      "city": "Karachi",
+      "postal": 74900,
+      "online": false,
+      "sidebar": "Blue",
+      "background": "BgWhite"
+    }
+  ],
+  "ProductCategory": [
+    {
+      "id": 1,
+      "pId": null,
+      "description": "n/a",
+      "category": "Beverages"
+    },
+    {
+      "id": 2,
+      "pId": 1,
+      "description": "n/a",
+      "category": "Soft Drink"
+    },
+    {
+      "id": 3,
+      "pId": 1,
+      "description": "n/a",
+      "category": "Juice"
+    },
+    {
+      "id": 4,
+      "pId": 1,
+      "description": "n/a",
+      "category": "Burger"
+    },
+    {
+      "id": 5,
+      "pId": 1,
+      "description": "n/a",
+      "category": "Pizza"
+    },
+    {
+      "id": 6,
+      "pId": 2,
+      "description": "n/a",
+      "category": "Pepsi"
+    },
+    {
+      "id": 7,
+      "pId": 2,
+      "description": "n/a",
+      "category": "Cocacola"
+    },
+    {
+      "id": 8,
+      "pId": 2,
+      "description": "n/a",
+      "category": "7Up"
+    },
+    {
+      "id": 9,
+      "pId": null,
+      "description": "n/a",
+      "category": "Electronics"
+    },
+    {
+      "id": 10,
+      "pId": 9,
+      "description": "n/a",
+      "category": "PC"
+    },
+    {
+      "id": 11,
+      "pId": 9,
+      "description": "n/a",
+      "category": "Tablets"
+    },
+    {
+      "id": 12,
+      "pId": 9,
+      "description": "n/a",
+      "category": "Mobile"
+    },
+    {
+      "id": 13,
+      "pId": 12,
+      "description": "n/a",
+      "category": "Sony Experia"
+    },
+    {
+      "id": 14,
+      "pId": 12,
+      "description": "n/a",
+      "category": "iPhone"
+    },
+    {
+      "id": 15,
+      "pId": 12,
+      "description": "n/a",
+      "category": "Nokia"
+    },
+    {
+      "id": 16,
+      "pId": 12,
+      "description": "n/a",
+      "category": "Huawei"
+    },
+    {
+      "id": 17,
+      "pId": 12,
+      "description": "Chinese Mobiles",
+      "category": "Xomi"
+    },
+    {
+      "id": 18,
+      "pId": 11,
+      "description": "cocomo",
+      "category": "Docomo"
+    },
+    {
+      "id": 19,
+      "pId": 10,
+      "description": "n/a",
+      "category": "HP Computer"
+    },
+    {
+      "id": 20,
+      "pId": 10,
+      "description": "",
+      "category": "Dell"
+    },
+    {
+      "id": 21,
+      "pId": 10,
+      "description": "",
+      "category": "Sony"
+    },
+    {
+      "id": 22,
+      "pId": 10,
+      "description": "",
+      "category": "Toshiba"
+    }
+  ],
+  "Product": [
+    {
+      "id": 1,
+      "userId": 1,
+      "productTitle": "Pepsi",
+      "productTypeId":2,
+      "stock": 100,
+      "sale": 20,
+      "wholeSaleRate": 50,
+      "retailRate": 55,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": true,
+      "description": "Not Yet define",
+      "image": "https://banner2.cleanpng.com/20180202/cte/kisspng-soft-drink-coca-cola-pepsi-one-pepsi-max-pepsi-png-file-5a7527a82193c3.3912714915176273041375.jpg"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "productTitle": "Cocacola",
+      "productTypeId": 3,
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 50,
+      "retailRate": 55,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": false,
+      "description": "Not Yet define",
+      "image": "https://www.pngfind.com/pngs/m/675-6757496_coca-cola-cold-drink-can-hd-png-download.png"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "productTitle": "Lays",
+      "productTypeId": 4,
+      "stock": 150,
+      "sale": 40,
+      "wholeSaleRate": 20,
+      "retailRate": 22,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": false,
+      "description": "Not Yet define",
+      "image": "https://e7.pngegg.com/pngimages/484/133/png-clipart-potato-chip-pepsi-flavor-lay-s-frito-lay-pepsi.png"
+    },
+    {
+      "id": 4,
+      "userId": 5,
+      "productTitle": "Nugets",
+      "productTypeId": 5,
+      "stock": 200,
+      "sale": 30,
+      "wholeSaleRate": 150,
+      "retailRate": 155,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": true,
+      "description": "Not Yet define",
+      "image": "https://www.vhv.rs/dpng/d/422-4223979_chicken-nugget-png-download-dominos-chicken-nuggets-transparent.png"
+    },
+    {
+      "id": 5,
+      "userId": 4,
+      "productTitle": "Pizza",
+      "productTypeId": 6,
+      "stock": 100,
+      "sale": 20,
+      "wholeSaleRate": 50,
+      "retailRate": 55,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": true,
+      "description": "I am loving it",
+      "image": "https://i.pinimg.com/originals/82/b7/53/82b753702b41b811df5a80ed807c0987.jpg"
+    },
+    {
+      "id": 6,
+      "userId": 3,
+      "productTitle": "Merinda",
+      "productTypeId": 3,
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 50,
+      "retailRate": 55,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": true,
+      "description": "Not Yet define",
+      "image": "https://thumbnail.imgbin.com/24/14/10/imgbin-milkshake-fizzy-drinks-pepsi-mirinda-soft-drink-mirinda-juice-illustration-DaiehRgXP2Jvgu1ecatTj1vjq_t.jpg"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "productTitle": "Vawy",
+      "productTypeId": 9,
+      "stock": 100,
+      "sale": 20,
+      "wholeSaleRate": 50,
+      "retailRate": 55,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": false,
+      "description": "Not Yet define",
+      "image": "https://simg.nicepng.com/png/small/301-3015690_wavy-lays-original-potato-chips-wavy-original-potato.png"
+    },
+    {
+      "id": 8,
+      "userId": 4,
+      "productTitle": "Diaper",
+      "productTypeId": 7,
+      "stock": 100,
+      "sale": 20,
+      "wholeSaleRate": 50,
+      "retailRate": 55,
+      "tex": 17,
+      "shipmentCharges": 2,
+      "featured": true,
+      "description": "Not Yet define",
+      "image": "https://png.pngtree.com/png-clipart/20190214/ourmid/pngtree-baby-diaper-element-png-image_553220.jpg"
+    },
+    {
+      "id": 9,
+      "userId": 5,
+      "productTitle": "Sooper",
+      "productTypeId":8,
+      "stock": 1000,
+      "sale": 200,
+      "wholeSaleRate": 20,
+      "retailRate": 18,
+      "tex": 0.5,
+      "shipmentCharges": 2,
+      "featured": false,
+      "description": "Not Yet define",
+      "image": "https://xambeel.com/wp-content/uploads/2019/04/sooper.png"
+    }
+  ],
+  "Order": [
+    {
+      "id": 1,
+      "productOrder": 10,
+      "orderStatus": "CANCEL",
+      "amount": 100,
+      "quantity": 50,
+      "orderedTo": 5,
+      "orderedBy": 1,
+      "orderDate": "01-01-2021",
+      "deliveryDate": "02-01-2021",
+      "address": "House No L-799 Sector 34/2 Korangi 3 Karachi",
+      "reciver": "Brother Asim"
+    },
+    {
+      "id": 2,
+      "productOrder": 1,
+      "orderStatus": "PENDING",
+      "amount": 90,
+      "quantity": 40,
+      "orderedTo": 1,
+      "orderedBy": 2,
+      "orderDate": "02-01-2021",
+      "deliveryDate": "03-01-2021",
+      "address": "Pakistan",
+      "reciver": "Sister"
+    },
+    {
+      "id": 3,
+      "productOrder": 2,
+      "orderStatus": "URGENT",
+      "amount": 200,
+      "quantity": 10,
+      "orderedTo": 2,
+      "orderedBy": 3,
+      "orderDate": "04-01-2021",
+      "deliveryDate": "05-02-2021",
+      "address": "Kalabagh",
+      "reciver": "Self"
+    },
+    {
+      "id": 4,
+      "productOrder": 4,
+      "orderStatus": "ONWAY",
+      "amount": 300,
+      "quantity": 1000,
+      "orderedTo": 4,
+      "orderedBy": 3,
+      "orderDate": "05-02-2021",
+      "deliveryDate": "08-02-2021",
+      "address": "Sadar Karachi",
+      "reciver": "Self"
+    },
+    {
+      "id": 5,
+      "productOrder": 5,
+      "orderStatus": "COMPLETE",
+      "amount": 10,
+      "quantity": 10000,
+      "orderedTo": 1,
+      "orderedBy": 2,
+      "orderDate": "01-01-2021",
+      "deliveryDate": "02-01-2021",
+      "address": "Korangi Creek",
+      "reciver": "Uncle Furqan"
+    },
+    {
+      "id": 6,
+      "productOrder": 6,
+      "orderStatus": "PENDING",
+      "amount": 150,
+      "quantity": 200,
+      "orderedTo": 5,
+      "orderedBy": 1,
+      "orderDate": "09-01-2021",
+      "deliveryDate": "12-01-2021",
+      "address": "Landhi 36/B",
+      "reciver": "Self"
+    },
+    {
+      "id": 7,
+      "productOrder": 7,
+      "orderStatus": "CANCEL",
+      "amount": 5,
+      "quantity": 10,
+      "orderedTo": 1,
+      "orderedBy": 5,
+      "orderDate": "02-02-2021",
+      "deliveryDate": "04-02-2021",
+      "address": "Malir Cant",
+      "reciver": "Nephew Adnan"
+    },
+    {
+      "id": 8,
+      "productOrder": 2,
+      "orderStatus": "URGENT",
+      "amount": 10,
+      "quantity": 15000,
+      "orderedTo": 1,
+      "orderedBy": 2,
+      "orderDate": "19-01-2021",
+      "deliveryDate": "21-01-2021",
+      "address": "Shah Faisal Town",
+      "reciver": "Self"
+    },
+    {
+      "id": 9,
+      "productOrder": 5,
+      "orderStatus": "ONWAY",
+      "amount": 100,
+      "quantity": 50,
+      "orderedTo": 5,
+      "orderedBy": 1,
+      "orderDate": "01-01-2021",
+      "deliveryDate": "02-01-2021",
+      "address": "Ibrahim Haidre Goth",
+      "reciver": "Faisal Town"
+    },
+    {
+      "id": 10,
+      "productOrder": 8,
+      "orderStatus": "COMPLETE",
+      "amount": 100,
+      "quantity": 50,
+      "orderedTo": 2,
+      "orderedBy": 4,
+      "orderDate": "29-01-2020",
+      "deliveryDate": "15-02-2020",
+      "address": "Gulshan",
+      "reciver": "Self"
+    }
+  ],
+  "Contact": [
+    {
+      "id": 1,
+      "user": 5,
+      "contacts": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "user": 1,
+      "contacts": [
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "user": 2,
+      "contacts": [
+        1,
+        4,
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "user": 4,
+      "contacts": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "user": 5,
+      "contacts": [
+        1,
+        3
+      ]
+    }
+  ],
+  "Chat": [
+    {
+      "id": 1,
+      "userA": 1,
+      "userB": 2,
+      "message": "Bhi Kesay Ho",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 2,
+      "userA": 1,
+      "userB": 2,
+      "message": "Jawab to de do",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 3,
+      "userA": 2,
+      "userB": 1,
+      "message": "Yar Busy tha bolo",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 4,
+      "userA": 1,
+      "userB": 2,
+      "message": "Assignment ka kiya huwa",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 5,
+      "userA": 2,
+      "userB": 1,
+      "message": "Jama karwa diya hai",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 6,
+      "userA": 2,
+      "userB": 3,
+      "message": "Computer required in bulk quantity",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 7,
+      "userA": 3,
+      "userB": 2,
+      "message": "20 piece per 10% discount hai aur 50 piece per 20%",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 8,
+      "userA": 3,
+      "userB": 2,
+      "message": "Apko kitna Chahiya",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 9,
+      "userA": 1,
+      "userB": 3,
+      "message": "Samsung Galxy Required 10",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 10,
+      "userA": 3,
+      "userB": 1,
+      "message": "Mal End Ho Gaya Hai",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 11,
+      "userA": 1,
+      "userB": 3,
+      "message": "Agla Mal Kab Aye Ga",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 12,
+      "userA": 3,
+      "userB": 1,
+      "message": "March / April mai Maloom Karlena",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 13,
+      "userA": 1,
+      "userB": 4,
+      "message": "Ap ka kiya hal hai",
+      "date": "February 26, 2021 11:21:00"
+    },
+    {
+      "id": 14,
+      "userA": 1,
+      "userB": 4,
+      "message": "Bhi Reply to kar do",
+      "date": "February 26, 2021 11:21:00"
+    }
+  ]
+}

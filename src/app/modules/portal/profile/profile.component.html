@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" [style.background-image]="'url('+ user.imagetitle +')'" style=" background-repeat: no-repeat;
+          height:250px; background-size: cover;
+          position:relative;">
+          <h2 class="card-title">
+            <a style="float: right;" href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+              <span class="tim-icons icon-trash-simple pr-2"></span>
+            </a>
+            <a style="float: right;" href="#" data-toggle="tooltip" data-placement="top" title="Edit">
+              <span class="tim-icons icon-pencil pr-2"></span>
+            </a>
+          </h2>
+          <div class="card-user ml-2" style="margin-top:-80px;">
+            <img alt="..." class="avatar" [src]="user.image" />
+          </div>
+          <h2 class="card-title" style="position:absolute; bottom:5px; right:20px;"> {{user.businessName}} </h2>
+        </div>
+        <!-- Edit -->
+        <div class="card-body" style="position: relative;">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="card-title"> {{user.fullName}} </h3>
+            </div>
+            <div class="col-md-6">
+              <p class="card-title"> {{user.email}} </p>
+              <p class="card-title"> {{user.address + ', ' + user.city}} </p>
+            </div>
+            <div class="col-md-6">
+              <h4 class="card-title"> About Me </h4>
+              <p class="card-title"> Some Information that Vendor wants to displayed in Profile </p>
+              <input type="number" id="index" [value]="userIndex" (click)="updateUserValue()">
+            </div>
+            <div class="col-md-6">
+              <h4 class="card-title"> Official Detail</h4>
+              <p class="card-title"> NTN Number : {{user.nTNNumber}} </p>
+              <p class="card-title"> Contact : {{user.contact}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

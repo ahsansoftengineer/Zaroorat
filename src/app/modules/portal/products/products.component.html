@@ -1,0 +1,152 @@
+<div class=" content">
+  <form [formGroup]="productForm">
+    <div class=" row">
+      <div class=" col-md-8">
+        <div class=" card">
+          <div class=" card-header">
+            <div class="row">
+              <div class="col-5">
+                <h2 class="card-title">Add Products</h2>
+              </div>
+              <div class="col-7">
+                <div class="input-group">
+                  <input formControlName="id" type="number" (keyup.enter)="getProduct()" class="form-control"
+                    placeholder="Search by ID">
+                  <button type="button" class="btn pr-3 pl-3" (click)="getProduct()"
+                    style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                    <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class=" row">
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Product Title </label>
+                  <input class=" form-control" required formControlName="productTitle" placeholder="Product Name"
+                    type="text" />
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Product Category </label>
+                  <input class=" form-control" required formControlName="productTypeId" type="text"
+                    placeholder="Car, Mobiles, PC" />
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label>Stock</label>
+                  <input class="form-control" required formControlName="stock" type="number" value="500" />
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label>Sale</label>
+                  <input class="form-control" required formControlName="sale" type="number" value="200" />
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Whole Sale Rate</label>
+                  <input class=" form-control" required formControlName="wholeSaleRate" placeholder="50.5"
+                    type="number" />
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Retail Rate</label>
+                  <input class=" form-control" required formControlName="retailRate" placeholder="60" type="number" />
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Shipment Charges</label>
+                  <input class=" form-control" required formControlName="shipmentCharges" placeholder="50.5"
+                    type="number" />
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Tex Rate</label>
+                  <input class=" form-control" required formControlName="tex" placeholder="60" type="number" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mb-2">
+                <div class=" form-check">
+                  <label for="feature" class=" form-check-label">
+                    <input class="form-control  form-check-input" type="checkbox" formControlName="featured"
+                      id="feature" />
+                    <span class=" form-check-sign">
+                      <span class=" check"> Mark Your Product as Featured </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-12">
+                <div class=" form-group">
+                  <label> Description</label>
+                  <textarea class="form-control" formControlName="description" style="width: 100%; max-width: 100%;"
+                    placeholder="Here can be your description" rows="10"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" card-footer">
+            <div class="btn-group " role="group" aria-label="Basic example">
+              <button class=" btn btn-fill btn-secondary" type="submit">
+                New
+              </button>
+              <button class=" btn btn-fill btn-secondary" type="submit">
+                Update
+              </button>
+              <button class=" btn btn-fill btn-secondary text-danger" type="submit">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Upload {{' Product '}} Image
+              <span class="tim-icons icon-simple-remove float-right"></span>
+            </h5>
+          </div>
+          <div class="card-body">
+            <img class="card-img-top" *ngIf="currentFileToDisplay === 'productImage'" [src]="imgProduct" alt="">
+            <img class="card-img-top" *ngIf="currentFileToDisplay === 'galleryImage'" [src]="imgGallery" alt="">
+
+          </div>
+          <div class="card-footer">
+            <div class="form-group input-group mb-3">
+              <div class="custom-file">
+                <input class="custom-file-input" required (change)="onFileChange($event, 'productImage')" type="file"
+                  formControlName="productImage" id="productImage">
+                <label class="custom-file-label" id="productFileName" for="productImage">Choose file</label>
+              </div>
+            </div>
+            <div class="form-group input-group">
+              <div class="custom-file">
+                <input class="custom-file-input" required (change)="onFileChange($event, 'galleryImage')" type="file"
+                  formControlName="galleryImage" id="galleryImage">
+                <label class="custom-file-label" id="galleryFileName" for="galleryImage">Choose file</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

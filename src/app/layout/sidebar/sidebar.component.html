@@ -8,16 +8,84 @@
     Zaroorat
   </a>
 </div>
+<style>
+  ul>li>a>p {
+    font-size: 15px;
+  }
+
+  ul>li,
+  ul>li>a,
+  ul {
+    margin-left: 0px;
+  }
+</style>
 <div class="sidebar-wrapper">
   <ul class="nav">
-    <li
-      routerLinkActive="active"
-      *ngFor="let menuItem of menuItems"
-      class="{{ menuItem.class }} nav-item"
-    >
-      <a [routerLink]="[menuItem.path]">
-        <i class="tim-icons  {{ menuItem.icon }}"></i>
-        <p>{{ menuItem.title }}</p>
+    <button (click)="switchinguser()">Switch User</button>
+    <li routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/dashboard']">
+        <i class="tim-icons icon-chart-pie-36"></i>
+        <p>Dashboard</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/order-&-review']">
+        <i routerLinkActive="active" class="tim-icons icon-chart-bar-32"></i>
+        <p>Orders & Reviews</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/product-category']">
+        <i class="tim-icons icon-molecule-40"></i>
+        <p>Product Category</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/add-product']">
+        <i class="tim-icons icon-app"></i>
+        <p>Add Products</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/product-list']">
+        <i class="tim-icons icon-vector"></i>
+        <p>Product List</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/promotion']">
+        <i class="tim-icons icon-gift-2"></i>
+        <p>Promotion</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/add-user']">
+        <i class="tim-icons icon-badge"></i>
+        <p>Add User</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'" routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/user-list']">
+        <i class="tim-icons icon-single-02"></i>
+        <p>User List</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/wallet']">
+        <i class="tim-icons icon-wallet-43"></i>
+        <p>Wallet</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'"  routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/notification']">
+        <i class="tim-icons icon-bell-55"></i>
+        <p>Notification</p>
+      </a>
+    </li>
+    <li *ngIf="currentUser == 'admin'"  routerLinkActive="active" class="nav-item">
+      <a [routerLink]="['/portal/chat']">
+        <i class="tim-icons icon-chat-33"></i>
+        <p>Chat</p>
       </a>
     </li>
   </ul>

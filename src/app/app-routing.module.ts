@@ -3,13 +3,13 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 import { LayoutComponent } from "./layout/layout.component";
-// import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+// import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: "auth",
     loadChildren: () =>
-      import("./layouts/authentication/authentication-layout.module").then(
+      import("./modules/authentication/authentication.module").then(
         (m) => m.AuthenticationLayoutModule
       ),
   },
@@ -18,70 +18,22 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: "products",
+        path: "",
         loadChildren: () =>
-        import("./modules/products/products.module").then(
-          (m) => m.ProductsModule
-        ),
-      },
-      {
-        path: "products",
-        loadChildren: () =>
-        import("./modules/products/products.module").then(
-          (m) => m.ProductsModule
-        ),
+          import("./modules/portal/portal.module").then((m) => m.PortalModule),
       },
     ],
   },
-
-  // {
-  //   path: "sign in",
-  //   loadChildren: () =>
-  //     import("./layouts/authentication/authentication-layout.module").then(
-  //       (m) => m.AuthenticationLayoutModule
-  //     ),
-  // },
-  // {
-  //   path: "admin",
-  //   loadChildren: () =>
-  //     import("./layouts/admin-layout/admin-layout.module").then(
-  //       (m) => m.AdminLayoutModule
-  //     ),
-  // },
-  // {
-  //   path: "vendor",
-  //   loadChildren: () =>
-  //     import("./layouts/vendor-layout/vendor-layout.module").then(
-  //       (m) => m.VendorLayoutModule
-  //     ),
-  // },
-  // {
-  //   path: "",
-  //   loadChildren: () =>
-  //     import("./layouts/authentication/authentication-layout.module").then(
-  //       (m) => m.AuthenticationLayoutModule
-  //     ),
-  //   pathMatch: "full",
-  // },
-  // {
-  //   path: "**",
-  //   loadChildren: () =>
-  //     import("./layouts/authentication/authentication-layout.module").then(
-  //       (m) => m.AuthenticationLayoutModule
-  //     ),
-  //   pathMatch: "full",
-  // },
-
-  // {
-  //   path: '',
-  //   redirectTo: 'sign up',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'sign up',
-  //   pathMatch:'full'
-  // },
+  {
+    path: "",
+    redirectTo: "/portal/dashboard",
+    pathMatch: "full",
+  },
+  {
+    path: "**",
+    redirectTo: "/portal/dashboard",
+    pathMatch: "full",
+  },
 ];
 
 @NgModule({
@@ -103,4 +55,3 @@ export class AppRoutingModule {}
 // Product -> Crud
 // Product -> orders
 // Product -> reviews
-

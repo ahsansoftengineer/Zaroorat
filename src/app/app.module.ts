@@ -1,20 +1,33 @@
+// Modules
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from "ngx-toastr";
 import { AppRoutingModule } from "./app-routing.module";
+//Components
 import { AppComponent } from "./app.component";
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from "./layout/layout.component";
 import { FooterComponent } from "./layout/footer/footer.component";
 import { NavbarComponent } from "./layout/navbar/navbar.component";
 import { SidebarComponent } from "./layout/sidebar/sidebar.component";
+import { ChatbootComponent } from './layout/chatboot/chatboot.component';
+//Services
+import { OrderService } from "./services/order.service";
+import { ProductService } from "./services/product.service";
+import { ProductCategoryService } from "./services/product-category.service";
+import { UserService } from "./services/user.service";
+import { ContactsComponent } from './layout/contacts/contacts.component';
+import { ContactService } from "./services/contact.service";
+import { ChatService } from "./services/chat.service";
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     RouterModule,
@@ -27,8 +40,12 @@ import { SidebarComponent } from "./layout/sidebar/sidebar.component";
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    ChatbootComponent,
+    ContactsComponent,
   ],
-  providers: [],
+  providers: [
+    OrderService, ProductService, ProductCategoryService, UserService, ContactService, ChatService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

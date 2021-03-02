@@ -1,0 +1,120 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h2 class=" card-title">
+            <span class="tim-icons icon-refresh-02 text-danger" style="cursor:pointer"></span>
+            {{' Orders & Reviews'}}
+          </h2>
+        </div>
+        <div class=" card-body">
+          <ul class="nav nav-tabs" style="font-size: 18px;">
+            <li class="nav-item">
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.ALL)"
+                [ngClass]="{'active': oRDER_STATUS_ENUM.ALL == currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.URGENT)"
+                [ngClass]="{'active':oRDER_STATUS_ENUM.URGENT === currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">Urgent</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.ONWAY)"
+                [ngClass]="{'active':oRDER_STATUS_ENUM.ONWAY === currentORDER_STATUS_ENUM}" style="cursor:pointer">On
+                Way</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.PENDING)"
+                [ngClass]="{'active': oRDER_STATUS_ENUM.PENDING === currentORDER_STATUS_ENUM}" style="cursor: pointer;">
+                Pending</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.COMPLETE)"
+                [ngClass]="{'active': oRDER_STATUS_ENUM.COMPLETE == currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.CANCEL)"
+                [ngClass]="{'active':oRDER_STATUS_ENUM.CANCEL === currentORDER_STATUS_ENUM}"
+                style="cursor: pointer;">Rejected</a>
+            </li>
+
+
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" style="overflow-x: scroll;"
+              aria-labelledby="home-tab">
+              <div class="table-responsive">
+                <table class="table tablesorter" style="font-size: 16px">
+                  <thead>
+                    <tr style="margin-top:20px; border-top:0px" class="card-title">
+                      <td style="width:20px; text-align: center;"> Status </td>
+                      <td style="width:40px; text-align: center;">ID</td>
+                      <td style="width:150px;">Product</td>
+                      <td style="width:90px; text-align:right;">Quantity</td>
+                      <td style="width:90px; text-align:right;">Amount <span class="tim-icons icon-money-coins"></span>
+                      </td>
+                      <td style="width:90px; text-align:center;">Booking <span
+                          class="tim-icons icon-calendar-60"></span>
+                      </td>
+                      <td style="width:90px; text-align:center;">Delivery <span
+                          class="tim-icons icon-calendar-60"></span>
+                      </td>
+                      <td style="width:100px;">Order By</td>
+                      <td style="width:100px;">Vendor</td>
+                      <td style="width:100px;">Reciver</td>
+                      <td style="width:300px;">Address <span class="tim-icons icon-square-pin"></span> </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let order of orders" class="card-title productCategoryRow">
+                      <td data-toggle="tooltip" [title]="order.orderStatus" [ngStyle]="{'color':order.orderStatus === 'icon-bell-55' ||
+                       order.orderStatus === 'icon-simple-remove'? 'red' : 'abc' }" style="text-align:center;">
+                        <span class="tim-icons {{order.orderStatus}} "></span>
+                      </td>
+                      <td style="text-align:center;">{{order.id}}</td>
+                      <td style="text-align:left;">{{order.productOrder.productTitle}} </td>
+                      <td style="text-align:right; padding-right:5px">{{order.quantity}}</td>
+                      <td style="text-align:right; padding-right:5px">{{order.amount}} </td>
+                      <td style="text-align:center;">{{order.orderDate}} </td>
+                      <td style="text-align:center;">{{order.deliveryDate}}</td>
+                      <td style="text-align:left;">{{order.orderedTo.fullName.slice(0, 10) }} </td>
+                      <td style="text-align:left;">{{order.orderedBy.fullName.slice(0, 10) }} </td>
+                      <td style="text-align:left;">{{order.reciver.slice(0, 10) }} </td>
+                      <td style="text-align:left;">{{ order.address.slice(0, 40) }} <span
+                          *ngIf="order.address.length > 40">...</span> </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination-sm justify-content-end">
+              <li class="page-item btn-danger">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item btn-info" *ngFor="let item of [1,2,3,4,5,6]"><a class="page-link"
+                  href="#">{{item}}</a></li>
+              <li class="page-item btn-danger">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+page-size total-items active-page sorted-by
