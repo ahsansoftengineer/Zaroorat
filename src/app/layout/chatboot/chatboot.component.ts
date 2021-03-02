@@ -24,6 +24,8 @@ export class ChatbootComponent implements OnInit {
   public chatBotHide: boolean = true;
   @Input()
   public contactedUser: IUser;
+
+  public chats: IChat[];
   constructor(
     private chatService: ChatService,
     private userService: UserService
@@ -32,14 +34,22 @@ export class ChatbootComponent implements OnInit {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (this.contactedUser) {
-      this.myChats = this.chatService.allChats.filter(
-        (x) =>
-          (x.userA.id === this.meUser.id &&
-            x.userB.id === this.contactedUser.id) ||
-          (x.userA.id === this.contactedUser.id &&
-            x.userB.id === this.meUser.id)
-      );
+      // this.myChats = this.chatService.allChats.filter(
+      //   (x) =>
+      //     (x.userA.id === this.meUser.id &&
+      //       x.userB.id === this.contactedUser.id) ||
+      //     (x.userA.id === this.contactedUser.id &&
+      //       x.userB.id === this.meUser.id)
+      // );
     }
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.chatService.getChats().subscribe(
+      (chats) => (this.chats = chats),
+      (err) => console.log(err)
+    );
+  }
+  // editButtonClick(employeeId: number) {
+  //   this._router.navigate(['/employees/edit', employeeId]);
+  // }
 }

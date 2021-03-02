@@ -37,35 +37,35 @@ export class AdminChatComponent implements OnInit {
   ) {}
   searchControl = new FormControl("");
   ngOnInit(): void {
-    this.meUser = this.userService.users[0];
-    this.contactService.allContacts
-      .filter((x) => x.currentUser.id == this.meUser.id)
-      .map((x) => (this.mycontacts = x.contacts));
+    // this.meUser = this.userService.users[0];
+    // this.contactService.allContacts
+    //   .filter((x) => x.currentUser.id == this.meUser.id)
+    //   .map((x) => (this.mycontacts = x.contacts));
   }
   // Contacts Search Functionality
   filterContacts(): void {
     this.searchText = this.searchControl.value;
     if (this.searchText === "") {
-      this.contactService.allContacts
-        .filter((x) => x.currentUser.id == this.meUser.id)
-        .map((x) => (this.mycontacts = x.contacts));
+      // this.contactService.allContacts
+      //   .filter((x) => x.currentUser.id == this.meUser.id)
+      //   .map((x) => (this.mycontacts = x.contacts));
     } else {
-      this.mycontacts = this.mycontacts.filter(
-        (x) =>
-          x.fullName === this.searchText ||
-          x.businessName === this.searchText ||
-          x.userName === this.searchText
-      );
+      // this.mycontacts = this.mycontacts.filter(
+      //   (x) =>
+      //     x.fullName === this.searchText ||
+      //     x.businessName === this.searchText ||
+      //     x.userName === this.searchText
+      // );
     }
   }
   // Start Chating with Specific Person in List
   letsChat(myContactedUser: IUser) {
     this.chatedUser = myContactedUser;
-    this.myChats = this.chatService.allChats.filter(
-      (x) =>
-        (x.userA.id === this.meUser.id && x.userB.id === this.chatedUser.id) ||
-        (x.userA.id === this.chatedUser.id && x.userB.id === this.meUser.id)
-    );
+    // this.myChats = this.chatService.getChats().filter(
+    //   (x) =>
+    //     (x.userA.id === this.meUser.id && x.userB.id === this.chatedUser.id) ||
+    //     (x.userA.id === this.chatedUser.id && x.userB.id === this.meUser.id)
+    // );
   }
 }
 // window.setInterval(function() {

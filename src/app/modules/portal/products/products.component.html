@@ -1,33 +1,38 @@
 <div class=" content">
-  <form [formGroup]="product" (ngSubmit)="updateProduct()">
+  <form [formGroup]="productForm">
     <div class=" row">
       <div class=" col-md-8">
         <div class=" card">
           <div class=" card-header">
-            <h2 class="card-title">Add Products</h2>
+            <div class="row">
+              <div class="col-5">
+                <h2 class="card-title">Add Products</h2>
+              </div>
+              <div class="col-7">
+                <div class="input-group">
+                  <input formControlName="id" type="number" (keyup.enter)="getProduct()" class="form-control"
+                    placeholder="Search by ID">
+                  <button type="button" class="btn pr-3 pl-3" (click)="getProduct()"
+                    style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                    <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <div class=" row">
-              <div class=" col-md-4">
-                <div class=" form-group">
-                  <label> ID (disabled) </label>
-                  <input class=" form-control" required formControlName="id" placeholder="Company" type="text"
-                    value="101" />
-                </div>
-              </div>
-              <div class=" col-md-8">
+              <div class=" col-md-6">
                 <div class=" form-group">
                   <label> Product Title </label>
                   <input class=" form-control" required formControlName="productTitle" placeholder="Product Name"
                     type="text" />
                 </div>
               </div>
-            </div>
-            <div class=" row">
-              <div class=" col-md-12">
+              <div class=" col-md-6">
                 <div class=" form-group">
                   <label> Product Category </label>
-                  <input class=" form-control" required formControlName="category" type="text"
+                  <input class=" form-control" required formControlName="productTypeId" type="text"
                     placeholder="Car, Mobiles, PC" />
                 </div>
               </div>

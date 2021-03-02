@@ -41,24 +41,24 @@ export class ContactsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.meUser = this.userService.users[0];
-    this.contactService.allContacts
-      .filter((x) => x.currentUser.id == this.meUser.id)
-      .map((x) => (this.mycontacts = x.contacts));
+    // this.meUser = this.userService.users[0];
+    // this.contactService.allContacts
+    //   .filter((x) => x.currentUser.id == this.meUser.id)
+    //   .map((x) => (this.mycontacts = x.contacts));
   }
   // Contacts Search Functionality
   filterContacts(): void {
     this.searchText = this.searchControl.value;
     if (this.searchText === "") {
-      this.contactService.allContacts
-        .filter((x) => x.currentUser.id == this.meUser.id)
-        .map((x) => (this.mycontacts = x.contacts));
+      // this.contactService.allContacts
+      //   .filter((x) => x.currentUser.id == this.meUser.id)
+      //   .map((x) => (this.mycontacts = x.contacts));
     } else {
-      this.mycontacts = this.mycontacts.filter(
-        (x) => x.fullName === this.searchText ||
-         x.businessName === this.searchText ||
-         x.userName === this.searchText
-      );
+      // this.mycontacts = this.mycontacts.filter(
+      //   (x) => x.fullName === this.searchText ||
+      //    x.businessName === this.searchText ||
+      //    x.userName === this.searchText
+      // );
     }
   }
   // Start Chating with Specific Person in List

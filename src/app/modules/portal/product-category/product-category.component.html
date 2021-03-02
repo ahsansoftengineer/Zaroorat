@@ -1,18 +1,24 @@
 <div class=" content">
   <div class=" row">
+    <!-- Product Category Form -->
     <div class=" col-md-6">
       <div class=" card">
-        <form [formGroup]="productCategory" (ngSubmit)="updateProduct()">
+        <form [formGroup]="productCategoryForm">
           <div class=" card-header">
-            <h2 class="card-title">Add New Cateogory</h2>
+            <h2 class="card-title">
+              <span class="tim-icons icon-molecule-40 text-danger"></span>
+              Product Cateogory Form
+            </h2>
           </div>
-          <div class="card-body">
+          <div class="card-body" style="height:650px">
             <div class=" row">
-              <div class=" col-md-2">
-                <div class=" form-group">
-                  <label> ID (disabled) </label>
-                  <input class=" form-control" required formControlName="id" placeholder="Company" type="text"
-                    name="id" value="101" />
+              <div class=" col-md-12">
+                <div class="input-group">
+                  <input formControlName="id" type="number" (keyup.enter)="getProductCategory()" class="form-control" placeholder="Search by ID">
+                  <button type="button" class="btn pr-3 pl-3" (click)="getProductCategory()"
+                    style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                    <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
+                  </button>
                 </div>
               </div>
               <div class=" col-md-6">
@@ -22,49 +28,61 @@
                     name="cateogory" type="text" />
                 </div>
               </div>
-              <div class=" col-md-4">
+              <div class=" col-md-6">
                 <div class=" form-group">
                   <label> Parent Category </label>
-                  <input class=" form-control" required formControlName="pId" placeholder="1"
-                     name="parentCategoryId"   type="number" />
+                  <input class=" form-control" required formControlName="pId" placeholder="1" name="parentCategoryId"
+                    type="number" />
                 </div>
               </div>
               <div class=" col-md-12">
                 <div class=" form-group">
                   <label> Description</label>
-                  <input class=" form-control" required formControlName="description" type="text"
-                   name="description" placeholder="Computer, Teblets, LCD, LED" />
+                  <input class=" form-control" required formControlName="description" type="text" name="description"
+                    placeholder="Computer, Teblets, LCD, LED" />
+                </div>
+              </div>
+              <div class="col-12">
+                <p class="card-title" [ngClass]="isError? 'text-danger':'text-success'" [innerText]="errMessage">
+                </p>
+              </div>
+              <div class="col-12">
+                <div class="btn-group " role="group" aria-label="Basic example">
+                  <button class=" btn  btn-secondary" (click)="insert()" type="button">
+                    New
+                  </button>
+                  <button class=" btn btn-secondary" (click)="update()" type="button">
+                    Update
+                  </button>
+                  <button class=" btn btn-secondary" (click)="delete()" type="button">
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div class=" card-footer">
-            <div class="btn-group " role="group" aria-label="Basic example">
-              <button class=" btn btn-fill btn-secondary" type="submit">
-                New
-              </button>
-              <button class=" btn btn-fill btn-secondary" type="submit">
-                Update
-              </button>
-              <button class=" btn btn-fill btn-secondary text-danger" type="submit">
-                Delete
-              </button>
-            </div>
+            form footer
           </div>
         </form>
       </div>
     </div>
+    <!-- Product Category Hierachy View -->
     <div class="col-md-3">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Category Hierarchy</h2>
+          <h2 class="card-title">
+            <span class="tim-icons icon-refresh-02 text-danger" (click)="refereshProductCategory()"
+              style="cursor:pointer"></span>
+            Category Hierarchy
+          </h2>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="height:650px !important; overflow-y: auto;">
           <!-- <ngx-treeview [config]="config" [items]="productCategoryTreeView"
             (selectedChange)="onSelectedChange($event)" (filterChange)="onFilterChange($event)">
           </ngx-treeview> -->
           <ul *ngFor="let f of productCategoryTreeView" style="margin-left:0px; padding-left:0px" class="card-title">
-            <li class="productCategory p-1" (click)="productCategoryItemClick(f.value)" >{{f.text}}
+            <li class="productCategory p-1" (click)="productCategoryItemClick(f.value)">{{f.text}}
               <ul *ngFor="let s of f.children">
                 <li class="productCategory p-1" (click)="productCategoryItemClick(s.value)">{{ s.text }}
                   <ul *ngFor="let t of s.children">
@@ -84,41 +102,40 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3 overflow-y: auto;">
+    <!-- Product Category List View -->
+    <div class="col-md-3">
       <div class=" card">
         <div class=" card-header">
-          <h2 class="card-title">List View</h2>
+          <h2 class="card-title">
+            <span class="tim-icons icon-refresh-02 text-danger" (click)="refereshProductCategory()"
+              style="cursor:pointer"></span>
+            List View
+          </h2>
         </div>
-        <div class="card-body" style="height:650px;">
-          <div class=" row">
-            <div class="col-md-12">
-              <table class="table" style="font-size:14px">
-                <thead>
-                  <tr class="bg-primary card-title" style="margin-top:20px;">
-                    <th style="width:40px; text-align: center;">ID</th>
-                    <th style="width:200px;">Prod Cat</th>
-                    <th style="width:150px;">P ID</th>
-                    <th style="text-align:center;">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let cateogories of productCategories" class="productCategory">
-                    <td class="card-title p-2" style="text-align:center;">{{cateogories.id}}</td>
-                    <td class="card-title p-2" style="text-align:left;">{{cateogories.category}} </td>
-                    <td class="card-title p-2" style="text-align:left;">{{cateogories.pId}} </td>
-                    <td class="card-title p-2" style="text-align:left; padding-right:5px">{{cateogories.description}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="card-body" style="height:650px !important; overflow-y: auto;">
+          <table class="table table-fluid" style="font-size:14px">
+            <thead>
+              <tr class="bg-primary card-title" style="margin-top:20px;">
+                <th style="width:40px; text-align: center;">ID</th>
+                <th style="width:200px;">Prod Cat</th>
+                <th style="width:150px;">P ID</th>
+                <th style="text-align:center;">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cateogories of productCategories" (click)="editProductCategory(cateogories)" class="productCategory">
+                <td class="card-title p-2" style="text-align:center;">{{cateogories.id}}</td>
+                <td class="card-title p-2" style="text-align:left;">{{cateogories.category}} </td>
+                <td class="card-title p-2" style="text-align:left;">{{cateogories.pId}} </td>
+                <td class="card-title p-2" style="text-align:left; padding-right:5px">{{cateogories.description}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          my Footer
         </div>
       </div>
     </div>
   </div>
 </div>
-<table>
-  <!-- <tr *ngFor="let item of productCategoryTreeView">
-    <td>{{item}}</td>
-  </tr> -->
-</table>

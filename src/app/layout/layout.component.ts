@@ -16,7 +16,7 @@ export class LayoutComponent implements OnInit {
     this.chatBotHide = chatHide;
   }
   constructor(private user: UserService) {
-    this.meUser = this.user.users[0];
+    // this.meUser = this.user.users[0];
   }
   changeSidebarColor(color) {
     var sidebar = document.getElementsByClassName("sidebar")[0];

@@ -1,9 +1,13 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 import { UserBackgroundSettings } from "../models/enums/user-background-settings.enums";
 import { UserSidebarSettings } from "../models/enums/user-sidebar-settings.enums";
 import { UserStatusEnum } from "../models/enums/user-status.enums";
 import { UserTypeEnum } from "../models/enums/user-type.enum";
 import { IUser } from "../models/interfaces/user.interface";
+import { CustomMethods } from "../shared/custom-method";
 
 @Injectable()
 export class UserService implements IUser {
@@ -27,117 +31,51 @@ export class UserService implements IUser {
   public online: boolean;
   public background: UserBackgroundSettings;
   public sidebar: UserSidebarSettings;
-  public users?: IUser[] = [
-    {
-      id: 2001,
-      fullName: "Ahsan",
-      userName: "ahsanenterprises@zaroorat.com", // Login Name
-      businessName: "Ahsan Enterprises", // -Admin
-      password: "**abc**", // Only Vendor
-      gender: "male",
-      email: "ahsan@domain.com",
-      contact: "0321-2827700",
-      nTNNumber: "NTN-25458",
-      userType: UserTypeEnum.Vendor, // Admin, Vendor
-      userStatus: UserStatusEnum.Pending, // Enabled, Disabled, Pending
-      imagetitle: "./assets/img/Banner/BlueBlue.jpg",
-      image: "./assets/img/User/User7.PNG", // -Admin
-      complain: "New Vendor",
-      address: "Korangi 3 1/2",
-      city: "Karachi",
-      postal: 74900,
-      online:true,
-      sidebar: UserSidebarSettings.Blue,
-      background: UserBackgroundSettings.BgWhite
-    },
-    {
-      id: 2002,
-      fullName: "Asim",
-      userName: "asimenterprises@zaroorat.com", // Login Name
-      businessName: "Asim Enterprises", // -Admin
-      password: "**asim**", // Only Vendor
-      gender: "male",
-      email: "asim@domain.com",
-      contact: "0321-2358900",
-      nTNNumber: "NTN-28900",
-      userType: UserTypeEnum.Admin, // Admin, Vendor
-      userStatus: UserStatusEnum.Enabled, // Enabled, Disabled, Pending
-      imagetitle: "./assets/img/Banner/BlueCircle.jpg",
-      image: "./assets/img/User/User2.png", // -Admin
-      complain: "Admin",
-      address: "Landhi 36/B",
-      city: "Karachi",
-      postal: 74900,
-      online:true,
-      sidebar: UserSidebarSettings.Blue,
-      background: UserBackgroundSettings.BgWhite
-    },
-    {
-      id: 2003,
-      fullName: "Asrin",
-      userName: "asrinzeenat@zaroorat.com", // Login Name
-      businessName: "Asrin Private Limited", // -Admin
-      password: "**asim**", // Only Vendor
-      gender: "Female",
-      email: "asrin@domain.com",
-      contact: "0333-2695447",
-      nTNNumber: "NTN-3698514",
-      userType: UserTypeEnum.Vendor, // Admin, Vendor
-      userStatus: UserStatusEnum.Enabled, // Enabled, Disabled, Pending
-      imagetitle: "./assets/img/Banner/bluepink.jpg",
-      image: "./assets/img/User/User3.jpg", // -Admin
-      complain: "Fraud",
-      address: "Nazimabad 48/C",
-      city: "Karachi",
-      postal: 74900,
-      online:false,
-      sidebar: UserSidebarSettings.Blue,
-      background: UserBackgroundSettings.BgWhite
-    },
-    {
-      id: 2004,
-      fullName: "Mehmood",
-      userName: "mehmood@bolbola.com", // Login Name
-      businessName: "Mehmood Bol Bola", // -Admin
-      password: "**asim**", // Only Vendor
-      gender: "Female",
-      email: "mehmood@domain.com",
-      contact: "0333-1245896",
-      nTNNumber: "NTN-258741",
-      userType: UserTypeEnum.Vendor, // Admin, Vendor
-      userStatus: UserStatusEnum.Enabled, // Enabled, Disabled, Pending
-      imagetitle: "./assets/img/Banner/clip.jpg",
-      image: "./assets/img/User/User4.png", // -Admin
-      complain: "Mehmood Sahab",
-      address: "Gulshan 48/C",
-      city: "Karachi",
-      postal: 74900,
-      online:true,
-      sidebar: UserSidebarSettings.Blue,
-      background: UserBackgroundSettings.BgWhite
-    },
-    {
-      id: 2005,
-      fullName: "Aqueela",
-      userName: "aqueela@qudosisahabkibewa.com", // Login Name
-      businessName: "Quodosi Sahab ki Bewa", // -Admin
-      password: "**aqueela**", // Only Vendor
-      gender: "Female",
-      email: "aqueela@domain.com",
-      contact: "0333-2587146",
-      nTNNumber: "NTN-369852",
-      userType: UserTypeEnum.Admin, // Admin, Vendor --Graphical
-      userStatus: UserStatusEnum.Disabled, // Enabled, Disabled, Pending --Graphical
-      imagetitle: "./assets/img/Banner/pink.jpg",
-      image: "./assets/img/User/User5.jpg", // -Admin
-      complain: "Mehmood Sahab",
-      address: "Ibrahim Haidre",
-      city: "Karachi",
-      postal: 74900,
-      online:false, // Graphical
-      sidebar: UserSidebarSettings.Blue, // --Graphical
-      background: UserBackgroundSettings.BgWhite // --Graphical
-    },
-  ];
-  constructor() {}
+  public users?: IUser[];
+
+  baseUrl = "http://localhost:3000/user";
+  constructor(private httpClient: HttpClient) {
+    this.getUsers().subscribe(
+      (users) => this.users = users,
+      (err) => console.log(err)
+    )
+  }
+  // Get All users
+  getUsers(): Observable<IUser[]> {
+    return this.httpClient
+      .get<IUser[]>(this.baseUrl)
+      .pipe(catchError(CustomMethods.handleError));
+  }
+  // Return Single User
+  getUser(id: number): Observable<IUser> {
+    return this.httpClient
+      .get<IUser>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(CustomMethods.handleError));
+  }
+  // Add New user
+  addUser(user: IUser): Observable<IUser> {
+    return this.httpClient
+      .post<IUser>(this.baseUrl, user, {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+        }),
+      })
+      .pipe(catchError(CustomMethods.handleError));
+  }
+  // Update 1 user
+  updateUser(user: IUser): Observable<void> {
+    return this.httpClient
+      .put<void>(`${this.baseUrl}/${user.id}`, user, {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+        }),
+      })
+      .pipe(catchError(CustomMethods.handleError));
+  }
+  // Delete 1 user
+  deleteUser(id: number): Observable<void> {
+    return this.httpClient
+      .delete<void>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(CustomMethods.handleError));
+  }
 }

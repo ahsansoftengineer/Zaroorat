@@ -6,7 +6,7 @@ import { UserService } from "./user.service";
 
 @Injectable()
 export class OrderService implements IOrder {
-  public userService?: UserService = new UserService();
+  public userService?: UserService = null;
   public productService?: ProductService = new ProductService();
 
   public id: number;

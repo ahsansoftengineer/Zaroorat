@@ -12,6 +12,7 @@ import { ProductCategoryComponent } from './product-category/product-category.co
 import { AdminChatComponent } from './admin-chat/admin-chat.component';
 import { PromotionComponent } from './promotion/promotion.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { ProductCategoryGuard } from '../../guards/product-category.guard';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent }, // Vendor
@@ -23,7 +24,12 @@ const routes: Routes = [
   { path: 'user-list', component: UserListComponent }, // Admin
   { path: 'settings', component: UserComponent }, // Vendor
   { path: 'profile', component: ProfileComponent }, // Vendor
-  { path: 'product-category', component: ProductCategoryComponent }, // Vendor
+
+  {
+    path: 'product-category',
+   component: ProductCategoryComponent,
+   canDeactivate: [ProductCategoryGuard]
+  }, // Vendor
   { path: 'chat', component: AdminChatComponent }, // Admin
   { path: 'promotion', component: PromotionComponent }, // Admin
   { path: 'wallet', component: WalletComponent }, // vendor

@@ -3,7 +3,7 @@ import { IProductCategory } from "./product-category.interface";
 export interface IProduct{
   id: number;
   productTitle:string;
-  productType:IProductCategory[];
+  productTypeId:number;
   stock:number;
   sale?:number;
   wholeSaleRate?:number;
@@ -12,6 +12,7 @@ export interface IProduct{
   shipmentCharges?:number;
   description?:string;
   featured?:boolean;
-  image?:any;
+  productImage?:string;
+  galleryImage?:string;
   userId:number;
 }

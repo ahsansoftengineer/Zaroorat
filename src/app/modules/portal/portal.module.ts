@@ -21,6 +21,7 @@ import { ProductService } from '../../services/product.service';
 import { ProductCategoryService } from '../../services/product-category.service';
 import { PromotionComponent } from './promotion/promotion.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { ProductCategoryGuard } from '../../guards/product-category.guard';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { WalletComponent } from './wallet/wallet.component';
   ],
   exports: [],
   providers:[
-    OrderService, ProductService, ProductCategoryService, UserService
+    OrderService, ProductService, ProductCategoryService, UserService,
+    ProductCategoryGuard
   ]
 })
 export class PortalModule { }
