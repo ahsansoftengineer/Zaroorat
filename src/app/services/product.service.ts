@@ -8,7 +8,6 @@ import { CustomMethods } from "../shared/custom-method";
 
 @Injectable()
 export class ProductService implements IProduct {
-  public product?: IProduct[] = null;
   id: number;
   productTitle:string;
   productTypeId:number;

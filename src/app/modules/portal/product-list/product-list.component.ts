@@ -15,18 +15,14 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute
   ) {
-    this.userId = parseInt(this.route.snapshot.paramMap.get("id"));
-    if(this.userId > 1){
-      this.products = this.productService.products.filter(x => x.userId === this.userId);
-    } else {
-      this.products = this.productService.products;
-    }
+
   }
   ngOnInit(): void {
-
-    // debugger
-    // if((this.userid))
-    // this.products = this.productService.products;
-    // console.log(this.userId);
+    // this.userId = parseInt(this.route.snapshot.paramMap.get("id"));
+    // if(this.userId > 1){
+    //   this.products = this.productService.products.filter(x => x.userId === this.userId);
+    // } else {
+    //   this.products = this.productService.products;
+    // }
   }
 }

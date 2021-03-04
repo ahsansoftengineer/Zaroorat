@@ -2,7 +2,7 @@
   <form [formGroup]="productForm">
     <div class=" row">
       <div class=" col-md-8">
-        <div class=" card">
+        <div class=" card" style="height:700px">
           <div class=" card-header">
             <div class="row">
               <div class="col-5">
@@ -21,132 +21,174 @@
             </div>
           </div>
           <div class="card-body">
-            <div class=" row">
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Product Title </label>
-                  <input class=" form-control" required formControlName="productTitle" placeholder="Product Name"
-                    type="text" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Product Category </label>
-                  <input class=" form-control" required formControlName="productTypeId" type="text"
-                    placeholder="Car, Mobiles, PC" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label>Stock</label>
-                  <input class="form-control" required formControlName="stock" type="number" value="500" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label>Sale</label>
-                  <input class="form-control" required formControlName="sale" type="number" value="200" />
-                </div>
-              </div>
-            </div>
-            <div class=" row">
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Whole Sale Rate</label>
-                  <input class=" form-control" required formControlName="wholeSaleRate" placeholder="50.5"
-                    type="number" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Retail Rate</label>
-                  <input class=" form-control" required formControlName="retailRate" placeholder="60" type="number" />
-                </div>
-              </div>
-            </div>
-            <div class=" row">
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Shipment Charges</label>
-                  <input class=" form-control" required formControlName="shipmentCharges" placeholder="50.5"
-                    type="number" />
-                </div>
-              </div>
-              <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Tex Rate</label>
-                  <input class=" form-control" required formControlName="tex" placeholder="60" type="number" />
-                </div>
-              </div>
-            </div>
             <div class="row">
-              <div class="col-md-12 mb-2">
-                <div class=" form-check">
-                  <label for="feature" class=" form-check-label">
-                    <input class="form-control  form-check-input" type="checkbox" formControlName="featured"
-                      id="feature" />
-                    <span class=" form-check-sign">
-                      <span class=" check"> Mark Your Product as Featured </span>
-                    </span>
-                  </label>
+              <div class="col-10">
+                <div class=" row">
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> Product Title </label>
+                      <input class=" form-control" required formControlName="productTitle" placeholder="Product Name"
+                        type="text" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class="form-group">
+                      <label> Product Category </label>
+                      <div class=" input-group">
+                        <input class=" form-control" formControlName="productTypeId" disabled type="text"
+                          placeholder="Car, Mobiles, PC" />
+                        <button type="button" class="btn pr-3 pl-3" (click)="open(content)"
+                          style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                          <span class="tim-icons icon-molecule-40" style="font-size:16px"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label>Stock</label>
+                      <input class="form-control" formControlName="stock" type="number" value="500" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label>Sale</label>
+                      <input class="form-control" formControlName="sale" type="number" value="200" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> Whole Sale Rate</label>
+                      <input class=" form-control" formControlName="wholeSaleRate" placeholder="50.5" type="number" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> Retail Rate</label>
+                      <input class=" form-control" formControlName="retailRate" placeholder="60" type="number" />
+                    </div>
+                  </div>
+
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> Shipment Charges</label>
+                      <input class=" form-control" formControlName="shipmentCharges" placeholder="50.5" type="number" />
+                    </div>
+                  </div>
+                  <div class=" col-md-6">
+                    <div class=" form-group">
+                      <label> Tex Rate</label>
+                      <input class=" form-control" formControlName="tex" placeholder="60" type="number" />
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-2">
+                    <div class=" form-check">
+                      <label for="feature" class=" form-check-label">
+                        <input class="form-control  form-check-input" type="checkbox" formControlName="featured"
+                          id="feature" />
+                        <span class=" form-check-sign">
+                          <span class=" check"> Mark Your Product as Featured </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class=" col-md-12">
+                    <div class=" form-group">
+                      <label> Description</label>
+                      <textarea class="form-control" formControlName="description" style="width: 100%; max-width: 100%;"
+                        placeholder="Here can be your description" rows="10"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="btn-group " role="group" aria-label="Basic example">
+                      <button class=" btn btn-secondary" type="button">
+                        New
+                      </button>
+                      <button class=" btn btn-secondary" type="button">
+                        Update
+                      </button>
+                      <button class=" btn btn-secondary" type="button">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-            </div>
-            <div class=" row">
-              <div class=" col-md-12">
-                <div class=" form-group">
-                  <label> Description</label>
-                  <textarea class="form-control" formControlName="description" style="width: 100%; max-width: 100%;"
-                    placeholder="Here can be your description" rows="10"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class=" card-footer">
-            <div class="btn-group " role="group" aria-label="Basic example">
-              <button class=" btn btn-fill btn-secondary" type="submit">
-                New
-              </button>
-              <button class=" btn btn-fill btn-secondary" type="submit">
-                Update
-              </button>
-              <button class=" btn btn-fill btn-secondary text-danger" type="submit">
-                Delete
-              </button>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
+        <div class="card" style="height:700px">
           <div class="card-header">
-            <h5 class="card-title">Upload {{' Product '}} Image
+            <h3 class="card-title">Uploaded {{ currentFileToDisplay }} Image
               <span class="tim-icons icon-simple-remove float-right"></span>
-            </h5>
+            </h3>
           </div>
           <div class="card-body">
-            <img class="card-img-top" *ngIf="currentFileToDisplay === 'productImage'" [src]="imgProduct" alt="">
-            <img class="card-img-top" *ngIf="currentFileToDisplay === 'galleryImage'" [src]="imgGallery" alt="">
+            <img class="card-img-top" *ngIf="currentFileToDisplay === 'Product'" [src]="galleryImage"
+              alt="Image Product">
 
+            <img class="card-img-top" *ngIf="currentFileToDisplay === 'Gallery'" [src]="productImage"
+              alt="Image Gallery">
           </div>
           <div class="card-footer">
             <div class="form-group input-group mb-3">
               <div class="custom-file">
-                <input class="custom-file-input" required (change)="onFileChange($event, 'productImage')" type="file"
-                  formControlName="productImage" id="productImage">
-                <label class="custom-file-label" id="productFileName" for="productImage">Choose file</label>
+                <!-- <input class="custom-file-input" (change)="onFileChange($event, 'Product')" type="file"
+                  formControlName="productImage" id="productImage"> -->
+                <!-- <label class="custom-file-label" id="productFileName" for="productImage">Choose Product Image</label> -->
               </div>
             </div>
             <div class="form-group input-group">
               <div class="custom-file">
-                <input class="custom-file-input" required (change)="onFileChange($event, 'galleryImage')" type="file"
-                  formControlName="galleryImage" id="galleryImage">
-                <label class="custom-file-label" id="galleryFileName" for="galleryImage">Choose file</label>
+                <!-- <input class="custom-file-input" (change)="onFileChange($event, 'Gallery')" type="file"
+                  formControlName="galleryImage" id="galleryImage"> -->
+                <!-- <label class="custom-file-label" id="galleryFileName" for="galleryImage">Choose Gallery Image</label> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <ng-template #content let-modal style="background-color:red;">
+      <div class="card" style="margin-bottom: -80px;">
+        <div class="card-header">
+          <h3 class="card-title">
+            Product Category
+          </h3>
+        </div>
+        <div class="card-body" style="height:450px; overflow-y: auto;">
+          <ul *ngFor="let f of productCategoryTreeView" style="margin-left:0px; padding-left:0px" class="card-title">
+            <li class="productCategory pb-2" [class.text-danger]="f.value === list1"
+              (click)="productCategoryItemClick(f.value, f.text, 1)">{{f.text}}
+              <!-- [class.d-none]="f.value !== list1" -->
+              <ul *ngFor="let s of f.children">
+                <li class="productCategory pb-2" [class.text-warning]="s.value === list2"
+                  (click)="productCategoryItemClick(s.value, s.text, 2)">{{ s.text }}
+                  <ul *ngFor="let t of s.children" [class.d-none]="s.value !== list2">
+                    <li class="productCategory pb-2" [class.text-info]="t.value === list3"
+                      (click)="productCategoryItemClick(t.value, t.text, 3 )">{{ t.text }}
+                      <ul *ngFor="let ff of t.children" [class.d-none]="t.value !== list3" class="d-none">
+                        <li class="productCategory pb-2 " [class.text-primary]="ff.value === list4"
+                          (click)="productCategoryItemClick(ff.value, ff.text, 4)">{{ ff.text }}
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <h4 class="card-title">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+            {{ selectedResult }}
+          </h4>
+        </div>
+      </div>
+    </ng-template>
   </form>
 </div>

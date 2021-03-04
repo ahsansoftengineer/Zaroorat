@@ -259,7 +259,8 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "image": "https://banner2.cleanpng.com/20180202/cte/kisspng-soft-drink-coca-cola-pepsi-one-pepsi-max-pepsi-png-file-5a7527a82193c3.3912714915176273041375.jpg"
+      "productImage":"upload.png",
+      "galleryImage": "Select Image.png"
     },
     {
       "id": 2,
@@ -274,7 +275,8 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "image": "https://www.pngfind.com/pngs/m/675-6757496_coca-cola-cold-drink-can-hd-png-download.png"
+      "productImage":"upload.png",
+      "galleryImage": "Select Image.png"
     },
     {
       "id": 3,
@@ -289,7 +291,8 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "image": "https://e7.pngegg.com/pngimages/484/133/png-clipart-potato-chip-pepsi-flavor-lay-s-frito-lay-pepsi.png"
+      "productImage":"upload.png",
+      "galleryImage": "Select Image.png"
     },
     {
       "id": 4,
@@ -304,7 +307,8 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "image": "https://www.vhv.rs/dpng/d/422-4223979_chicken-nugget-png-download-dominos-chicken-nuggets-transparent.png"
+      "productImage":"upload.png",
+      "galleryImage": "Select Image.png"
     },
     {
       "id": 5,
@@ -319,7 +323,8 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "I am loving it",
-      "image": "https://i.pinimg.com/originals/82/b7/53/82b753702b41b811df5a80ed807c0987.jpg"
+      "productImage":"img_3115.jpg",
+      "galleryImage": "emilyz.jpg"
     },
     {
       "id": 6,
@@ -334,7 +339,8 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "image": "https://thumbnail.imgbin.com/24/14/10/imgbin-milkshake-fizzy-drinks-pepsi-mirinda-soft-drink-mirinda-juice-illustration-DaiehRgXP2Jvgu1ecatTj1vjq_t.jpg"
+      "productImage":"bg5.jpg",
+      "galleryImage": "default-avatar.png"
     },
     {
       "id": 7,
@@ -349,7 +355,8 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "image": "https://simg.nicepng.com/png/small/301-3015690_wavy-lays-original-potato-chips-wavy-original-potato.png"
+      "productImage":"apple-icon.png",
+      "galleryImage": "argon-white.png"
     },
     {
       "id": 8,
@@ -364,7 +371,8 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "image": "https://png.pngtree.com/png-clipart/20190214/ourmid/pngtree-baby-diaper-element-png-image_553220.jpg"
+      "productImage":"anime6.png",
+      "galleryImage": "anime3.png"
     },
     {
       "id": 9,
@@ -379,7 +387,8 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "image": "https://xambeel.com/wp-content/uploads/2019/04/sooper.png"
+      "productImage":"angular.png",
+      "galleryImage": "../../../../assets/angular2-logo-red.png"
     }
   ],
   "Order": [

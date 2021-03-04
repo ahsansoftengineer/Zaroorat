@@ -15,17 +15,17 @@ export class OrdersNReviewComponent implements OnInit {
   constructor(private orderService: OrderService) {}
   ngOnInit(): void {
     if(this.orders == null){
-      this.orders = this.orderService.orders;
+      // this.orders = this.orderService.orders;
     }
   }
   filterOrders(filter: string) {
-    if (filter === this.oRDER_STATUS_ENUM.ALL) {
-      this.orders = this.orderService.orders;
-    } else {
-      this.orders = this.orderService.orders.filter(
-        (x) => x.orderStatus === filter
-      );
-    }
+    // if (filter === this.oRDER_STATUS_ENUM.ALL) {
+    //   this.orders = this.orderService.orders;
+    // } else {
+    //   this.orders = this.orderService.orders.filter(
+    //     (x) => x.orderStatus === filter
+    //   );
+    // }
 
     this.currentORDER_STATUS_ENUM = filter;
     // console.log(this.ORDER_STATUS_ENUM.ALL == OrderStatusEnum.ALL)
