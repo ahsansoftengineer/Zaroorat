@@ -22,6 +22,8 @@ import { ProductCategoryService } from '../../services/product-category.service'
 import { PromotionComponent } from './promotion/promotion.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { ProductCategoryGuard } from '../../guards/product-category.guard';
+import { ProductCategoryHiarchyComponent } from './product-category-hiarchy/product-category-hiarchy.component';
+import { ImageCardComponent } from './image-card/image-card.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { ProductCategoryGuard } from '../../guards/product-category.guard';
     AdminChatComponent,
     PromotionComponent,
     WalletComponent,
+    ProductCategoryHiarchyComponent,
+    ImageCardComponent,
   ],
   imports: [
     CommonModule,

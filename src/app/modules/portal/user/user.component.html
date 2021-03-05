@@ -6,7 +6,10 @@
           <div class=" col-md-12">
             <div class=" card">
               <div class=" card-header">
-                <h2 class="card-title">Add Vendor</h2>
+                <h2 class="card-title">
+                  <span class="tim-icons icon-tie-bow text-danger"></span>
+                  Vendor Details
+                </h2>
               </div>
               <div class="card-body">
                 <div class=" row">
@@ -77,31 +80,21 @@
           <div class=" col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">User Business Title Image
-                  <span class="tim-icons icon-simple-remove float-right"></span>
-                </h5>
+                <h3 class="card-title">
+                  <span class="tim-icons icon-palette text-danger"></span>
+                  User Business Title Image
+                </h3>
               </div>
-              <div class="card-body">
-                <img class="card-img-top"  style="height:300px" [src]="imagetitle" alt="">
-              </div>
-              <div class="card-footer">
-                <div class="form-group input-group">
-                  <div class="custom-file">
-                    <input class="custom-file-input" required (change)="onFileChange($event, 'imagetitle')" type="file"
-                      formControlName="imagetitle" id="userImage">
-                    <label class="custom-file-label" id="userTitleFileName" for="imagetitle">Choose file</label>
-                  </div>
-                </div>
-              </div>
+              <app-image-card [height]="'height:300px'"></app-image-card>
             </div>
           </div>
           <div class="col-md-12">
             <div class=" card">
               <div class=" card-header">
-                <h2 class=" card-title">
-                  <span class="tim-icons icon-settings-gear-63"></span>
+                <h3 class=" card-title">
+                  <span class="tim-icons icon-settings-gear-63 text-danger"></span>
                   More Info
-                </h2>
+                </h3>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -172,7 +165,10 @@
           <div class="col-md-12">
             <div class=" card">
               <div class=" card-header">
-                <h2 class="card-title">Admin Area</h2>
+                <h3 class=" card-title">
+                  <span class="tim-icons icon-single-02 text-danger"></span>
+                  Admin Area
+                </h3>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -216,22 +212,12 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title">Upload User Image
-              <span class="tim-icons icon-simple-remove float-right"></span>
-            </h5>
+            <h3 class=" card-title">
+              <span class="tim-icons icon-image-02 text-danger"></span>
+              User Image
+            </h3>
           </div>
-          <div class="card-body">
-            <img class="card-img-top" [src]="image" alt="">
-          </div>
-          <div class="card-footer">
-            <div class="form-group input-group">
-              <div class="custom-file">
-                <input class="custom-file-input" required (change)="onFileChange($event, 'image')" type="file"
-                  formControlName="image" id="image">
-                <label class="custom-file-label" id="userFileName" for="image">Choose file</label>
-              </div>
-            </div>
-          </div>
+          <app-image-card [height]="'height:100%'"></app-image-card>
         </div>
       </div>
     </div>

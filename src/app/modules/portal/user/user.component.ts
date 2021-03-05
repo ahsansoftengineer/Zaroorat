@@ -13,9 +13,6 @@ export class UserComponent implements OnInit, OnDestroy {
   // formService: UserForm;
   // user: UserInterface;
   // state: UserAuthState;
-  defaultImagePath: string = "../../../../assets/img/Select Image.png";
-  image: string = this.defaultImagePath;
-  imagetitle: string = this.defaultImagePath
   selectedUserImage: string = "Select User Image";
   selectedUserTitleImage: string = "Select User Business Title Image";
   user: FormGroup = new FormGroup({});
@@ -46,35 +43,5 @@ export class UserComponent implements OnInit, OnDestroy {
   }
   updateUser() {
     console.log(this.user.value);
-  }
-  onFileChange(event, activeControl: string): any {
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      let fileName: string = event.target.files[0].name;
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        if (activeControl === "imagetitle") {
-          this.imagetitle = reader.result as string;
-          document.getElementById("userTitleFileName").innerHTML = fileName;
-          // this.product.patchValue({
-          //   galleryImageSrc: reader.result,
-          // });
-        } else if (activeControl === "image") {
-          this.image = reader.result as string;
-          document.getElementById("userFileName").innerHTML = fileName;
-        }
-      };
-    } else {
-      if (activeControl === "image") {
-        document.getElementById("userFileName").innerHTML =
-          "Please Select User Image";
-        this.image = this.defaultImagePath;
-      } else if (activeControl === "imagetitle") {
-        document.getElementById("userTitleFileName").innerHTML =
-          "Please Select Image";
-        this.imagetitle = this.defaultImagePath;
-      }
-    }
   }
 }

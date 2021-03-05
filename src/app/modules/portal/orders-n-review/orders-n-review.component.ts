@@ -9,25 +9,42 @@ import { OrderService } from "../../../services/order.service";
   styleUrls: ["./orders-n-review.component.scss"],
 })
 export class OrdersNReviewComponent implements OnInit {
-  public orders: IOrder[];
+  public orders: IOrder[] = [];
   public currentORDER_STATUS_ENUM = ORDER_STATUS_ENUM.ALL;
   public oRDER_STATUS_ENUM = ORDER_STATUS_ENUM;
+  public isError: boolean;
+  public errMessage: string;
   constructor(private orderService: OrderService) {}
   ngOnInit(): void {
-    if(this.orders == null){
-      // this.orders = this.orderService.orders;
-    }
+    this.getOrdernReview();
   }
   filterOrders(filter: string) {
-    // if (filter === this.oRDER_STATUS_ENUM.ALL) {
-    //   this.orders = this.orderService.orders;
-    // } else {
-    //   this.orders = this.orderService.orders.filter(
-    //     (x) => x.orderStatus === filter
-    //   );
-    // }
+    if (this.orders === null || this.orders?.length < 1) {
+      this.getOrdernReview();
+    }
+    if (filter === this.oRDER_STATUS_ENUM.ALL) {
+      this.orders = this.orders;
+    } else {
+      this.orders = this.orders.filter((x) => x.orderStatus === filter);
+    }
 
     this.currentORDER_STATUS_ENUM = filter;
     // console.log(this.ORDER_STATUS_ENUM.ALL == OrderStatusEnum.ALL)
+  }
+  getOrdernReview() {
+    debugger;
+    this.orderService.getorders().subscribe(
+      (orders) => (this.orders = orders),
+      (err) => {
+        console.log(err);
+        this.isError = true;
+        this.errMessage = err;
+      },
+      () => {
+        this.isError = false;
+        this.errMessage = "Date Reterived Successfully";
+      }
+    );
+    debugger;
   }
 }

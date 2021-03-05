@@ -1,0 +1,14 @@
+<div class="card-body">
+  <img class="card-img-top" [style]="height" [src]="image" alt="">
+</div>
+<div class="card-footer">
+  <div class="form-group input-group">
+    <div class="custom-file">
+      <input class="custom-file-input" required (change)="onFileChange($event)" type="file"
+        id="image">
+      <label class="custom-file-label" id="userFileName" for="image">
+        {{ fileName === '' ? 'Choose File' : fileName }}
+      </label>
+    </div>
+  </div>
+</div>

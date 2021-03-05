@@ -1,0 +1,23 @@
+<div class="card-body" style="height:450px; overflow-y: auto;">
+  <ul *ngFor="let f of productCategoryTreeView" style="margin-left:0px; padding-left:0px" class="card-title">
+    <li class="productCategory pb-2" [class.text-danger]="f.value === list1"
+      (click)="productCategoryItemClick(f.value, f.text, 1)">{{f.text}}
+      <!-- [class.d-none]="f.value !== list1" -->
+      <ul *ngFor="let s of f.children">
+        <li class="productCategory pb-2" [class.text-warning]="s.value === list2"
+          (click)="productCategoryItemClick(s.value, s.text, 2)">{{ s.text }}
+          <ul *ngFor="let t of s.children" [class.d-none]="s.value !== list2">
+            <li class="productCategory pb-2" [class.text-info]="t.value === list3"
+              (click)="productCategoryItemClick(t.value, t.text, 3 )">{{ t.text }}
+              <ul *ngFor="let ff of t.children" [class.d-none]="t.value !== list3" class="d-none">
+                <li class="productCategory pb-2 " [class.text-primary]="ff.value === list4"
+                  (click)="productCategoryItemClick(ff.value, ff.text, 4)">{{ ff.text }}
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,7 +1,7 @@
 <div class=" content">
   <div class=" row">
     <!-- Product Category Form -->
-    <div class=" col-md-6">
+    <div class=" col-md-8">
       <div class=" card">
         <form [formGroup]="productCategoryForm">
           <div class=" card-header">
@@ -14,7 +14,8 @@
             <div class=" row">
               <div class=" col-md-12">
                 <div class="input-group">
-                  <input formControlName="id" type="number" (keyup.enter)="getProductCategory()" class="form-control" placeholder="Search by ID">
+                  <input formControlName="id" type="number" (keyup.enter)="getProductCategory()" class="form-control"
+                    placeholder="Search by ID">
                   <button type="button" class="btn pr-3 pl-3" (click)="getProductCategory()"
                     style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
                     <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
@@ -29,10 +30,16 @@
                 </div>
               </div>
               <div class=" col-md-6">
-                <div class=" form-group">
-                  <label> Parent Category </label>
-                  <input class=" form-control" required formControlName="pId" placeholder="1" name="parentCategoryId"
-                    type="number" />
+                <div class="form-group">
+                  <label> Product Category </label>
+                  <div class=" input-group">
+                    <input class=" form-control" formControlName="pId" disabled type="text"
+                      placeholder="Car, Mobiles, PC" />
+                    <button type="button" class="btn pr-3 pl-3" (click)="open(content)"
+                      style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                      <span class="tim-icons icon-molecule-40" style="font-size:16px"></span>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class=" col-md-12">
@@ -67,43 +74,8 @@
         </form>
       </div>
     </div>
-    <!-- Product Category Hierachy View -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">
-            <span class="tim-icons icon-refresh-02 text-danger" (click)="refereshProductCategory()"
-              style="cursor:pointer"></span>
-            Category Hierarchy
-          </h2>
-        </div>
-        <div class="card-body" style="height:650px !important; overflow-y: auto;">
-          <!-- <ngx-treeview [config]="config" [items]="productCategoryTreeView"
-            (selectedChange)="onSelectedChange($event)" (filterChange)="onFilterChange($event)">
-          </ngx-treeview> -->
-          <ul *ngFor="let f of productCategoryTreeView" style="margin-left:0px; padding-left:0px" class="card-title">
-            <li class="productCategory p-1" (click)="productCategoryItemClick(f.value)">{{f.text}}
-              <ul *ngFor="let s of f.children">
-                <li class="productCategory p-1" (click)="productCategoryItemClick(s.value)">{{ s.text }}
-                  <ul *ngFor="let t of s.children">
-                    <li class="productCategory p-1" (click)="productCategoryItemClick(t.value)">{{ t.text }}
-                      <ul *ngFor="let ff of t.children">
-                        <li class="productCategory p-1" (click)="productCategoryItemClick(ff.value)">{{ ff.text }}</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="card-footer">
-          This is the Footer
-        </div>
-      </div>
-    </div>
     <!-- Product Category List View -->
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class=" card">
         <div class=" card-header">
           <h2 class="card-title">
@@ -123,7 +95,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let cateogories of productCategories" (click)="editProductCategory(cateogories)" class="productCategory">
+              <tr *ngFor="let cateogories of productCategories" (click)="editProductCategory(cateogories)"
+                class="productCategory">
                 <td class="card-title p-2" style="text-align:center;">{{cateogories.id}}</td>
                 <td class="card-title p-2" style="text-align:left;">{{cateogories.category}} </td>
                 <td class="card-title p-2" style="text-align:left;">{{cateogories.pId}} </td>
@@ -139,3 +112,23 @@
     </div>
   </div>
 </div>
+<ng-template #content let-modal style="background-color:red;">
+  <div class="card" style="margin-bottom: -75px;">
+    <div class="card-header">
+      <h4 class="card-title">Product Cateogry
+        <span class="tim-icons icon-simple-remove float-right text-danger" (click)="modal.close('Save click')"
+          style="cursor:pointer"></span>
+      </h4>
+    </div>
+    <app-product-category-hiarchy (prodCategoryId_Name)="prodCategoryId_Name($event)">
+    </app-product-category-hiarchy>
+    <div class="card-footer">
+      <h4 class="card-title ml-2 text-info">
+        <!-- (click)="modal.close('Save click')" -->
+        <button type="button" class="btn" style="margin-top: -18px; margin-right: 20px; float: right;">Select
+          Category</button>
+        {{ selectedResult }}
+      </h4>
+    </div>
+  </div>
+</ng-template>

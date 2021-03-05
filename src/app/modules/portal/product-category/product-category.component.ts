@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { TreeviewItem } from "ngx-treeview";
 import { CustomMethods } from "../../../shared/custom-method";
 import { IProductCategory } from "../../../models/interfaces/product-category.interface";
 import { ProductCategoryService } from "../../../services/product-category.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-product-category",
@@ -13,7 +14,6 @@ import { ProductCategoryService } from "../../../services/product-category.servi
 
 // Miner Problem the Items Parent Deleted are not Categorise !!!
 // Delete Confirmation
-
 export class ProductCategoryComponent implements OnInit {
   productCategoryForm: FormGroup;
   productCategories: IProductCategory[];
@@ -21,8 +21,11 @@ export class ProductCategoryComponent implements OnInit {
   productCategoryTreeView: TreeviewItem[] = [];
   errMessage: string = "error Message to Display";
   isError: boolean = false;
-
-  constructor(public productCategoryService: ProductCategoryService) {}
+  prodCategoryId_NameProperty: { id: number; name: string };
+  constructor(
+    public productCategoryService: ProductCategoryService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.productCategoryForm = new FormGroup({
@@ -42,7 +45,9 @@ export class ProductCategoryComponent implements OnInit {
         this.errMessage = err;
       },
       () => {
-        this. productCategoryTreeView = CustomMethods.startRecursiveFunction(this.productCategories);
+        this.productCategoryTreeView = CustomMethods.startRecursiveFunction(
+          this.productCategories
+        );
         this.isError = false;
         this.errMessage = "Date Reterived Successfully";
       }
@@ -59,7 +64,9 @@ export class ProductCategoryComponent implements OnInit {
         console.log(err);
         this.isError = true;
         this.errMessage = "Unable to display result of ID " + id;
-        this.productCategoryForm = CustomMethods.setAllControlBlank(this.productCategoryForm)
+        this.productCategoryForm = CustomMethods.setAllControlBlank(
+          this.productCategoryForm
+        );
       },
       () => {
         this.isError = false;
@@ -142,11 +149,28 @@ export class ProductCategoryComponent implements OnInit {
     });
     event.stopPropagation();
   }
-  mapFormValuesToModel() {
-    this.productCategory.id = this.productCategoryForm.value.id;
-    this.productCategory.category = this.productCategoryForm.value.category;
-    this.productCategory.pId = this.productCategoryForm.value.pId;
-    this.productCategory.description = this.productCategoryForm.value.description;
+
+  prodCategoryId_Name(event: any) {
+    this.prodCategoryId_NameProperty = event;
+    this.productCategoryForm.patchValue({
+      pId:
+        this.prodCategoryId_NameProperty.id +
+        " = " +
+        this.prodCategoryId_NameProperty.name,
+    });
+  }
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: "modal-basic-title" })
+      .result;
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
   }
   mapModelToFormValues(productCategory: IProductCategory) {
     this.productCategoryForm.patchValue({
@@ -158,5 +182,11 @@ export class ProductCategoryComponent implements OnInit {
     // this.createForm.setControl('skills', this.setExistingSkills(employee.skills))
     this.productCategoryForm.markAsDirty();
     this.productCategoryForm.markAsTouched();
+  }
+  mapFormValuesToModel() {
+    this.productCategory.id = this.productCategoryForm.value.id;
+    this.productCategory.category = this.productCategoryForm.value.category;
+    this.productCategory.pId = this.prodCategoryId_NameProperty.id;
+    this.productCategory.description = this.productCategoryForm.value.description;
   }
 }

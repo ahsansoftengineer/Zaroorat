@@ -75,16 +75,16 @@
                         <span class="tim-icons {{order.orderStatus}} "></span>
                       </td>
                       <td style="text-align:center;">{{order.id}}</td>
-                      <td style="text-align:left;">{{order.productOrder.productTitle}} </td>
+                      <td style="text-align:left;">{{order.productOrder}} </td>
                       <td style="text-align:right; padding-right:5px">{{order.quantity}}</td>
                       <td style="text-align:right; padding-right:5px">{{order.amount}} </td>
                       <td style="text-align:center;">{{order.orderDate}} </td>
                       <td style="text-align:center;">{{order.deliveryDate}}</td>
-                      <td style="text-align:left;">{{order.orderedTo.fullName.slice(0, 10) }} </td>
-                      <td style="text-align:left;">{{order.orderedBy.fullName.slice(0, 10) }} </td>
-                      <td style="text-align:left;">{{order.reciver.slice(0, 10) }} </td>
-                      <td style="text-align:left;">{{ order.address.slice(0, 40) }} <span
-                          *ngIf="order.address.length > 40">...</span> </td>
+                      <td style="text-align:left;">{{order.orderedTo}} </td>
+                      <td style="text-align:left;">{{order.orderedBy }} </td>
+                      <td style="text-align:left;">{{order.reciver }} </td>
+                      <td style="text-align:left;">{{ order.address.slice(0, 40) }}
+                         <span *ngIf="order.address.length > 40">...</span> </td>
                     </tr>
                   </tbody>
 
