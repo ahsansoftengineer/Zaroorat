@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
     //   this.products = this.productService.products;
     // }
     this.getProductCategorys();
-    this.refereshProductCategory();
+    this.refereshProducts();
   }
   getProductCategorys() {
     this.productCateogry.getproductCategories().subscribe(
@@ -51,7 +51,7 @@ export class ProductListComponent implements OnInit {
   getImage(fileName: string): string {
     return "../../../../assets/img/" + fileName;
   }
-  refereshProductCategory() {
+  refereshProducts() {
     this.productService.getproducts().subscribe(
       (products) => (this.products = products),
       (err) => {
@@ -65,7 +65,6 @@ export class ProductListComponent implements OnInit {
       }
     );
   }
-
   // Area for Linearly Displaying the Parents of Parents for the Child
   linearHiarchy: IProductCategory[] = [];
   newparentid: number = 0;
@@ -73,7 +72,7 @@ export class ProductListComponent implements OnInit {
     this.linearHiarchy = [];
     this.newparentid = 0;
     if (this.productCategorys.length < 1) {
-      this.refereshProductCategory();
+      this.refereshProducts();
     }
     this.recursivefunc(parent_ID);
     return this.linearHiarchy;

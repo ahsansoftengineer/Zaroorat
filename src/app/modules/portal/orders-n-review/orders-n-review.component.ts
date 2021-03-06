@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { ORDER_STATUS_ENUM } from "../../../models/enums/order-status.enums";
+import { IUser } from "../../../models/interfaces/user.interface";
+import { ProductService } from "../../../services/product.service";
+import { UserService } from "../../../services/user.service";
 import { IOrder } from "../../../models/interfaces/order.interface";
 import { OrderService } from "../../../services/order.service";
+import { IProduct } from "src/app/models/interfaces/product.interface";
 
 @Component({
   selector: "app-orders-n-review",
@@ -10,26 +13,83 @@ import { OrderService } from "../../../services/order.service";
 })
 export class OrdersNReviewComponent implements OnInit {
   public orders: IOrder[] = [];
-  public currentORDER_STATUS_ENUM = ORDER_STATUS_ENUM.ALL;
-  public oRDER_STATUS_ENUM = ORDER_STATUS_ENUM;
+  public users: IUser[] = [];
+  public orderDisplayed: IOrder[] = [];
+  public products: IProduct[] = [];
   public isError: boolean;
   public errMessage: string;
-  constructor(private orderService: OrderService) {}
+  public currentFilter: string = "ALL";
+  constructor(private orderService: OrderService,
+    private userService: UserService,
+    private productService: ProductService) {}
   ngOnInit(): void {
     this.getOrdernReview();
+    this.getProducts();
+    this.getUsers();
   }
+  getProducts() {
+    this.productService.getproducts().subscribe(
+      (products) => (this.products = products),
+      (err) => {
+        console.log(err);
+        this.isError = true;
+        this.errMessage = err;
+      },
+      () => {
+        this.isError = false;
+        this.errMessage = "Date Reterived Successfully";
+      }
+    );
+  }
+  getUsers() {
+    this.userService.getUsers().subscribe(
+      (users: IUser[]) => {
+        this.users = users;
+      },
+      (err: any) => {
+        this.isError = true;
+        this.errMessage = "Can not Load data from User Service";
+      },
+      () => {
+        this.isError = false;
+        this.errMessage = "Date Reterived Successfully";
+      }
+    );
+  }
+  // Temporary Function will be Removed on Original Service
+  getUserName(userID: number): string{
+    return this.users.find(x => x.id === userID).name
+  }
+  getProductName(productID: number): string{
+    return this.products.find(x => x.id === productID).productTitle
+  }
+
   filterOrders(filter: string) {
+    this.currentFilter = filter;
     if (this.orders === null || this.orders?.length < 1) {
       this.getOrdernReview();
     }
-    this.currentORDER_STATUS_ENUM = filter;
-    if (filter === this.oRDER_STATUS_ENUM.ALL) {
-      this.orders = this.orders;
+    if (filter === "ALL") {
+      this.orderDisplayed = this.orders;
     } else {
-      this.orders = this.orders.filter((x) => x.orderStatus === filter.toString());
+      this.orderDisplayed = this.orders.filter((x) => x.orderStatus === filter);
     }
-
-    // console.log(this.ORDER_STATUS_ENUM.ALL == OrderStatusEnum.ALL)
+  }
+  getClass(filter: string) {
+    switch (filter) {
+      case "ALL":
+        return "ALL";
+      case "CANCEL":
+        return "icon-simple-remove";
+      case "PENDING":
+        return "icon-button-pause";
+      case "URGENT":
+        return "icon-watch-time";
+      case "ONWAY":
+        return "icon-user-run";
+      case "COMPLETED":
+        return "icon-check-2";
+    }
   }
   getOrdernReview() {
     this.orderService.getorders().subscribe(
@@ -42,6 +102,7 @@ export class OrdersNReviewComponent implements OnInit {
       () => {
         this.isError = false;
         this.errMessage = "Date Reterived Successfully";
+        this.orderDisplayed =  this.orders;
       }
     );
   }

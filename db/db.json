@@ -631,7 +631,7 @@
     {
       "id": 5,
       "productOrder": 5,
-      "orderStatus": "COMPLETE",
+      "orderStatus": "COMPLETED",
       "amount": 10,
       "quantity": 10000,
       "orderedTo": 1,
@@ -696,7 +696,7 @@
     {
       "id": 10,
       "productOrder": 8,
-      "orderStatus": "COMPLETE",
+      "orderStatus": "COMPLETED",
       "amount": 100,
       "quantity": 50,
       "orderedTo": 2,
