@@ -5,6 +5,7 @@ import { IProduct } from "../../../models/interfaces/product.interface";
 import { ProductService } from "../../../services/product.service";
 import { IProductCategory } from "../../../models/interfaces/product-category.interface";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-products",
@@ -12,15 +13,15 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ["./products.component.scss"],
 })
 export class ProductsComponent implements OnInit {
-  productForm: FormGroup;
+  form: FormGroup;
   defaultPath: string = "../../../../assets/img/";
   // products: IProduct[];
   product: IProduct;
   // For Image
-  productImage: string = this.defaultPath + "upload.png";
-  galleryImage: string = this.defaultPath + "upload.png";
-  productFileName: string = "upload.png";
-  galleryFileName: string = "upload.png";
+  productImage: string;
+  galleryImage: string;
+  productFileName: string;
+  galleryFileName: string;
   productCategoryId: number;
   ParentID = 0;
   productCategories: IProductCategory[];
@@ -29,10 +30,20 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     public productService: ProductService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private _route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.productForm = new FormGroup({
+    this.resettingImages();
+    this.initializeForm();
+    if(this._route.snapshot.params['id']){
+      const id = +this._route.snapshot.params['id']
+      this.form.value.id = id;
+      this. getProduct();
+    }
+  }
+  initializeForm() {
+    this.form = new FormGroup({
       id: new FormControl(0),
       productTitle: new FormControl("", [
         Validators.required,
@@ -45,28 +56,36 @@ export class ProductsComponent implements OnInit {
       retailRate: new FormControl("", Validators.required),
       tex: new FormControl(""),
       shipmentCharges: new FormControl("", Validators.required),
-      productImage: new FormControl(this.productFileName),
-      galleryImage: new FormControl(this.galleryFileName),
-      featured: new FormControl(false, Validators.required),
+      productImage: new FormControl(""),
+      galleryImage: new FormControl(""),
+      featured: new FormControl("", Validators.required),
       userId: new FormControl("", Validators.required),
       description: new FormControl(""),
     });
   }
+  resettingImages() {
+    this.productImage = this.defaultPath + "upload.png";
+    this.galleryImage = this.defaultPath + "upload.png";
+    this.productFileName = "upload.png";
+    this.galleryFileName = "upload.png";
+    this.productCategoryId = 0;
+    this.ParentID = 0;
+  }
   fileName_File(event: { name: string; file: string }, imageNumber: number) {
     if (imageNumber === 1) {
       this.productImage = event.file;
-      this.productForm.patchValue({
+      this.form.patchValue({
         productImage: event.name,
       });
     } else {
       this.galleryImage = event.file;
-      this.productForm.patchValue({
+      this.form.patchValue({
         galleryImage: event.name,
       });
     }
   }
   getProduct() {
-    const id = this.productForm.value.id;
+    const id = this.form.value.id;
     this.productService.getproduct(id).subscribe(
       (product: IProduct) => {
         this.mapModelValuesToForm(product);
@@ -79,9 +98,8 @@ export class ProductsComponent implements OnInit {
         this.isError = true;
         this.errMessage = "Unable to display result of ID " + id;
         // In case error set all controls blank
-        this.productForm = CustomMethods.setAllControlBlank(this.productForm);
-        this.productFileName = "upload.png";
-        this.galleryFileName = "upload.png";
+        this.initializeForm();
+        this.resettingImages()
       },
       () => {
         this.isError = false;
@@ -146,13 +164,13 @@ export class ProductsComponent implements OnInit {
     );
   }
   prodCategoryId_Name(event: { id: number; name: string }) {
-    this.productForm.patchValue({
+    this.form.patchValue({
       productTypeId: event?.id + " = " + event?.name,
     });
     this.ParentID = event?.id;
   }
   mapModelValuesToForm(product: IProduct) {
-    this.productForm.patchValue({
+    this.form.patchValue({
       id: product.id,
       productTitle: product.productTitle,
       productTypeId: product.productTypeId,
@@ -169,24 +187,24 @@ export class ProductsComponent implements OnInit {
       description: product.description,
     });
     this.ParentID = product?.productTypeId;
-    this.productForm.markAsDirty();
-    this.productForm.markAsTouched();
+    this.form.markAsDirty();
+    this.form.markAsTouched();
   }
   mapFormValuesToModel() {
     this.product = {
-      id: this.productForm.value.id,
-      productTitle: this.productForm.value.productTitle,
-      stock: this.productForm.value.stock,
-      sale: this.productForm.value.sale,
-      wholeSaleRate: this.productForm.value.wholeSaleRate,
-      retailRate: this.productForm.value.retailRate,
-      tex: this.productForm.value.tex,
-      shipmentCharges: this.productForm.value.shipmentCharges,
-      productImage: this.productForm.value.productImage,
-      galleryImage: this.productForm.value.galleryImage,
-      featured: this.productForm.value.featured,
-      userId: this.productForm.value.userId,
-      description: this.productForm.value.description,
+      id: this.form.value.id,
+      productTitle: this.form.value.productTitle,
+      stock: this.form.value.stock,
+      sale: this.form.value.sale,
+      wholeSaleRate: this.form.value.wholeSaleRate,
+      retailRate: this.form.value.retailRate,
+      tex: this.form.value.tex,
+      shipmentCharges: this.form.value.shipmentCharges,
+      productImage: this.form.value.productImage,
+      galleryImage: this.form.value.galleryImage,
+      featured: this.form.value.featured,
+      userId: this.form.value.userId,
+      description: this.form.value.description,
       productTypeId: this.ParentID,
     };
   }

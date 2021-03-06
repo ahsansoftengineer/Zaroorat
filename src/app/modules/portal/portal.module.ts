@@ -21,9 +21,13 @@ import { ProductService } from '../../services/product.service';
 import { ProductCategoryService } from '../../services/product-category.service';
 import { PromotionComponent } from './promotion/promotion.component';
 import { WalletComponent } from './wallet/wallet.component';
-import { ProductCategoryGuard } from '../../guards/product-category.guard';
 import { ProductCategoryHiarchyComponent } from './product-category-hiarchy/product-category-hiarchy.component';
 import { ImageCardComponent } from './image-card/image-card.component';
+
+// Guards
+import { ProductCategoryGuard } from '../../guards/product-category.guard';
+import { ProductGuard } from '../../guards/product.guard';
+import { UserGuard } from '../../guards/user.guard';
 
 
 @NgModule({
@@ -56,7 +60,7 @@ import { ImageCardComponent } from './image-card/image-card.component';
   exports: [],
   providers:[
     OrderService, ProductService, ProductCategoryService, UserService,
-    ProductCategoryGuard
+    ProductCategoryGuard, ProductGuard, UserGuard
   ]
 })
 export class PortalModule { }

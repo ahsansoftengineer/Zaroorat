@@ -4,7 +4,7 @@ import { TreeviewItem } from "ngx-treeview";
 import { CustomMethods } from "../../../shared/custom-method";
 import { IProductCategory } from "../../../models/interfaces/product-category.interface";
 import { ProductCategoryService } from "../../../services/product-category.service";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-product-category",
@@ -15,7 +15,7 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 // Miner Problem the Items Parent Deleted are not Categorise !!!
 // Delete Confirmation
 export class ProductCategoryComponent implements OnInit {
-  productCategoryForm: FormGroup;
+  form: FormGroup;
   productCategories: IProductCategory[];
   productCategory: IProductCategory;
   productCategoryTreeView: TreeviewItem[] = [];
@@ -28,13 +28,16 @@ export class ProductCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productCategoryForm = new FormGroup({
+    this.initializeForm();
+    this.refereshProductCategory();
+  }
+  initializeForm(){
+    this.form = new FormGroup({
       id: new FormControl(""),
       category: new FormControl("", Validators.minLength(3)),
       pId: new FormControl(""),
       description: new FormControl(""),
     });
-    this.refereshProductCategory();
   }
   refereshProductCategory() {
     this.productCategoryService.getproductCategories().subscribe(
@@ -54,7 +57,7 @@ export class ProductCategoryComponent implements OnInit {
     );
   }
   getProductCategory() {
-    const id: number = this.productCategoryForm.value.id;
+    const id: number = this.form.value.id;
     this.productCategoryService.getproductCategory(id).subscribe(
       (prodCat: IProductCategory) => {
         this.mapModelToFormValues(prodCat);
@@ -64,9 +67,7 @@ export class ProductCategoryComponent implements OnInit {
         console.log(err);
         this.isError = true;
         this.errMessage = "Unable to display result of ID " + id;
-        this.productCategoryForm = CustomMethods.setAllControlBlank(
-          this.productCategoryForm
-        );
+        this.initializeForm();
       },
       () => {
         this.isError = false;
@@ -147,26 +148,16 @@ export class ProductCategoryComponent implements OnInit {
     this.mapModelToFormValues(productCategory);
   }
   prodCategoryId_Name(event: { id: number; name: string }) {
-    this.productCategoryForm.patchValue({
+    this.form.patchValue({
       pId: event?.id + " = " + event?.name,
     });
     this.ParentID = event?.id;
   }
   open(content) {
-    this.modalService.open(content, { ariaLabelledBy: "modal-basic-title" })
-      .result;
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return `with: ${reason}`;
-    }
+    this.modalService.open(content)
   }
   mapModelToFormValues(productCategory: IProductCategory) {
-    this.productCategoryForm.patchValue({
+    this.form.patchValue({
       id: productCategory.id,
       category: productCategory.category,
       pId: productCategory.pId,
@@ -174,15 +165,15 @@ export class ProductCategoryComponent implements OnInit {
     });
     this.ParentID = productCategory.pId;
     // this.createForm.setControl('skills', this.setExistingSkills(employee.skills))
-    this.productCategoryForm.markAsDirty();
-    this.productCategoryForm.markAsTouched();
+    this.form.markAsDirty();
+    this.form.markAsTouched();
   }
   mapFormValuesToModel() {
     this.productCategory = {
-      id: this.productCategoryForm.value?.id,
+      id: this.form.value?.id,
       pId: this.ParentID,
-      category: this.productCategoryForm.value?.category,
-      description: this.productCategoryForm.value?.description,
+      category: this.form.value?.category,
+      description: this.form.value?.description,
     };
   }
 }

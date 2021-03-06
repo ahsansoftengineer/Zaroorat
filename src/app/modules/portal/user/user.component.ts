@@ -4,7 +4,7 @@ import { UserService } from "../../../services/user.service";
 import { CustomMethods } from "../../../shared/custom-method";
 import { IUser } from "../../../models/interfaces/user.interface";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-// import { UserForm } from 'src/app/forms/user-form';
+// import { form } from 'src/app/forms/user-form';
 
 @Component({
   selector: "app-user",
@@ -12,19 +12,19 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ["./user.component.scss"],
 })
 export class UserComponent implements OnInit {
-  userForm: FormGroup;
+  form: FormGroup;
   user: IUser;
   defaultPath: string = "../../../../assets/img/";
   // For Image
-  userImage: string = this.defaultPath + "User/" + "upload.png";
-  bannerImage: string = this.defaultPath + "Banner/" + "upload.png";
-  userFileName: string = "upload.png";
-  bannerFileName: string = "upload.png";
-  errMessage: string = "no errors";
-  isError: boolean = false;
+  userImage: string ;
+  bannerImage: string ;
+  userFileName: string ;
+  bannerFileName: string ;
+  errMessage: string ;
+  isError: boolean ;
 
   // form: FormGroup;
-  // formService: UserForm;
+  // formService: form;
   // user: UserInterface;
   // state: UserAuthState;
   constructor(
@@ -32,14 +32,18 @@ export class UserComponent implements OnInit {
     private modalService: NgbModal
   ) {}
   ngOnInit(): void {
-    this.userForm = new FormGroup({
-      id: new FormControl("", Validators.required),
+    this.resettingImage()
+    this.initializingForm();
+  }
+  initializingForm() {
+    this.form = new FormGroup({
+      id: new FormControl(""),
       name: new FormControl("", Validators.required),
       userName: new FormControl("", Validators.required),
       businessName: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required), // Dynamically View
       gender: new FormControl("0", Validators.required),
-      email: new FormControl("abc@domain.com", Validators.required),
+      email: new FormControl("", Validators.required),
       contact: new FormControl("", Validators.required),
       nTNNumber: new FormControl("", Validators.required),
       userType: new FormControl("0", Validators.required),
@@ -51,15 +55,20 @@ export class UserComponent implements OnInit {
       address: new FormControl("", Validators.required),
       city: new FormControl("", Validators.required),
       postal: new FormControl("", Validators.required),
-      background: new FormControl(
-        "Select Background Theme",
-        Validators.required
-      ),
-      sidebar: new FormControl("Select Sidebar Theme", Validators.required),
+      background: new FormControl("0"),
+      sidebar: new FormControl("0"),
     });
   }
+  resettingImage(){
+    this.userImage = this.defaultPath + "User/" + "upload.png";
+    this.bannerImage = this.defaultPath + "Banner/" + "upload.png";
+    this.userFileName = "upload.png";
+    this.bannerFileName = "upload.png";
+    this.errMessage = "no errors";
+    this.isError = false;
+  }
   getuser() {
-    const id = this.userForm.value.id;
+    const id = this.form.value.id;
     this.userService.getUser(id).subscribe(
       (user: IUser) => {
         this.mapModelValuesToForm(user);
@@ -69,17 +78,11 @@ export class UserComponent implements OnInit {
       },
       (err: any) => {
         console.log(err);
+        this.resettingImage();
         this.isError = true;
         this.errMessage = "Unable to display result of ID " + id;
         // In case error set all controls blank
-        this.userForm.value.gender = "0";
-        this.userForm.value.userType = "0";
-        this.userForm.value.userStatus = "0";
-        this.userForm.value.userImage = "upload.png";
-        this.userForm.value.userBanner = "upload.png";
-        this.userFileName = "upload.png";
-        this.bannerFileName = "upload.png";
-        this.userForm = CustomMethods.setAllControlBlank(this.userForm);
+        this.initializingForm();
       },
       () => {
         this.isError = false;
@@ -87,21 +90,42 @@ export class UserComponent implements OnInit {
       }
     );
   }
+  fileName_File(event: { name: string; file: string }, imageNumber: number) {
+    if (imageNumber === 1) {
+      this.userImage = event.file;
+      this.form.patchValue({
+        userImage: event.name,
+      });
+    } else {
+      this.bannerImage = event.file;
+      this.form.patchValue({
+        userBanner: event.name,
+      });
+    }
+  }
   insert() {
     this.mapFormValuesToModel();
     this.user.id = null;
     this.userService.addUser(this.user).subscribe(
       () => {
         this.errMessage =
-          this.user.userName + " as User Type " + this.user.userType;
-        " with Status " + this.user.userStatus + " has Created";
+          this.user.userName +
+          " as User Type " +
+          this.user.userType +
+          " with Status " +
+          this.user.userStatus +
+          " has Created";
         this.isError = false;
       },
       (err) => {
         console.log(err);
         this.errMessage =
-          this.user.userName + " as User Type " + this.user.userType;
-        " with Status " + this.user.userStatus + " not Created";
+          this.user.userName +
+          " as User Type " +
+          this.user.userType +
+          " with Status " +
+          this.user.userStatus +
+          " not Created";
         this.isError = true;
       }
     );
@@ -111,15 +135,23 @@ export class UserComponent implements OnInit {
     this.userService.updateUser(this.user).subscribe(
       () => {
         this.errMessage =
-          this.user.userName + " as User Type " + this.user.userType;
-        " with Status " + this.user.userStatus + " has Updated";
+          this.user.userName +
+          " as User Type " +
+          this.user.userType +
+          " with Status " +
+          this.user.userStatus +
+          " has Updated";
         this.isError = false;
       },
       (err) => {
         console.log(err);
         this.errMessage =
-          this.user.userName + " as User Type " + this.user.userType;
-        " with Status " + this.user.userStatus + " not Updated";
+          this.user.userName +
+          " as User Type " +
+          this.user.userType +
+          " with Status " +
+          this.user.userStatus +
+          " not Updated";
         this.isError = true;
       }
     );
@@ -129,21 +161,29 @@ export class UserComponent implements OnInit {
     this.userService.deleteUser(this.user.id).subscribe(
       () => {
         this.errMessage =
-          this.user.userName + " as User Type " + this.user.userType;
-        " with Status " + this.user.userStatus + " has Deleted ";
+          this.user.userName +
+          " as User Type " +
+          this.user.userType +
+          " with Status " +
+          this.user.userStatus +
+          " has Deleted ";
         this.isError = false;
       },
       (err) => {
         console.log(err);
         this.errMessage =
-          this.user.userName + " as User Type " + this.user.userType;
-        " with Status " + this.user.userStatus + " not Deleted";
+          this.user.userName +
+          " as User Type " +
+          this.user.userType +
+          " with Status " +
+          this.user.userStatus +
+          " not Deleted";
         this.isError = true;
       }
     );
   }
   mapModelValuesToForm(user: IUser) {
-    this.userForm.patchValue({
+    this.form.patchValue({
       id: user.id,
       name: user.name,
       userName: user.userName,
@@ -165,31 +205,31 @@ export class UserComponent implements OnInit {
       background: user.background,
       sidebar: user.sidebar,
     });
-    this.userForm.markAsDirty();
-    this.userForm.markAsTouched();
+    this.form.markAsDirty();
+    this.form.markAsTouched();
   }
   mapFormValuesToModel() {
     this.user = {
-      id: this.userForm.value?.id,
-      name: this.userForm.value?.name,
-      userName: this.userForm.value?.userName,
-      businessName: this.userForm.value?.businessName,
-      password: this.userForm.value?.password,
-      gender: this.userForm.value?.gender,
-      email: this.userForm.value?.email,
-      contact: this.userForm.value?.contact,
-      nTNNumber: this.userForm.value?.nTNNumber,
-      userType: this.userForm.value?.userType,
-      userStatus: this.userForm.value?.userStatus,
-      online: this.userForm.value?.online,
-      userImage: this.userForm.value?.userImage,
-      userBanner: this.userForm.value?.userBanner,
-      complain: this.userForm.value?.complain,
-      address: this.userForm.value?.address,
-      city: this.userForm.value?.city,
-      postal: this.userForm.value?.postal,
-      background: this.userForm.value?.background,
-      sidebar: this.userForm.value?.sidebar,
+      id: this.form.value?.id,
+      name: this.form.value?.name,
+      userName: this.form.value?.userName,
+      businessName: this.form.value?.businessName,
+      password: this.form.value?.password,
+      gender: this.form.value?.gender,
+      email: this.form.value?.email,
+      contact: this.form.value?.contact,
+      nTNNumber: this.form.value?.nTNNumber,
+      userType: this.form.value?.userType,
+      userStatus: this.form.value?.userStatus,
+      online: this.form.value?.online,
+      userImage: this.form.value?.userImage,
+      userBanner: this.form.value?.userBanner,
+      complain: this.form.value?.complain,
+      address: this.form.value?.address,
+      city: this.form.value?.city,
+      postal: this.form.value?.postal,
+      background: this.form.value?.background,
+      sidebar: this.form.value?.sidebar,
     };
   }
   open(modal) {

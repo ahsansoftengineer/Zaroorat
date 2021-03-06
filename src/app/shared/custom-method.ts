@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { AbstractControl, FormArray, FormGroup } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl, FormGroup } from "@angular/forms";
 import { TreeviewItem } from "ngx-treeview";
 import { throwError } from "rxjs";
 import { IProductCategory } from "../models/interfaces/product-category.interface";
@@ -84,7 +84,7 @@ export class CustomMethods {
       "There is a problem with the service. We are notified & working on it. Please try again later."
     );
   }
-  // Setting all Controls Blank
+  // Setting all Controls Blank Not in Use
   public static setAllControlBlank(group: FormGroup | FormArray): FormGroup {
     Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.controls[key];

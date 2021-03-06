@@ -26,14 +26,12 @@ export class OrdersNReviewComponent implements OnInit {
     if (filter === this.oRDER_STATUS_ENUM.ALL) {
       this.orders = this.orders;
     } else {
-      debugger
       this.orders = this.orders.filter((x) => x.orderStatus === filter.toString());
     }
 
     // console.log(this.ORDER_STATUS_ENUM.ALL == OrderStatusEnum.ALL)
   }
   getOrdernReview() {
-    debugger;
     this.orderService.getorders().subscribe(
       (orders) => (this.orders = orders),
       (err) => {
@@ -46,6 +44,5 @@ export class OrdersNReviewComponent implements OnInit {
         this.errMessage = "Date Reterived Successfully";
       }
     );
-    debugger;
   }
 }
