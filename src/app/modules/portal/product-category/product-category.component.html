@@ -124,9 +124,10 @@
     </app-product-category-hiarchy>
     <div class="card-footer">
       <h4 class="card-title ml-2 text-info">
-        <!-- (click)="modal.close('Save click')" -->
-        <button type="button" class="btn" style="margin-top: -18px; margin-right: 20px; float: right;">Select
-          Category</button>
+        <button type="button" class="btn"  (click)="modal.close('Save click')"
+         style="margin-top: -18px; margin-right: 20px;;">Select Parent</button>
+         <button type="button" class="btn"  (click)="prodCategoryId_Name({id:null, name:'Supreme Category'}); this.modal.close('Save click')"
+         style="margin-top: -18px; margin-right: 20px;">No Parent</button>
         {{ selectedResult }}
       </h4>
     </div>

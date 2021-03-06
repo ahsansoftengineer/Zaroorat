@@ -7,25 +7,9 @@ import { IProduct } from "../models/interfaces/product.interface";
 import { CustomMethods } from "../shared/custom-method";
 
 @Injectable()
-export class ProductService implements IProduct {
-  id: number;
-  productTitle:string;
-  productTypeId:number;
-  stock:number;
-  sale?:number;
-  wholeSaleRate?:number;
-  retailRate?:number;
-  tex?:number;
-  shipmentCharges?:number;
-  description?:string;
-  featured?:boolean;
-  productImage?:string;
-  galleryImage?:string;
-  userId:number;
+export class ProductService {
   baseUrl = "http://localhost:3000/Product";
-  constructor(private httpClient: HttpClient) {
-
-  }
+  constructor(private httpClient: HttpClient) {}
   // Get All product
   getproducts(): Observable<IProduct[]> {
     return this.httpClient

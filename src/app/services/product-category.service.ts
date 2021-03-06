@@ -13,11 +13,7 @@ import { CustomMethods } from "../shared/custom-method";
 // collapsed?: boolean;
 // children?: TreeItem[];
 @Injectable()
-export class ProductCategoryService implements IProductCategory {
-  public id: number;
-  public category: string;
-  public pId?: number;
-  public description: string;
+export class ProductCategoryService{
   baseUrl = "http://localhost:3000/ProductCategory";
   constructor(private httpClient: HttpClient) {
 

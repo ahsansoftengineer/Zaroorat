@@ -10,17 +10,17 @@
       "email": "ahsan@domain.com",
       "contact": "0321-2827700",
       "nTNNumber": "NTN-25458",
-      "userType": "Vendor",
-      "userStatus": "Pending",
-      "imagetitle": "./assets/img/Banner/BlueBlue.jpg",
-      "image": "./assets/img/User/User7.PNG",
+      "userType": "vendor",
+      "userStatus": "pending",
+      "userBanner": "BlueBlue.jpg",
+      "userImage": "User7.PNG",
       "complain": "New Vendor",
       "address": "Korangi 3 1/2",
       "city": "Karachi",
       "postal": 74900,
       "online": true,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "sidebar": "blue",
+      "background": "white-content"
     },
     {
       "id": 2,
@@ -32,17 +32,17 @@
       "email": "asim@domain.com",
       "contact": "0321-2358900",
       "nTNNumber": "NTN-28900",
-      "userType": "Admin",
-      "userStatus": "Enabled",
-      "imagetitle": "./assets/img/Banner/BlueCircle.jpg",
-      "image": "./assets/img/User/User2.png",
+      "userType": "admin",
+      "userStatus": "pending",
+      "userBanner": "BlueCircle.jpg",
+      "userImage": "User2.png",
       "complain": "Admin",
       "address": "Landhi 36/B",
       "city": "Karachi",
       "postal": 74900,
       "online": true,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "sidebar": "primary",
+      "background": "black-content"
     },
     {
       "id": 3,
@@ -54,17 +54,17 @@
       "email": "asrin@domain.com",
       "contact": "0333-2695447",
       "nTNNumber": "NTN-3698514",
-      "userType": "Vendor",
-      "userStatus": "Enabled",
-      "imagetitle": "./assets/img/Banner/bluepink.jpg",
-      "image": "./assets/img/User/User3.jpg",
+      "userType": "vendor",
+      "userStatus": "enabled",
+      "userBanner": "bluepink.jpg",
+      "userImage": "User3.jpg",
       "complain": "Fraud",
       "address": "Nazimabad 48/C",
       "city": "Karachi",
       "postal": 74900,
       "online": false,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "sidebar": "red",
+      "background": "white-content"
     },
     {
       "id": 4,
@@ -76,17 +76,17 @@
       "email": "mehmood@domain.com",
       "contact": "0333-1245896",
       "nTNNumber": "NTN-258741",
-      "userType": "Vendor",
-      "userStatus": "Enabled",
-      "imagetitle": "./assets/img/Banner/clip.jpg",
-      "image": "./assets/img/User/User4.png",
+      "userType": "vendor",
+      "userStatus": "enabled",
+      "userBanner": "clip.jpg",
+      "userImage": "User4.png",
       "complain": "Mehmood Sahab",
       "address": "Gulshan 48/C",
       "city": "Karachi",
       "postal": 74900,
       "online": true,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "sidebar": "green",
+      "background": "white-content"
     },
     {
       "id": 5,
@@ -98,17 +98,17 @@
       "email": "aqueela@domain.com",
       "contact": "0333-2587146",
       "nTNNumber": "NTN-369852",
-      "userType": "Admin",
-      "userStatus": "Disabled",
-      "imagetitle": "./assets/img/Banner/pink.jpg",
-      "image": "./assets/img/User/User5.jpg",
+      "userType": "admin",
+      "userStatus": "disabled",
+      "userBanner": "pink.jpg",
+      "userImage": "User5.jpg",
       "complain": "Mehmood Sahab",
       "address": "Ibrahim Haidre",
       "city": "Karachi",
       "postal": 74900,
       "online": false,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "sidebar": "blue",
+      "background": "black-content"
     }
   ],
   "ProductCategory": [
@@ -243,24 +243,78 @@
       "pId": 10,
       "description": "",
       "category": "Toshiba"
+    },
+    {
+      "id": 23,
+      "pId": null,
+      "description": "Tools, Spare Parts",
+      "category": "Mechanical"
+    },
+    {
+      "id": 24,
+      "pId": 23,
+      "description": "small carriadge",
+      "category": "Car"
+    },
+    {
+      "id": 25,
+      "pId": 23,
+      "description": "Nothing",
+      "category": "Suzuki"
+    },
+    {
+      "id": 26,
+      "pId": null,
+      "description": "Motor Bikes",
+      "category": "Motorcycle"
+    },
+    {
+      "id": 27,
+      "pId": 26,
+      "description": "2017",
+      "category": "Honda"
+    },
+    {
+      "id": 28,
+      "pId": 26,
+      "description": "2018",
+      "category": "Suzuki"
+    },
+    {
+      "id": 29,
+      "pId": 26,
+      "description": "2019",
+      "category": "Superpower"
+    },
+    {
+      "id": 30,
+      "pId": 26,
+      "description": "2020",
+      "category": "Unique"
+    },
+    {
+      "id": 31,
+      "pId": 26,
+      "description": "abc",
+      "category": "abc"
     }
   ],
   "Product": [
     {
       "id": 1,
       "userId": 1,
-      "productTitle": "Pepsi",
-      "productTypeId":2,
-      "stock": 100,
-      "sale": 20,
-      "wholeSaleRate": 50,
-      "retailRate": 55,
-      "tex": 17,
-      "shipmentCharges": 2,
+      "productTitle": "New Pepsi ",
+      "productTypeId": 2,
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": 20,
+      "shipmentCharges": 5,
       "featured": true,
-      "description": "Not Yet define",
-      "productImage":"upload.png",
-      "galleryImage": "Select Image.png"
+      "description": "Updated Record 6 03 2021",
+      "productImage": "mike.jpg",
+      "galleryImage": "emilyz.jpg"
     },
     {
       "id": 2,
@@ -275,24 +329,24 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "productImage":"upload.png",
+      "productImage": "upload.png",
       "galleryImage": "Select Image.png"
     },
     {
       "id": 3,
-      "userId": 2,
       "productTitle": "Lays",
-      "productTypeId": 4,
       "stock": 150,
       "sale": 40,
       "wholeSaleRate": 20,
       "retailRate": 22,
       "tex": 17,
       "shipmentCharges": 2,
-      "featured": false,
+      "productImage": "angular.jpg",
+      "galleryImage": "anime6.png",
+      "featured": true,
+      "userId": 2,
       "description": "Not Yet define",
-      "productImage":"upload.png",
-      "galleryImage": "Select Image.png"
+      "productTypeId": 4
     },
     {
       "id": 4,
@@ -307,7 +361,7 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "productImage":"upload.png",
+      "productImage": "upload.png",
       "galleryImage": "Select Image.png"
     },
     {
@@ -323,7 +377,7 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "I am loving it",
-      "productImage":"img_3115.jpg",
+      "productImage": "img_3115.jpg",
       "galleryImage": "emilyz.jpg"
     },
     {
@@ -339,7 +393,7 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "productImage":"bg5.jpg",
+      "productImage": "bg5.jpg",
       "galleryImage": "default-avatar.png"
     },
     {
@@ -355,7 +409,7 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "productImage":"apple-icon.png",
+      "productImage": "apple-icon.png",
       "galleryImage": "argon-white.png"
     },
     {
@@ -371,14 +425,14 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "productImage":"anime6.png",
+      "productImage": "anime6.png",
       "galleryImage": "anime3.png"
     },
     {
       "id": 9,
       "userId": 5,
       "productTitle": "Sooper",
-      "productTypeId":8,
+      "productTypeId": 8,
       "stock": 1000,
       "sale": 200,
       "wholeSaleRate": 20,
@@ -387,8 +441,72 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "productImage":"angular.png",
+      "productImage": "angular.png",
       "galleryImage": "angular2-logo-red.png"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "productTitle": "Brand New Pepsi ",
+      "productTypeId": 2,
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": 20,
+      "shipmentCharges": 5,
+      "featured": true,
+      "description": "Updated Record 6 03 2021",
+      "productImage": "angular2-logo-red.png",
+      "galleryImage": "angular2-logo-white.png"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "productTitle": "Laser Jet 2000",
+      "productTypeId": 9,
+      "stock": 999,
+      "sale": 1,
+      "wholeSaleRate": 2500,
+      "retailRate": 3000,
+      "tex": 17,
+      "shipmentCharges": 200,
+      "featured": true,
+      "description": "New Item",
+      "productImage": "img_3115.jpg",
+      "galleryImage": "bg5.jpg"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "productTitle": "Random Data",
+      "productTypeId": 2,
+      "stock": 120,
+      "sale": null,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": null,
+      "shipmentCharges": 5,
+      "featured": true,
+      "description": "Updated Record 6 03 2021",
+      "productImage": "mike.jpg",
+      "galleryImage": "emilyz.jpg"
+    },
+    {
+      "id": 13,
+      "productTitle": "Mike Person to be Sold",
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": 20,
+      "shipmentCharges": 5,
+      "productImage": "mike.jpg",
+      "galleryImage": "emilyz.jpg",
+      "featured": true,
+      "userId": 1,
+      "description": "Updated Record 6 03 2021",
+      "productTypeId": 2
     }
   ],
   "Order": [
@@ -527,45 +645,27 @@
     {
       "id": 1,
       "user": 5,
-      "contacts": [
-        1,
-        2,
-        3
-      ]
+      "contacts": [1, 2, 3]
     },
     {
       "id": 2,
       "user": 1,
-      "contacts": [
-        4,
-        2,
-        3
-      ]
+      "contacts": [4, 2, 3]
     },
     {
       "id": 3,
       "user": 2,
-      "contacts": [
-        1,
-        4,
-        3
-      ]
+      "contacts": [1, 4, 3]
     },
     {
       "id": 4,
       "user": 4,
-      "contacts": [
-        2,
-        3
-      ]
+      "contacts": [2, 3]
     },
     {
       "id": 5,
       "user": 5,
-      "contacts": [
-        1,
-        3
-      ]
+      "contacts": [1, 3]
     }
   ],
   "Chat": [

@@ -7,13 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient,  HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
-export class ContactService implements IContact {
-  public userService?: UserService;
-
-  id: number;
-  currentUser: IUser;
-  contacts: IUser[];
-
+export class ContactService{
   baseUrl = 'http://localhost:3000/contacts';
   constructor(private httpClient: HttpClient) {}
   // Return Employee List

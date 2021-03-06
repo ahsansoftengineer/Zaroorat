@@ -13,14 +13,7 @@ import {
 @Injectable({
   providedIn: "root",
 })
-export class ChatService implements IChat {
-
-  id: number;
-  userA: IUser; // Self
-  userB: IUser; // Target User
-  message: string; // Self
-  date: Date;
-
+export class ChatService {
   baseUrl = "http://localhost:3000/chat";
   constructor(private httpClient: HttpClient) {}
   // Get All Chats

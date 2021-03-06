@@ -11,6 +11,7 @@
           </div>
           <div class="card-body">
             <div class=" row">
+              <!-- Search By ID -->
               <div class="col-md-4">
                 <div class="form-group">
                   <label> Product ID </label>
@@ -24,7 +25,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="col-md-4">
                 <div class=" form-group">
                   <label> Product Title </label>
@@ -38,6 +38,7 @@
                   <input class="form-control" formControlName="stock" type="number" value="500" />
                 </div>
               </div>
+              <!-- Product Category Modal -->
               <div class="col-md-4">
                 <div class="form-group">
                   <label> Product Category </label>
@@ -51,12 +52,12 @@
                   </div>
                 </div>
               </div>
+              <!-- Product Image -->
               <div class="col-md-4">
                 <div class="form-group">
                   <label> Product Image </label>
                   <div class=" input-group">
-                    <input class=" form-control" formControlName="productImage" disabled type="text"
-                      placeholder="angular.png" />
+                    <input class=" form-control" formControlName="productImage" disabled type="text" />
                     <button type="button" class="btn pr-3 pl-3" (click)="open(productImages)"
                       style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
                       <span class="tim-icons icon-image-02" style="font-size:16px"></span>
@@ -64,12 +65,12 @@
                   </div>
                 </div>
               </div>
+              <!-- Gallery Image -->
               <div class="col-md-4">
                 <div class="form-group">
                   <label> Product Gallery Image </label>
                   <div class=" input-group">
-                    <input class=" form-control" formControlName="galleryImage" disabled type="text"
-                      placeholder="angular.png" />
+                    <input class=" form-control" formControlName="galleryImage" disabled type="text" />
                     <button type="button" class="btn pr-3 pl-3" (click)="open(galleryImages)"
                       style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
                       <span class="tim-icons icon-image-02" style="font-size:16px"></span>
@@ -101,7 +102,6 @@
                   <input class=" form-control" formControlName="shipmentCharges" placeholder="50.5" type="number" />
                 </div>
               </div>
-
               <div class="col-md-4">
                 <div class=" form-group">
                   <label> Tex Rate</label>
@@ -126,18 +126,23 @@
                     placeholder="Here can be your description" rows="10"></textarea>
                 </div>
               </div>
-              <div class="col-12">
-                <div class="btn-group " role="group" aria-label="Basic example">
-                  <button class=" btn btn-secondary" type="button">
-                    New
-                  </button>
-                  <button class=" btn btn-secondary" type="button">
-                    Update
-                  </button>
-                  <button class=" btn btn-secondary" type="button">
-                    Delete
-                  </button>
-                </div>
+              <div class="col-12 mt-5">
+                <h4>
+                  <div class="btn-group " role="group" aria-label="Basic example" style="margin-top:-22px; padding-right:10px">
+                    <button class=" btn btn-secondary" (click)="insert()" type="button">
+                      New
+                    </button>
+                    <button class=" btn btn-secondary" (click)="update()" type="button">
+                      Update
+                    </button>
+                    <button class=" btn btn-secondary" (click)="delete()" type="button">
+                      Delete
+                    </button>
+                  </div>
+                  <span [ngClass]="isError ? 'text-danger': 'text-success'">
+                    {{ errMessage }}
+                  </span>
+                </h4>
               </div>
             </div>
           </div>
@@ -172,7 +177,8 @@
               style="cursor:pointer"></span>
           </h4>
         </div>
-        <app-image-card (fileName_File)="fileName_File($event, 1)"></app-image-card>
+        <app-image-card [image]="defaultPath + productFileName" [fileName]="productFileName"
+          (fileName_File)="fileName_File($event, 1)"></app-image-card>
       </div>
     </ng-template>
     <ng-template #galleryImages let-modal>
@@ -183,7 +189,8 @@
               style="cursor: pointer"></span>
           </h4>
         </div>
-        <app-image-card (fileName_File)="fileName_File($event, 2)"></app-image-card>
+        <app-image-card [image]="defaultPath + galleryFileName" [fileName]="galleryFileName"
+          (fileName_File)="fileName_File($event, 2)"></app-image-card>
       </div>
     </ng-template>
   </form>

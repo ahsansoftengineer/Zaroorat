@@ -1,225 +1,274 @@
 <div class=" content">
-  <form [formGroup]="user" (ngSubmit)="updateUser()">
+  <form [formGroup]="userForm">
     <div class="row">
-      <div class="col-md-8">
-        <div class=" row">
-          <div class=" col-md-12">
-            <div class=" card">
-              <div class=" card-header">
-                <h2 class="card-title">
-                  <span class="tim-icons icon-tie-bow text-danger"></span>
-                  Vendor Details
-                </h2>
-              </div>
-              <div class="card-body">
-                <div class=" row">
-                  <div class=" col-md-4">
-                    <div class=" form-group">
-                      <label> ID </label>
-                      <input class=" form-control" required formControlName="id" placeholder="101" type="text" />
-                    </div>
-                  </div>
-                  <div class=" col-md-8">
-                    <div class=" form-group">
-                      <label> Full Name</label>
-                      <input class=" form-control" required formControlName="fullName"
-                        placeholder="Muhammad Ahsan Ahmed" type="text" />
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class=" form-group">
-                      <label> Business Name</label>
-                      <input class=" form-control" required formControlName="businessName"
-                        placeholder="Artistic Miliners Garments" type="text" />
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class=" form-group">
-                      <label> User Name</label>
-                      <input class=" form-control" required formControlName="userName"
-                        placeholder="ahsanandsons@zaroorat.com" type="text" />
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class=" form-group">
-                      <label>Email Address</label>
-                      <input class="form-control" required formControlName="email" type="number"
-                        value="ahsan@domain.com" />
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class="form-group">
-                      <label for="gender">Gender</label>
-                      <select formControlName="gender" required class="form-control" id="gender">
-                        <option selected disabled class="dropdown-item">Select Gender</option>
-                        <option class="dropdown-item">Male</option>
-                        <option class="dropdown-item">Female</option>
-                        <option class="dropdown-item">Others</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class=" form-group">
-                      <label> Contact</label>
-                      <input class=" form-control" required formControlName="contact" placeholder="60" type="number" />
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class=" form-group">
-                      <label> NTN Number</label>
-                      <input class=" form-control" required formControlName="nTNNumber" placeholder="50.5"
-                        type="number" />
-                    </div>
+      <!-- Basic Info Vendor -->
+      <div class="col-md-12">
+        <div class=" card">
+          <div class=" card-header">
+            <h2 class="card-title">
+              <span class="tim-icons icon-tie-bow text-danger"></span>
+              Vendor Details
+            </h2>
+          </div>
+          <div class="card-body">
+            <div class=" row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label> Product ID </label>
+                  <div class="input-group">
+                    <input formControlName="id" type="number" (keyup.enter)="getuser()" class="form-control"
+                      placeholder="Search by ID">
+                    <button type="button" class="btn pr-3 pl-3" (click)="getuser()"
+                      style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                      <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class=" card-footer">
+              <div class=" col-md-4">
+                <div class=" form-group">
+                  <label>Name</label>
+                  <input class=" form-control" required formControlName="name" placeholder="Muhammad Ahsan Ahmed"
+                    type="text" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class=" form-group">
+                  <label> Business Name</label>
+                  <input class=" form-control" required formControlName="businessName"
+                    placeholder="Artistic Miliners Garments" type="text" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class=" form-group">
+                  <label> User Name</label>
+                  <input class=" form-control" required formControlName="userName"
+                    placeholder="ahsanandsons@zaroorat.com" type="text" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class=" form-group">
+                  <label>Email Address</label>
+                  <input class="form-control" required formControlName="email" type="text" value="ahsan@domain.com" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <select formControlName="gender" required class="form-control" id="gender">
+                    <option selected disabled class="dropdown-item" value="0">Select Gender</option>
+                    <option class="dropdown-item" value="male">Male</option>
+                    <option class="dropdown-item" value="female">Female</option>
+                    <option class="dropdown-item" value="others">Others</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class=" form-group">
+                  <label> Contact</label>
+                  <input class=" form-control" required formControlName="contact" placeholder="0321-2825500"
+                    type="text" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class=" form-group">
+                  <label> NTN Number</label>
+                  <input class=" form-control" required formControlName="nTNNumber" placeholder="ABC-888-258"
+                    type="text" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label> User Image </label>
+                  <div class=" input-group">
+                    <input class=" form-control" formControlName="userImage" disabled type="text" />
+                    <button type="button" class="btn pr-3 pl-3" (click)="open(userImages)"
+                      style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                      <span class="tim-icons icon-image-02" style="font-size:16px"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label> Banner Image </label>
+                  <div class=" input-group">
+                    <input class=" form-control" formControlName="userBanner" disabled type="text" />
+                    <button type="button" class="btn pr-3 pl-3" (click)="open(userBanner)"
+                      style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+                      <span class="tim-icons icon-image-02" style="font-size:16px"></span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class=" col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <span class="tim-icons icon-palette text-danger"></span>
-                  User Business Title Image
-                </h3>
-              </div>
-              <app-image-card [height]="'height:300px'"></app-image-card>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class=" card">
-              <div class=" card-header">
-                <h3 class=" card-title">
-                  <span class="tim-icons icon-settings-gear-63 text-danger"></span>
-                  More Info
-                </h3>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="background">Background</label>
-                      <select formControlName="background" required class="form-control" id="background">
-                        <option selected disabled class="dropdown-item">Select Background Theme</option>
-                        <option class="dropdown-item" value="white-content">Light Mode</option>
-                        <option class="dropdown-item" value="black-content">Dark Mode</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="sidebar">Sidebar</label>
-                      <select formControlName="sidebar" required class="form-control" id="sidebar">
-                        <option selected disabled class="dropdown-item">Select Sidebar Theme</option>
-                        <option class="dropdown-item" value="blue">Blue</option>
-                        <option class="dropdown-item" value="primary">Primary</option>
-                        <option class="dropdown-item" value="red">Red</option>
-                        <option class="dropdown-item" value="green">Green</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class=" row">
-                  <div class=" col-md-4 pr-md-1">
-                    <div class=" form-group">
-                      <label> City </label>
-                      <input class=" form-control" placeholder="Karachi" type="text" />
-                    </div>
-                  </div>
-                  <div class=" col-md-4 px-md-1">
-                    <div class=" form-group">
-                      <label> Country </label>
-                      <input class=" form-control" placeholder="Pakistan" type="text" />
-                    </div>
-                  </div>
-                  <div class=" col-md-4 pl-md-1">
-                    <div class=" form-group">
-                      <label> Postal Code </label>
-                      <input class=" form-control" placeholder="ZIP Code" type="number" />
-                    </div>
-                  </div>
-                </div>
-                <div class=" row">
-                  <div class=" col-md-12">
-                    <div class=" form-group">
-                      <label> Address
-                        <span class="tim-icons icon-square-pin"></span>
-                      </label>
-                      <input class=" form-control" placeholder="Home Address" type="text"
-                        value="North Nazima Bad Federal B Area" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class=" card-footer">
-                <div class="btn-group">
-                  <button class=" btn btn-fill btn-secondary" type="submit">
+          <div class=" card-footer">
+            <div class="col-12 mt-5">
+              <h4>
+                <div class="btn-group " role="group" aria-label="Basic example"
+                  style="margin-top:-22px; padding-right:10px">
+                  <button class=" btn btn-secondary" (click)="insert()" type="button">
+                    New
+                  </button>
+                  <button class=" btn btn-secondary" (click)="update()" type="button">
                     Update
                   </button>
+                  <button class=" btn btn-secondary" (click)="delete()" type="button">
+                    Delete
+                  </button>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class=" card">
-              <div class=" card-header">
-                <h3 class=" card-title">
-                  <span class="tim-icons icon-single-02 text-danger"></span>
-                  Admin Area
-                </h3>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class=" col-md-6">
-                    <div class="form-group">
-                      <label for="status">User Type</label>
-                      <select formControlName="userType" required class="form-control" id="status">
-                        <option selected disabled class="dropdown-item">Select Type</option>
-                        <option class="dropdown-item">Admin</option>
-                        <option class="dropdown-item">Vendor</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class="form-group">
-                      <label for="status">User Status</label>
-                      <select formControlName="userStatus" required class="form-control" id="status">
-                        <option selected disabled class="dropdown-item">Select Status</option>
-                        <option class="dropdown-item text-success">Enabled</option>
-                        <option class="dropdown-item text-warning">Pending</option>
-                        <option class="dropdown-item text-danger">Disabled</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class=" col-md-12">
-                    <div class=" form-group">
-                      <label> Complain</label>
-                      <textarea class="form-control" formControlName="complain" style="width: 100%; max-width: 100%;"
-                        placeholder="Descriptive Complain regarding Vedor" rows="10"></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                footer
-              </div>
+                <span [ngClass]="isError ? 'text-danger': 'text-success'">
+                  {{ errMessage }}
+                </span>
+              </h4>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-header">
+      <!-- Address & Settings -->
+      <div class="col-md-12">
+        <div class=" card">
+          <div class=" card-header">
             <h3 class=" card-title">
-              <span class="tim-icons icon-image-02 text-danger"></span>
-              User Image
+              <span class="tim-icons icon-settings-gear-63 text-danger"></span>
+              More Info
             </h3>
           </div>
-          <app-image-card [height]="'height:100%'"></app-image-card>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="background">Background</label>
+                  <select formControlName="background" required class="form-control" id="background">
+                    <option selected disabled class="dropdown-item">Select Background Theme</option>
+                    <option class="dropdown-item" value="white-content">Light Mode</option>
+                    <option class="dropdown-item" value="black-content">Dark Mode</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="sidebar">Sidebar</label>
+                  <select formControlName="sidebar" required class="form-control" id="sidebar">
+                    <option selected disabled class="dropdown-item">Select Sidebar Theme</option>
+                    <option class="dropdown-item" value="blue">Blue</option>
+                    <option class="dropdown-item" value="primary">Primary</option>
+                    <option class="dropdown-item" value="red">Red</option>
+                    <option class="dropdown-item" value="green">Green</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Address
+                    <span class="tim-icons icon-square-pin"></span>
+                  </label>
+                  <input class=" form-control" formControlName="address" placeholder="Home Address" type="text"
+                    value="North Nazima Bad Federal B Area" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class=" form-group">
+                  <label> City </label>
+                  <input class=" form-control" formControlName="city" placeholder="Karachi" type="text" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class=" form-group">
+                  <label> Postal Code </label>
+                  <input class=" form-control" formControlName="postal" placeholder="ZIP Code" type="number" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class=" card-footer">
+            <div class="btn-group">
+              <button class=" btn btn-fill btn-secondary" type="submit">
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Admin Area  -->
+      <div class="col-md-12">
+        <div class=" card">
+          <div class=" card-header">
+            <h3 class=" card-title">
+              <span class="tim-icons icon-single-02 text-danger"></span>
+              Admin Area
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="status">User Type</label>
+                  <select formControlName="userType" required class="form-control" id="status">
+                    <option selected disabled class="dropdown-item" value="0">Select Type</option>
+                    <option class="dropdown-item" value="admin">Admin</option>
+                    <option class="dropdown-item" value="vendor">Vendor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="status">User Status</label>
+                  <select formControlName="userStatus" required class="form-control" id="status">
+                    <option selected disabled class="dropdown-item" value="0">Select Status</option>
+                    <option class="dropdown-item" value="pending">Pending</option>
+                    <option class="dropdown-item" value="enabled">Enabled</option>
+                    <option class="dropdown-item" value="disabled">Disabled</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class=" form-group">
+                  <label> Complain</label>
+                  <textarea class="form-control" formControlName="complain" style="width: 100%; max-width: 100%;"
+                    placeholder="Descriptive Complain regarding Vedor" rows="10"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            footer
+          </div>
         </div>
       </div>
     </div>
+    <ng-template #userImages let-modal>
+      <div class="card" style="margin-bottom: -75px;">
+        <div class="card-header">
+          <h4 class="card-title">
+            <span class="tim-icons icon-camera-18 text-info"></span>
+            User Image
+            <span class="tim-icons icon-simple-remove float-right text-danger" (click)="modal.close('')"
+              style="cursor: pointer"></span>
+          </h4>
+        </div>
+        <app-image-card [image]="defaultPath +'User/' + userFileName" [fileName]="userFileName"
+          (fileName_File)="fileName_File($event, 1)"></app-image-card>
+      </div>
+    </ng-template>
+    <!-- Width Problem -->
+    <ng-template #userBanner let-modal style="width: 700px">
+      <div class="card" style="margin-bottom: -75px;">
+        <div class="card-header">
+          <h4 class="card-title">
+            <span class="tim-icons icon-tv-2 text-info"></span>
+            Banner Image
+            <span class="tim-icons icon-simple-remove float-right text-danger" (click)="modal.close('')"
+              style="cursor: pointer"></span>
+          </h4>
+        </div>
+        <app-image-card [image]="defaultPath +'Banner/'+ bannerFileName" [fileName]="bannerFileName"
+          (fileName_File)="fileName_File($event, 2)"></app-image-card>
+      </div>
+    </ng-template>
   </form>
 </div>

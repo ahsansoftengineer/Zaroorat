@@ -8,18 +8,18 @@ import { CustomMethods } from "../shared/custom-method";
 import { UserService } from "./user.service";
 
 @Injectable()
-export class OrderService implements IOrder {
-  public id: number;
-  public productOrder: number; // IProduct
-  public quantity: number;
-  public amount: number;
-  public orderStatus: string;
-  public orderedTo: number; // IUser
-  public orderedBy: number; // IUser
-  public orderDate: string;
-  public deliveryDate: string;
-  public address: string;
-  public reciver?: string;
+export class OrderService {
+  // public id: number;
+  // public productOrder: number; // IProduct
+  // public quantity: number;
+  // public amount: number;
+  // public orderStatus: string;
+  // public orderedTo: number; // IUser
+  // public orderedBy: number; // IUser
+  // public orderDate: string;
+  // public deliveryDate: string;
+  // public address: string;
+  // public reciver?: string;
   baseUrl = "http://localhost:3000/Order";
   constructor(private httpClient: HttpClient) {}
   // Get All order

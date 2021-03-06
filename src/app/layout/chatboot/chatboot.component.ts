@@ -30,7 +30,7 @@ export class ChatbootComponent implements OnInit {
     private chatService: ChatService,
     private userService: UserService
   ) {
-    this.meUser = this.userService.users[0];
+    // this.meUser = this.userService.users[0];
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (this.contactedUser) {

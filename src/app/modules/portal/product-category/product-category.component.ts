@@ -21,7 +21,7 @@ export class ProductCategoryComponent implements OnInit {
   productCategoryTreeView: TreeviewItem[] = [];
   errMessage: string = "error Message to Display";
   isError: boolean = false;
-  prodCategoryId_NameProperty: { id: number; name: string };
+  ParentID = 0;
   constructor(
     public productCategoryService: ProductCategoryService,
     private modalService: NgbModal
@@ -31,7 +31,7 @@ export class ProductCategoryComponent implements OnInit {
     this.productCategoryForm = new FormGroup({
       id: new FormControl(""),
       category: new FormControl("", Validators.minLength(3)),
-      pId: new FormControl(),
+      pId: new FormControl(""),
       description: new FormControl(""),
     });
     this.refereshProductCategory();
@@ -76,7 +76,7 @@ export class ProductCategoryComponent implements OnInit {
   }
   insert() {
     this.mapFormValuesToModel();
-    this.productCategory.id = null;
+    // this.productCategory.id = null;
     this.productCategoryService
       .addproductCategory(this.productCategory)
       .subscribe(
@@ -143,21 +143,14 @@ export class ProductCategoryComponent implements OnInit {
         }
       );
   }
-  productCategoryItemClick(id: string) {
-    this.productCategoryForm.patchValue({
-      pId: id,
-    });
-    event.stopPropagation();
+  editProductCategory(productCategory: IProductCategory) {
+    this.mapModelToFormValues(productCategory);
   }
-
-  prodCategoryId_Name(event: any) {
-    this.prodCategoryId_NameProperty = event;
+  prodCategoryId_Name(event: { id: number; name: string }) {
     this.productCategoryForm.patchValue({
-      pId:
-        this.prodCategoryId_NameProperty.id +
-        " = " +
-        this.prodCategoryId_NameProperty.name,
+      pId: event?.id + " = " + event?.name,
     });
+    this.ParentID = event?.id;
   }
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: "modal-basic-title" })
@@ -179,14 +172,17 @@ export class ProductCategoryComponent implements OnInit {
       pId: productCategory.pId,
       description: productCategory.description,
     });
+    this.ParentID = productCategory.pId;
     // this.createForm.setControl('skills', this.setExistingSkills(employee.skills))
     this.productCategoryForm.markAsDirty();
     this.productCategoryForm.markAsTouched();
   }
   mapFormValuesToModel() {
-    this.productCategory.id = this.productCategoryForm.value.id;
-    this.productCategory.category = this.productCategoryForm.value.category;
-    this.productCategory.pId = this.prodCategoryId_NameProperty.id;
-    this.productCategory.description = this.productCategoryForm.value.description;
+    this.productCategory = {
+      id: this.productCategoryForm.value?.id,
+      pId: this.ParentID,
+      category: this.productCategoryForm.value?.category,
+      description: this.productCategoryForm.value?.description,
+    };
   }
 }

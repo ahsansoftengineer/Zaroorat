@@ -6,13 +6,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
   styleUrls: ["./image-card.component.scss"],
 })
 export class ImageCardComponent implements OnInit {
-  defaultPath: string = "../../../../assets/img/";
-  image: string = this.defaultPath + "Select Image.png";
-  fileName: string = "";
-
   @Input()
-  height: string = "height:100%;";
-
+  image: string = "";
+  @Input()
+  fileName: string = "";
   @Output()
   fileName_File = new EventEmitter<{ name: string; file: string }>();
 
@@ -31,7 +28,7 @@ export class ImageCardComponent implements OnInit {
       };
     } else {
       this.fileName = "";
-      this.image = this.defaultPath + "Select Image.png";
+      this.image = "";
     }
   }
 }

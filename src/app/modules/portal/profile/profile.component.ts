@@ -12,13 +12,13 @@ export class ProfileComponent implements OnInit {
   public user: IUser;
   public userIndex:string = '0';
   ngOnInit(): void {
-    this.user = this.userService.users[this.userIndex]
+    // this.user = this.userService.users[this.userIndex]
   }
-  tablelength: string = (this.userService.users.length - 1).toString()
+  tablelength: string;
   updateUserValue(){
   this.userIndex = ((<HTMLInputElement>document.getElementById('index')).value);
    if(!(this.userIndex < '0') && !(this.userIndex > this.tablelength)){
-    this.user = this.userService.users[this.userIndex]
+    // this.user = this.userService.users[this.userIndex]
    }else{
      console.warn('No Item Exsist');
    }

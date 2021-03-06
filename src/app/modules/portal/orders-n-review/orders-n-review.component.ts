@@ -22,13 +22,14 @@ export class OrdersNReviewComponent implements OnInit {
     if (this.orders === null || this.orders?.length < 1) {
       this.getOrdernReview();
     }
+    this.currentORDER_STATUS_ENUM = filter;
     if (filter === this.oRDER_STATUS_ENUM.ALL) {
       this.orders = this.orders;
     } else {
-      this.orders = this.orders.filter((x) => x.orderStatus === filter);
+      debugger
+      this.orders = this.orders.filter((x) => x.orderStatus === filter.toString());
     }
 
-    this.currentORDER_STATUS_ENUM = filter;
     // console.log(this.ORDER_STATUS_ENUM.ALL == OrderStatusEnum.ALL)
   }
   getOrdernReview() {
