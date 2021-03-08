@@ -37,6 +37,12 @@ const routes: Routes = [
   }, // Vendor
   { path: "product-list", component: ProductListComponent }, // Vendor
   {
+    path: "add-user/:id",
+    component: UserComponent,
+    canDeactivate: [UserGuard]
+
+  },
+  {
     path: "add-user",
     component: UserComponent,
     canDeactivate: [UserGuard]

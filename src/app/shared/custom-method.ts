@@ -5,6 +5,11 @@ import { throwError } from "rxjs";
 import { IProductCategory } from "../models/interfaces/product-category.interface";
 
 export class CustomMethods {
+  public static defaultPath: string = '../../../../assets/img/';
+  public static userPath: string = CustomMethods.defaultPath + 'user/';
+  public static userBanner: string = CustomMethods.defaultPath + 'banner/';
+  public static productImage: string = CustomMethods.defaultPath + 'product/';
+  public static galleryImage: string = CustomMethods.defaultPath + 'gallery/';
   // Computing Duration Methods
   public static duration: string = "";
   static computeDuration(
@@ -100,7 +105,6 @@ export class CustomMethods {
     });
     return <FormGroup>group;
   }
-
   // Hiearchy Structure of Product Category
   public static startRecursiveFunction(
     productCategories: IProductCategory[]

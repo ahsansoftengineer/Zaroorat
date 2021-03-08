@@ -4,6 +4,7 @@ import { UserService } from "../../../services/user.service";
 import { CustomMethods } from "../../../shared/custom-method";
 import { IUser } from "../../../models/interfaces/user.interface";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ActivatedRoute } from "@angular/router";
 // import { form } from 'src/app/forms/user-form';
 
 @Component({
@@ -14,7 +15,8 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 export class UserComponent implements OnInit {
   form: FormGroup;
   user: IUser;
-  defaultPath: string = "../../../../assets/img/";
+  imageBanner: string = CustomMethods.userBanner;
+  imageUser: string = CustomMethods.userPath
   // For Image
   userImage: string ;
   bannerImage: string ;
@@ -29,11 +31,17 @@ export class UserComponent implements OnInit {
   // state: UserAuthState;
   constructor(
     private userService: UserService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private _route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.resettingImage()
     this.initializingForm();
+    if(this._route.snapshot.params['id']){
+      const id = +this._route.snapshot.params['id']
+      this.form.value.id = id;
+      this.getuser();
+    }
   }
   initializingForm() {
     this.form = new FormGroup({
@@ -60,10 +68,10 @@ export class UserComponent implements OnInit {
     });
   }
   resettingImage(){
-    this.userImage = this.defaultPath + "User/" + "upload.png";
-    this.bannerImage = this.defaultPath + "Banner/" + "upload.png";
-    this.userFileName = "upload.png";
-    this.bannerFileName = "upload.png";
+    this.userImage = this.imageUser + "User7.PNG";
+    this.bannerImage = this.imageBanner + "BlueBlue.jpg";
+    this.userFileName = "User7.PNG";
+    this.bannerFileName = "BlueBlue.jpg";
     this.errMessage = "no errors";
     this.isError = false;
   }
@@ -109,7 +117,7 @@ export class UserComponent implements OnInit {
     this.userService.addUser(this.user).subscribe(
       () => {
         this.errMessage =
-          this.user.userName +
+          this.user.name +
           " as User Type " +
           this.user.userType +
           " with Status " +
@@ -120,7 +128,7 @@ export class UserComponent implements OnInit {
       (err) => {
         console.log(err);
         this.errMessage =
-          this.user.userName +
+          this.user.name +
           " as User Type " +
           this.user.userType +
           " with Status " +
@@ -135,7 +143,7 @@ export class UserComponent implements OnInit {
     this.userService.updateUser(this.user).subscribe(
       () => {
         this.errMessage =
-          this.user.userName +
+          this.user.name +
           " as User Type " +
           this.user.userType +
           " with Status " +
@@ -146,7 +154,7 @@ export class UserComponent implements OnInit {
       (err) => {
         console.log(err);
         this.errMessage =
-          this.user.userName +
+          this.user.name +
           " as User Type " +
           this.user.userType +
           " with Status " +
@@ -161,7 +169,7 @@ export class UserComponent implements OnInit {
     this.userService.deleteUser(this.user.id).subscribe(
       () => {
         this.errMessage =
-          this.user.userName +
+          this.user.name +
           " as User Type " +
           this.user.userType +
           " with Status " +
@@ -172,7 +180,7 @@ export class UserComponent implements OnInit {
       (err) => {
         console.log(err);
         this.errMessage =
-          this.user.userName +
+          this.user.name +
           " as User Type " +
           this.user.userType +
           " with Status " +
@@ -232,7 +240,15 @@ export class UserComponent implements OnInit {
       sidebar: this.form.value?.sidebar,
     };
   }
-  open(modal) {
-    this.modalService.open(modal);
+  open(modal, size:string = 'sm') {
+    if(size === 'sm'){
+      this.modalService.open(modal);
+    }
+    else if(size === 'lg'){
+      this.modalService.open(modal, { size: 'lg' });
+    }
+    else if(size === 'xl'){
+      this.modalService.open(modal, { size: 'xl' });
+    }
   }
 }

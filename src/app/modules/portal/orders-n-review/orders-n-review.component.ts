@@ -4,7 +4,7 @@ import { ProductService } from "../../../services/product.service";
 import { UserService } from "../../../services/user.service";
 import { IOrder } from "../../../models/interfaces/order.interface";
 import { OrderService } from "../../../services/order.service";
-import { IProduct } from "src/app/models/interfaces/product.interface";
+import { IProduct } from "../../../models/interfaces/product.interface";
 
 @Component({
   selector: "app-orders-n-review",
