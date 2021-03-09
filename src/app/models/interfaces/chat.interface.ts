@@ -2,8 +2,8 @@ import { IUser } from "./user.interface";
 
 export interface IChat {
   id:number;
-  userA:IUser; // Self
-  userB:IUser; // Target User
+  userA:number; // Self
+  userB:number; // Target User
   message: string; // Self
   date: Date;
 

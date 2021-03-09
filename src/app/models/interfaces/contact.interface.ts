@@ -3,6 +3,6 @@ import { IUser } from "./user.interface";
 
 export interface IContact {
   id:number;
-  currentUser: IUser
-  contacts:IUser[];
+  user: number // User
+  contacts:number[]; // User[]
 }

@@ -5,33 +5,23 @@ import { IContact } from "../models/interfaces/contact.interface";
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient,  HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { CustomMethods } from '../shared/custom-method';
 
 @Injectable()
 export class ContactService{
-  baseUrl = 'http://localhost:3000/contacts';
+  baseUrl = 'http://localhost:3000/contact';
   constructor(private httpClient: HttpClient) {}
-  // Return Employee List
+  // Not in Use Return Employee List
   getContacts(id:number): Observable<IContact[]> {
     return this.httpClient
       .get<IContact[]>(`${this.baseUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
-  // Handle Errors
-  private handleError(errorResponse: HttpErrorResponse) {
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error('Client Side Error :', errorResponse.error.message);
-    } else {
-      console.error('Server Side Error :', errorResponse);
-    }
-    return throwError(
-      'There is a problem with the service. We are notified & working on it. Please try again later.'
-    );
-  }
-  // Return Single Employee
+  // Return All Contacts of Single Employees
   getContact(id: number): Observable<IContact> {
     return this.httpClient
       .get<IContact>(`${this.baseUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
   // Add New Chat
   addContact(contact: IContact): Observable<IContact> {
@@ -41,7 +31,7 @@ export class ContactService{
           'Content-Type': 'application/json',
         }),
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
   // Update 1 Contact
   updateContact(contact: IContact): Observable<void> {
@@ -51,12 +41,12 @@ export class ContactService{
           'Content-Type': 'application/json',
         }),
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
   // Delete Contact
   deleteContact(id: number): Observable<void> {
     return this.httpClient
       .delete<void>(`${this.baseUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
 }

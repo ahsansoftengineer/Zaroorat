@@ -3,7 +3,7 @@
     <!-- Contacts Area -->
     <div class="col-md-4">
       <div class=" card card-user">
-        <!-- Current User -->
+        <!-- Search Contacts -->
         <div class="card-header pb-2">
           <h4 class="card-title">Contacts </h4>
           <div class="input-group">
@@ -16,21 +16,31 @@
           </div>
         </div>
         <!-- My Contects -->
-        <div class="card-body border-bottom border-top" style="height:600px; cursor: pointer;">
-          <div *ngFor="let contact of mycontacts, let ev = even" (click)="letsChat(contact)" class="row mb-1 pt-2 pb-2"
+        <div *ngIf="myContactUser" class="card-body border-bottom border-top" style="height:500px; cursor: pointer;">
+          <div *ngFor="let contact of myContactUser, let ev = even" (click)="letsChat(contact)"
+            class="row mb-1 pt-2 pb-2" [ngClass]="{'activeUser': contact.id === chatedUser?.id}"
             [style.background-color]="ev ?  'rgba(128, 128, 128, 0.363)' : 'rgba(10, 186, 255, 0.459)'">
             <div class="col-md-2">
-              <img [src]="contact.image" style="height: 55px; width:55px" class="rounded-circle">
+              <img [src]="imgPath +  contact.userImage" style="height: 55px; width:55px" class="rounded-circle">
               <div class="user-state " [ngClass]="contact.online ? 'user-active' : 'user-disable'"></div>
             </div>
             <div class="col-md-10 pt-2 pl-0">
-              <h4 class="m-0">{{ contact.fullName }}</h4>
+              <h4 class="m-0">{{ contact.name }}</h4>
               <p class="m-0"> {{ contact.businessName }}<span class="float-right"> {{ contact.online }} </span></p>
             </div>
           </div>
         </div>
+        <!-- Change User Temporary -->
         <div class="card-footer">
-
+          <h6 class="card-title">Change User By ID </h6>
+          <div class="input-group">
+            <input [formControl]="changeUserControl" (keyup.enter)="changeUser()" type="text" class="form-control"
+              placeholder="Search Contacts">
+            <button type="submit" class="btn pr-3 pl-3" (click)="changeUser()"
+              style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
+              <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -40,41 +50,54 @@
         <div class="card-header pb-2">
           <div class="row">
             <div class="col-1">
-              <img class="rounded-circle" style="height:55px"
-                [src]="chatedUser ? chatedUser.image : '../../../assets/img/angular2-logo-white.png'"
-                alt="Targated User">
+              <img class="rounded-circle" style="height:55px" alt="Targated User"
+                [src]="chatedUser ? imgPath + chatedUser.userImage : imgPath + 'User4.png'">
               <div class="user-state "
                 [ngClass]="chatedUser ? (chatedUser.online ? 'user-active' : 'user-disable') : 'user-disable'">
               </div>
             </div>
             <div class="col-11 p-0 m-0 pr-2" style="margin-left:-20px;">
-              <h4 class="card-title m-0 p-0" style>{{chatedUser ? chatedUser.fullName : 'User Name'}}
+              <h4 class="card-title m-0 p-0" style>{{chatedUser ? chatedUser.name : 'User Name'}}
               </h4>
               <h5 class="card-title m-0 p-0">{{chatedUser ? chatedUser.businessName : 'Business Name'}}</h5>
-              <h5 class="card-title m-0 p-0">{{chatedUser ? chatedUser.userName : 'Business Name'}}</h5>
+              <h6 class="card-title m-0 p-0">{{chatedUser ? chatedUser.userName : 'Business Name'}}</h6>
             </div>
           </div>
         </div>
         <!-- show Hide Toggle  -->
         <div id="chatBody" class="card-body  border-bottom border-top" style="height:600px; overflow-y: auto;">
-          <div class="row mb-1">
-            <div class="col-md-12 pt-2" *ngIf="myChats">
-              <ngb-alert *ngFor="let chat of myChats" class=" alert-with-icon" data-notify="container" [type]="'info'"
-                [dismissible]="false">
-                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
-                  >
-                  <i class="tim-icons icon-simple-remove"></i>
-                </button>
-                <span class=" tim-icons icon-bell-55" data-notify="icon">
-                </span>
-                <span data-notify="message">
-                  <h4 class="m-0">{{chat.userA.fullName }}</h4>
-                  {{chat.message}} This is a notification with close button and icon and have
-                  many lines.
-                  <span class="float-right"> 12:00</span>
-                </span>
-              </ngb-alert>
-              <button style="focus:true" ></button>
+          <div class="row">
+            <div class="col-12" *ngIf="myChats">
+              <span *ngFor="let chat of myChats"  [ngClass]="chat.userA === user.id ? 'float-left': 'float-right'">
+                <div class="alert alert-primary p-2 float-left" style="min-height: 70px; clear:both"
+                  [ngClass]="chat.userA === user.id ? 'alert-primary' : 'alert-info'" role="alert">
+                  <table style="min-width: 450px;">
+                    <tr>
+                      <td *ngIf="chat.userA === user.id " style="width: 75px;">
+                        <img class="rounded-circle m-0 mr-3" style="height:55px; width:55px" alt="Targated User"
+                          [src]="chat.userA === user.id ? imgPath + user.userImage : imgPath + chatedUser.userImage ">
+                      </td>
+                      <td>
+                        <h4 class="alert-heading m-0 p-0"> {{chat.userA === user.id ? user.name : chatedUser.name }} </h4>
+                        <span> {{chat.message}}</span>
+                      </td>
+                      <td  *ngIf="chat.userA !== user.id " style="width: 75px;">
+                        <img class="rounded-circle m-0 float-right" style="height:55px; width:55px" alt="Targated User"
+                          [src]="chat.userA === user.id ? imgPath + user.userImage : imgPath + chatedUser.userImage ">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="min-width:200px;">
+                        <span *ngIf="chat.userA === user.id " class="tim-icons icon-simple-remove float-right" style="cursor:pointer"></span>
+                        <span *ngIf="chat.userA === user.id " class="float-right pr-3"> {{computeDuration(chat.date)}}</span>
+                        <span *ngIf="chat.userA !== user.id " class="tim-icons icon-simple-remove" style="cursor:pointer"></span>
+                        <span *ngIf="chat.userA !== user.id " class="pl-3"> {{computeDuration(chat.date)}}</span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <br>
+              </span>
             </div>
           </div>
         </div>

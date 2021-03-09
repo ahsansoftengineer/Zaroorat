@@ -1,31 +1,36 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { AbstractControl, FormArray, FormControl, FormGroup } from "@angular/forms";
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+} from "@angular/forms";
 import { TreeviewItem } from "ngx-treeview";
 import { throwError } from "rxjs";
 import { IProductCategory } from "../models/interfaces/product-category.interface";
 
 export class CustomMethods {
-  public static defaultPath: string = '../../../../assets/img/';
-  public static userPath: string = CustomMethods.defaultPath + 'user/';
-  public static userBanner: string = CustomMethods.defaultPath + 'banner/';
-  public static productImage: string = CustomMethods.defaultPath + 'product/';
-  public static galleryImage: string = CustomMethods.defaultPath + 'gallery/';
+  public static defaultPath: string = "../../../../assets/img/";
+  public static userPath: string = CustomMethods.defaultPath + "user/";
+  public static userBanner: string = CustomMethods.defaultPath + "banner/";
+  public static productImage: string = CustomMethods.defaultPath + "product/";
+  public static galleryImage: string = CustomMethods.defaultPath + "gallery/";
   // Computing Duration Methods
-  public static duration: string = "";
-  static computeDuration(
-    date: Date = new Date("February 26, 2021 11:21:00")
+  public static computeDuration(
+    oldDate: string | Date = new Date("February 26, 2021 11:21:00")
   ): string {
     const cd: Date = new Date(); // Current Date
+    let date = new Date(oldDate); // Essential Code
     // Today
     if (date.toDateString() === cd.toDateString()) {
       if (cd.getHours() === date.getHours()) {
         if (cd.getMinutes() === date.getMinutes()) {
-          this.duration = cd.getSeconds() - date.getSeconds() + " Seconds ago";
+          return cd.getSeconds() - date.getSeconds() + " Seconds ago";
         } else {
-          this.duration = cd.getMinutes() - date.getMinutes() + " Minutes ago";
+          return cd.getMinutes() - date.getMinutes() + " Minutes ago";
         }
       } else {
-        this.duration = cd.getHours() - date.getHours() + " Hours ago";
+        return cd.getHours() - date.getHours() + " Hours ago";
       }
     }
     // Yesterday & Before Yesterday
@@ -34,16 +39,13 @@ export class CustomMethods {
       date.getMonth() === cd.getMonth()
     ) {
       if (cd.getDate() - 1 === date.getDate()) {
-        this.duration = " Yesterday " + date.toTimeString().slice(0, 9);
+        return " Yesterday " + date.toTimeString().slice(0, 9);
       } else {
-        this.duration =
-          date.toDateString() + " " + date.toTimeString().slice(0, 9);
+        return new Date(date).toDateString() + " " + new Date(date).toTimeString().slice(0, 9);
       }
     } else {
-      this.duration =
-        date.toDateString() + " " + date.toTimeString().slice(0, 9);
+      return new Date(date).toDateString() + " " + new Date(date).toTimeString().slice(0, 9);
     }
-    return this.duration;
   }
   // Validator Closure anonymous Function inside another Function
   public static emailDomain(domainName: string = "pragimtech.com") {
@@ -154,5 +156,4 @@ export class CustomMethods {
     });
   }
   // Recursive Function for Displaying the Parent Involve in One Child
-
 }
