@@ -13,35 +13,16 @@ import { CustomMethods } from "../../shared/custom-method";
   styleUrls: ["./contacts.component.scss"],
 })
 export class ContactsComponent implements OnInit {
+
+  public chatedUser: IUser;
+  public mycontacts: IContact;
+  public allUser: IUser[] = []; // Temp
+  public myContactUser: IUser[] = [];
+  public imgPath: string = CustomMethods.userPath;
+
   // Public Properties
   @Input()
   public user: IUser;
-  public chatedUser: IUser;
-  public allUser: IUser[] = []; // Temp
-  public mycontacts: IContact;
-  public myContactUser: IUser[] = [];
-  public myChats: IChat[] = [];
-  public allChats: IChat[] = [];
-  public newChat: IChat;
-
-  // Form Controls
-  searchControl = new FormControl("");
-  chatMessage = new FormControl("");
-
-  //Other Properties
-  public imgPath: string = CustomMethods.userPath;
-  public searchText: string;
-
-  isError: boolean = false;
-  errMessage: string = "no error";
-  // Public Properties
-  public minimize: boolean = true;
-
-  constructor(
-    private userService: UserService,
-    private contactService: ContactService
-  ) {}
-
   // Input Properties
   @Input()
   public chatvisible: boolean = true;
@@ -52,13 +33,24 @@ export class ContactsComponent implements OnInit {
   @Output()
   public chatBotwithContact = new EventEmitter<IUser>();
 
+  isError: boolean = false;
+  errMessage: string = "no error";
+  // Public Properties
+  public minimize: boolean = false;
+
+  constructor(
+    private userService: UserService,
+    private contactService: ContactService
+  ) {}
+  ngOnInit(): void {
+    this.getuser(1);
+  }
+
   public displayChat(displayBot: boolean): void {
     this.chatvisible = !displayBot;
     this.chatBotContact.emit(this.chatvisible);
   }
-  ngOnInit(): void {
-    this.getuser(1);
-  }
+
   getuser(id: number = 1) {
     this.userService.getUser(id).subscribe(
       (user: IUser) => {
@@ -117,9 +109,10 @@ export class ContactsComponent implements OnInit {
     );
   }
   // Contacts Search Functionality
+  searchControl = new FormControl("");
   filterContacts(): void {
-    this.searchText = this.searchControl.value;
-    if (this.searchText === "") {
+    const searchText = this.searchControl.value
+    if (searchText === "") {
       this.myContactUser = [];
       this.mycontacts.contacts.forEach((y) => {
         this.myContactUser.push(this.allUser.find((x) => x.id === y));
@@ -127,9 +120,9 @@ export class ContactsComponent implements OnInit {
     } else {
       this.myContactUser = this.allUser.filter(
         (x) =>
-          x.name === this.searchText ||
-          x.businessName === this.searchText ||
-          x.userName === this.searchText
+          x.name === searchText ||
+          x.businessName === searchText ||
+          x.userName === searchText
       );
     }
   }

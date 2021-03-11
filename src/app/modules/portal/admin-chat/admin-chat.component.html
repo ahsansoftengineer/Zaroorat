@@ -15,10 +15,11 @@
           </div>
         </div>
         <!-- My Contects -->
-        <div *ngIf="myContactUser" class="card-body border-bottom border-top" style="height:600px; cursor: pointer;">
+        <div *ngIf="myContactUser" class="card-body border-bottom border-top" style="height:600px;">
           <div *ngFor="let contact of myContactUser, let ev = even" (click)="letsChat(contact)"
             class="row mb-1 pt-2 pb-2" [ngClass]="{'activeUser': contact.id === chatedUser?.id}"
-            [style.background-color]="ev ?  'rgba(128, 128, 128, 0.363)' : 'rgba(10, 186, 255, 0.459)'">
+            [style.background-color]="ev ?  'rgba(128, 128, 128, 0.363)' : 'rgba(10, 186, 255, 0.459)'"
+            style="cursor: pointer;">
             <div class="col-md-2">
               <img [src]="imgPath +  contact.userImage" style="height: 55px; width:55px" class="rounded-circle">
               <div class="user-state " [ngClass]="contact.online ? 'user-active' : 'user-disable'"></div>

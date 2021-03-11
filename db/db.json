@@ -851,13 +851,6 @@
       "date": "March 9, 2021 11:45:00"
     },
     {
-      "id": 16,
-      "userA": 1,
-      "userB": 5,
-      "message": "Sorry for inconvinence we don't have Tea Cups",
-      "date": "March 9, 2021 12:21:00"
-    },
-    {
       "id": 17,
       "userA": 1,
       "userB": 3,
@@ -914,20 +907,6 @@
       "date": "2021-03-10T10:46:27.690Z"
     },
     {
-      "id": 26,
-      "userA": 1,
-      "userB": 5,
-      "message": "My Message",
-      "date": "2021-03-11T08:43:21.533Z"
-    },
-    {
-      "id": 27,
-      "userA": 5,
-      "userB": 1,
-      "message": "Your Message",
-      "date": "2021-03-11T08:43:50.035Z"
-    },
-    {
       "id": 28,
       "userA": 2,
       "userB": 4,
@@ -968,6 +947,13 @@
       "userB": 3,
       "message": "New Message",
       "date": "2021-03-11T08:56:38.458Z"
+    },
+    {
+      "id": 34,
+      "userA": 1,
+      "userB": 5,
+      "message": "May be you should have some cup of Teas Rather than Tea Cup",
+      "date": "2021-03-11T11:22:44.155Z"
     }
   ]
 }

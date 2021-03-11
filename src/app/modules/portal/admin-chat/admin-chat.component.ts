@@ -24,10 +24,6 @@ export class AdminChatComponent implements OnInit {
   public allChats: IChat[] = [];
   public newChat: IChat;
 
-  // Form Controls
-  searchControl = new FormControl("");
-  chatMessage = new FormControl("");
-
   //Other Properties
   public imgPath: string = CustomMethods.userPath;
   public searchText: string;
@@ -103,8 +99,9 @@ export class AdminChatComponent implements OnInit {
     );
   }
   // Contacts Search Functionality
+  searchControl = new FormControl("");
   filterContacts() {
-    const searchText: string = this.searchControl.value
+    const searchText: string = this.searchControl.value;
     if (searchText === "") {
       this.myContactUser = [];
       this.mycontacts.contacts.forEach((y) => {
@@ -180,6 +177,7 @@ export class AdminChatComponent implements OnInit {
     }
   }
   // Send Chat
+  chatMessage = new FormControl("");
   sendChat() {
     const message = this.chatMessage.value;
     this.newChat = {
@@ -195,7 +193,7 @@ export class AdminChatComponent implements OnInit {
       () => {
         this.allChats.push(this.newChat);
         this.letsChat(this.chatedUser);
-        this.chatMessage.setValue('');
+        this.chatMessage.setValue("");
       }
     );
   }
@@ -205,7 +203,7 @@ export class AdminChatComponent implements OnInit {
     this.myContactUser = [];
     const Uid = +this.changeUserControl.value;
     this.getuser(Uid);
-    this.changeUserControl.setValue('');
+    this.changeUserControl.setValue("");
   }
   //compute duration (Last Message / User Online State)
   computeDuration(date: string): string {
