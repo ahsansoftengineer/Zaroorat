@@ -1,20 +1,19 @@
 <div class="content">
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-header" [style.background-image]="'url('+ user.imagetitle +')'" style=" background-repeat: no-repeat;
-          height:250px; background-size: cover;
-          position:relative;">
+      <div class="card" *ngIf="user">
+        <div class="card-header" [style.background-image]="'url('+ userbannerpath + (user?.userBanner)" style=" background-repeat: no-repeat;
+          height:350px; background-size: 100% 100%; position:relative;">
           <h2 class="card-title">
-            <a style="float: right;" href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+            <a style="float: right;" [routerLink]="['/portal/add-user',user.id]" data-toggle="tooltip" data-placement="top" title="Delete">
               <span class="tim-icons icon-trash-simple pr-2"></span>
             </a>
-            <a style="float: right;" href="#" data-toggle="tooltip" data-placement="top" title="Edit">
+            <a style="float: right;" [routerLink]="['/portal/add-user',user.id]" data-toggle="tooltip" data-placement="top" title="Edit">
               <span class="tim-icons icon-pencil pr-2"></span>
             </a>
           </h2>
-          <div class="card-user ml-2" style="margin-top:-80px;">
-            <img alt="..." class="avatar" [src]="user.image" />
+          <div class="card-user ml-2" style="margin-top:-100px;">
+            <img alt="..." class="avatar" style="height: 200px; width:200px" [src]="userimagepath + user?.userImage" />
           </div>
           <h2 class="card-title" style="position:absolute; bottom:5px; right:20px;"> {{user.businessName}} </h2>
         </div>
@@ -22,7 +21,7 @@
         <div class="card-body" style="position: relative;">
           <div class="row">
             <div class="col-md-12">
-              <h3 class="card-title"> {{user.fullName}} </h3>
+              <h3 class="card-title"> {{user.name}} </h3>
             </div>
             <div class="col-md-6">
               <p class="card-title"> {{user.email}} </p>
@@ -31,7 +30,10 @@
             <div class="col-md-6">
               <h4 class="card-title"> About Me </h4>
               <p class="card-title"> Some Information that Vendor wants to displayed in Profile </p>
-              <input type="number" id="index" [value]="userIndex" (click)="updateUserValue()">
+              <input type="number" id="index" (keyup.enter)="ChangeUser()">
+              <span [ngClass]="isError ? 'text-danger': 'text-success'">
+                {{ errMessage }}
+              </span>
             </div>
             <div class="col-md-6">
               <h4 class="card-title"> Official Detail</h4>

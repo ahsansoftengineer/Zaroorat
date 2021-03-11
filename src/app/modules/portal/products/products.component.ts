@@ -1,7 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
+import { CustomMethods } from "../../../shared/custom-method";
 import { IProduct } from "../../../models/interfaces/product.interface";
 import { ProductService } from "../../../services/product.service";
+import { IProductCategory } from "../../../models/interfaces/product-category.interface";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-products",
@@ -9,82 +13,93 @@ import { ProductService } from "../../../services/product.service";
   styleUrls: ["./products.component.scss"],
 })
 export class ProductsComponent implements OnInit {
-  productForm: FormGroup = new FormGroup({});
-  products: IProduct[];
+  form: FormGroup;
+  defaultPath: string = "../../../../assets/img/";
+  // products: IProduct[];
   product: IProduct;
-  defaultImagePath: string = "../../../../assets/img/Select Image.png";
-  imgGallery: string = this.defaultImagePath;
-  imgProduct: string = this.defaultImagePath;
-  selectedFileName: string = "File Name";
-  currentFileToDisplay: string = "productImage";
-  errMessage: string = "error Message to Display";
+  // For Image
+  productImage: string;
+  galleryImage: string;
+  productFileName: string;
+  galleryFileName: string;
+  productCategoryId: number;
+  ParentID = 0;
+  productCategories: IProductCategory[];
+  errMessage: string = "no errors";
   isError: boolean = false;
 
-  constructor(public productService: ProductService) {}
-
+  constructor(
+    public productService: ProductService,
+    private modalService: NgbModal,
+    private _route: ActivatedRoute
+  ) {}
   ngOnInit(): void {
-    this.productForm = new FormGroup({
-      id: new FormControl(""),
-      productTitle: new FormControl("", Validators.minLength(3)),
+    this.resettingImages();
+    this.initializeForm();
+    if(this._route.snapshot.params['id']){
+      const id = +this._route.snapshot.params['id']
+      this.form.value.id = id;
+      this. getProduct();
+    }
+  }
+  initializeForm() {
+    this.form = new FormGroup({
+      id: new FormControl(0),
+      productTitle: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
       productTypeId: new FormControl("", Validators.required),
       stock: new FormControl("", Validators.required),
       sale: new FormControl("", Validators.required),
-      wholeSaleRate: new FormControl("", Validators.required),
+      wholeSaleRate: new FormControl(""),
       retailRate: new FormControl("", Validators.required),
-      tex: new FormControl("", Validators.required),
+      tex: new FormControl(""),
       shipmentCharges: new FormControl("", Validators.required),
-      productImage: new FormControl("", Validators.minLength(3)),
-      galleryImage: new FormControl("", Validators.required),
+      productImage: new FormControl(""),
+      galleryImage: new FormControl(""),
       featured: new FormControl("", Validators.required),
       userId: new FormControl("", Validators.required),
-      description: new FormControl("", Validators.required),
+      description: new FormControl(""),
     });
-    // this.refereshProductCategory();
   }
-  onFileChange(event, activeControl: string) {
-    const reader = new FileReader();
-    this.currentFileToDisplay = activeControl;
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      let fileName: string = event.target.files[0].name;
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        if (activeControl === "galleryImage") {
-          this.imgGallery = reader.result as string;
-          document.getElementById("galleryFileName").innerHTML = fileName;
-          // this.product.patchValue({
-          //   galleryImageSrc: reader.result,
-          // });
-        } else if (activeControl === "productImage") {
-          this.imgProduct = reader.result as string;
-          document.getElementById("productFileName").innerHTML = fileName;
-        }
-      };
+  resettingImages() {
+    this.productImage = this.defaultPath + "upload.png";
+    this.galleryImage = this.defaultPath + "upload.png";
+    this.productFileName = "upload.png";
+    this.galleryFileName = "upload.png";
+    this.productCategoryId = 0;
+    this.ParentID = 0;
+  }
+  fileName_File(event: { name: string; file: string }, imageNumber: number) {
+    if (imageNumber === 1) {
+      this.productImage = event.file;
+      this.form.patchValue({
+        productImage: event.name,
+      });
     } else {
-      if (activeControl === "galleryImage") {
-        document.getElementById("galleryFileName").innerHTML =
-          "Please Select Image";
-        this.imgGallery = this.defaultImagePath;
-      } else if (activeControl === "productImage") {
-        document.getElementById("productFileName").innerHTML =
-          "Please Select Image";
-        this.imgProduct = this.defaultImagePath;
-      }
+      this.galleryImage = event.file;
+      this.form.patchValue({
+        galleryImage: event.name,
+      });
     }
   }
   getProduct() {
-    const id: number = this.productForm.value.id;
+    const id = this.form.value.id;
     this.productService.getproduct(id).subscribe(
       (product: IProduct) => {
         this.mapModelValuesToForm(product);
         this.product = product;
+        this.productFileName = product.productImage;
+        this.galleryFileName = product.galleryImage;
       },
       (err: any) => {
         console.log(err);
         this.isError = true;
         this.errMessage = "Unable to display result of ID " + id;
         // In case error set all controls blank
-        this.setAllControlBlank(this.productForm);
+        this.initializeForm();
+        this.resettingImages()
       },
       () => {
         this.isError = false;
@@ -92,77 +107,70 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-
   insert() {
-    this.mapFormValuesToEmployeeModel();
+    this.mapFormValuesToModel();
     this.product.id = null;
-    this.productService
-      .addproduct(this.product)
-      .subscribe(
-        () => {
-          this.errMessage =
-            this.product.productTitle +
-            " created under Product Category Id " +
-            this.product.productTypeId;
-          this.isError = false;
-        },
-        (err) => {
-          console.log(err);
-          this.errMessage = this.product.productTitle + " not created";
-          this.isError = true;
-        }
-      );
+    this.productService.addproduct(this.product).subscribe(
+      () => {
+        this.errMessage =
+          this.product.productTitle +
+          " created under Product Category Id " +
+          this.product.productTypeId;
+        this.isError = false;
+      },
+      (err) => {
+        console.log(err);
+        this.errMessage = this.product.productTitle + " not created";
+        this.isError = true;
+      }
+    );
   }
   update() {
-    this.mapFormValuesToEmployeeModel();
-    this.productService
-      .updateproduct(this.product)
-      .subscribe(
-        () => {
-          this.errMessage =
-            this.product.id +
-            " " +
-            this.product.productTitle +
-            " updated successfully! Please Referesh Data";
-          this.isError = false;
-        },
-        (err) => {
-          console.log(err);
-          this.errMessage =
-            this.product.id +
-            " " +
-            this.product.productTitle +
-            " not updated";
-          this.isError = true;
-        }
-      );
+    this.mapFormValuesToModel();
+    this.productService.updateproduct(this.product).subscribe(
+      () => {
+        this.errMessage =
+          this.product.id +
+          " " +
+          this.product.productTitle +
+          " updated successfully! Please Referesh Data";
+        this.isError = false;
+      },
+      (err) => {
+        console.log(err);
+        this.errMessage =
+          this.product.id + " " + this.product.productTitle + " not updated";
+        this.isError = true;
+      }
+    );
   }
   delete() {
-    this.mapFormValuesToEmployeeModel();
-    this.productService
-      .deleteproduct(this.product.id)
-      .subscribe(
-        () => {
-          this.errMessage =
-            this.product.id +
-            " " +
-            this.product.productTitle +
-            " deleted successfully! Please Referesh Data";
-          this.isError = false;
-        },
-        (err) => {
-          console.log(err);
-          this.errMessage =
-            this.product.id +
-            " " +
-            this.product.productTitle +
-            " not deleted";
-          this.isError = true;
-        }
-      );
+    this.mapFormValuesToModel();
+    this.productService.deleteproduct(this.product.id).subscribe(
+      () => {
+        this.errMessage =
+          this.product.id +
+          " " +
+          this.product.productTitle +
+          " deleted successfully! Please Referesh Data";
+        this.isError = false;
+      },
+      (err) => {
+        console.log(err);
+        this.errMessage =
+          this.product.id + " " + this.product.productTitle + " not deleted";
+        this.isError = true;
+      }
+    );
+  }
+  prodCategoryId_Name(event: { id: number; name: string }) {
+    this.form.patchValue({
+      productTypeId: event?.id + " = " + event?.name,
+    });
+    this.ParentID = event?.id;
   }
   mapModelValuesToForm(product: IProduct) {
-    this.productForm.patchValue({
+    this.form.patchValue({
       id: product.id,
       productTitle: product.productTitle,
       productTypeId: product.productTypeId,
@@ -178,35 +186,29 @@ export class ProductsComponent implements OnInit {
       userId: product.userId,
       description: product.description,
     });
-    // this.createForm.setControl('skills', this.setExistingSkills(employee.skills))
-    this.productForm.markAsDirty();
-    this.productForm.markAsTouched();
+    this.ParentID = product?.productTypeId;
+    this.form.markAsDirty();
+    this.form.markAsTouched();
   }
   mapFormValuesToModel() {
-    this.product.id = this.productForm.value.id
-    this.product.productTitle = this.productForm.value.productTitle
-    this.product.productTypeId = this.productForm.value.productTypeId
-    this.product.stock = this.productForm.value.stock
-    this.product.sale = this.productForm.value.sale
-    this.product.wholeSaleRate = this.productForm.value.wholeSaleRate
-    this.product.retailRate = this.productForm.value.retailRate
-    this.product.tex = this.productForm.value.tex
-    this.product.shipmentCharges = this.productForm.value.shipmentCharges
-    this.product.productImage = this.productForm.value.productImage
-    this.product.galleryImage = this.productForm.value.galleryImage
-    this.product.featured = this.productForm.value.featured
-    this.product.userId = this.productForm.value.userId
-    this.product.description = this.productForm.value.description
+    this.product = {
+      id: this.form.value.id,
+      productTitle: this.form.value.productTitle,
+      stock: this.form.value.stock,
+      sale: this.form.value.sale,
+      wholeSaleRate: this.form.value.wholeSaleRate,
+      retailRate: this.form.value.retailRate,
+      tex: this.form.value.tex,
+      shipmentCharges: this.form.value.shipmentCharges,
+      productImage: this.form.value.productImage,
+      galleryImage: this.form.value.galleryImage,
+      featured: this.form.value.featured,
+      userId: this.form.value.userId,
+      description: this.form.value.description,
+      productTypeId: this.ParentID,
+    };
   }
-  public setAllControlBlank(group: FormGroup | FormArray): void {
-    Object.keys(group.controls).forEach((key: string) => {
-        const abstractControl = group.controls[key];
-
-        if (abstractControl instanceof FormGroup || abstractControl instanceof FormArray) {
-            this.setAllControlBlank(abstractControl);
-        } else {
-            abstractControl.markAsDirty();
-        }
-    });
-}
+  open(modal) {
+    this.modalService.open(modal);
+  }
 }

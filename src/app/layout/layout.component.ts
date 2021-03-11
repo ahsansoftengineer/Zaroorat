@@ -8,15 +8,32 @@ import { UserService } from "../services/user.service";
   styleUrls: ["./layout.component.scss"],
 })
 export class LayoutComponent implements OnInit {
-  public sidebarColor: string = "red";
+  public sidebarColor: string = "green";
   public chatBotHide: boolean = false;
-  public meUser: IUser;
+  public user: IUser;
   myContactedUser: IUser;
   public chatBotLayout(chatHide: boolean) {
     this.chatBotHide = chatHide;
   }
-  constructor(private user: UserService) {
-    // this.meUser = this.user.users[0];
+  public errMessage: string = 'no error';
+  public isError: boolean = false;
+  constructor(private userService: UserService) {
+    this.getuser(1);
+  }
+  getuser(id: number = 1) {
+    this.userService.getUser(id).subscribe(
+      (user: IUser) => {
+        this.user = user;
+      },
+      (err: any) => {
+        console.log(err);
+        this.errMessage = "Unable to display result of ID " + id;
+      },
+      () => {
+        this.isError = false;
+        this.errMessage = "Showing Result of ID " + id;
+      }
+    );
   }
   changeSidebarColor(color) {
     var sidebar = document.getElementsByClassName("sidebar")[0];
@@ -39,6 +56,7 @@ export class LayoutComponent implements OnInit {
       body.classList.remove("white-content");
     }
   }
+
   letsChat(myContactedUser: IUser) {
     this.myContactedUser = myContactedUser;
   }

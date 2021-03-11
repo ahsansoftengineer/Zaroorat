@@ -9,37 +9,31 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from "@angular/common/http";
+import { CustomMethods } from "../shared/custom-method";
 
 @Injectable({
   providedIn: "root",
 })
-export class ChatService implements IChat {
-
-  id: number;
-  userA: IUser; // Self
-  userB: IUser; // Target User
-  message: string; // Self
-  date: Date;
-
+export class ChatService {
   baseUrl = "http://localhost:3000/chat";
   constructor(private httpClient: HttpClient) {}
-  // Get All Chats
-  getChats(): Observable<IChat[]> {
+  // Return Single Employee Chat
+  getChat(id: number): Observable<IChat> {
     return this.httpClient
-      .get<IChat[]>(this.baseUrl)
-      .pipe(catchError(this.handleError));
+      .get<IChat>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(CustomMethods.handleError));
   }
   // Return MyChats List
   getMyChats(userA: number, userB: number): Observable<IChat[]> {
     return this.httpClient
       .get<IChat[]>(`${this.baseUrl}/${userA & userB}`)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
-  // Return Single Employee
-  getChat(id: number): Observable<IChat> {
+  // Get All Chats
+  getChats(): Observable<IChat[]> {
     return this.httpClient
-      .get<IChat>(`${this.baseUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+      .get<IChat[]>(this.baseUrl)
+      .pipe(catchError(CustomMethods.handleError));
   }
   // Add New Chat
   addChat(chat: IChat): Observable<IChat> {
@@ -49,7 +43,7 @@ export class ChatService implements IChat {
           "Content-Type": "application/json",
         }),
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
   // Update 1 Chat
   updateChat(chat: IChat): Observable<void> {
@@ -59,23 +53,12 @@ export class ChatService implements IChat {
           "Content-Type": "application/json",
         }),
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(CustomMethods.handleError));
   }
   // Delete 1 Chat
   deleteChat(id: number): Observable<void> {
     return this.httpClient
       .delete<void>(`${this.baseUrl}/${id}`)
-      .pipe(catchError(this.handleError));
-  }
-  // Handle Errors
-  private handleError(errorResponse: HttpErrorResponse) {
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error("Client Side Error :", errorResponse.error.message);
-    } else {
-      console.error("Server Side Error :", errorResponse);
-    }
-    return throwError(
-      "There is a problem with the service. We are notified & working on it. Please try again later."
-    );
+      .pipe(catchError(CustomMethods.handleError));
   }
 }

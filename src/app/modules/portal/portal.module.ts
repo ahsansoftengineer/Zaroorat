@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TreeviewModule } from 'ngx-treeview';
 
 import { PortalRoutingModule } from './portal-routing.module';
@@ -21,7 +21,13 @@ import { ProductService } from '../../services/product.service';
 import { ProductCategoryService } from '../../services/product-category.service';
 import { PromotionComponent } from './promotion/promotion.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { ProductCategoryHiarchyComponent } from './product-category-hiarchy/product-category-hiarchy.component';
+import { ImageCardComponent } from './image-card/image-card.component';
+
+// Guards
 import { ProductCategoryGuard } from '../../guards/product-category.guard';
+import { ProductGuard } from '../../guards/product.guard';
+import { UserGuard } from '../../guards/user.guard';
 
 
 @NgModule({
@@ -39,6 +45,8 @@ import { ProductCategoryGuard } from '../../guards/product-category.guard';
     AdminChatComponent,
     PromotionComponent,
     WalletComponent,
+    ProductCategoryHiarchyComponent,
+    ImageCardComponent,
   ],
   imports: [
     CommonModule,
@@ -46,12 +54,13 @@ import { ProductCategoryGuard } from '../../guards/product-category.guard';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    NgbModalModule,
     TreeviewModule.forRoot()
   ],
   exports: [],
   providers:[
     OrderService, ProductService, ProductCategoryService, UserService,
-    ProductCategoryGuard
+    ProductCategoryGuard, ProductGuard, UserGuard
   ]
 })
 export class PortalModule { }

@@ -4,30 +4,30 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title float-left">
-            <a href="#">{{prod.id}}</a> {{prod.productTitle}}
+            <a >{{prod.id}}</a> {{prod.productTitle}}
           </h4>
           <img data-toggle="tooltip" data-placement="top" title="Featured" *ngIf="prod.featured"
             style="height:35px; width:35px;" class="float-right" src="../../../assets/img/Featured.png">
         </div>
-        <img class="card-img-top ml-3 float-left" style="width:75px; height:75px;" [src]="prod.image"
+        <img class="card-img-top ml-3 float-left" style="width:75px; height:75px;" [src]="getImage(prod.productImage)"
           alt="Card image cap">
         <h6 class="card-title mb-2 mr-3" style="font-size:18px; margin-top:-20px">
-          <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+          <a title="Delete" [routerLink]="['/portal/add-product', prod.id]">
             <span class="tim-icons icon-trash-simple float-right"></span>
           </a>
-          <a href="#" data-toggle="tooltip" data-placement="top" title="Edit">
+          <a title="Edit" [routerLink]="['/portal/add-product', prod.id]">
             <span class="tim-icons icon-pencil float-right mr-2"></span>
           </a>
         </h6>
         <div class="card-body" style="position: relative;">
           <h6 class="card-title mb-2"> Categories
             <!-- Pending -->
-            <span *ngFor="let category of prod.productCategory; let l = last; let f = first" class="float-right">
+            <span class="float-right">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb card-title" style="background: none; padding: 0px; margin: 0px;">
-                  <li class="breadcrumb-item"><a>Home</a></li>
-                  <li class="breadcrumb-item"><a>Library</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Data</li>
+                  <li *ngFor="let category of prodCatLinear(prod.productTypeId); let l = last"
+                   class="breadcrumb-item"  [ngClass]="{'text-info': !l}">{{category.category}}</li>
+                  <!-- <li class="breadcrumb-item active"><a>{{prodCatLinear(prod.productTypeId).category}}</a></li> -->
                 </ol>
               </nav>
             </span>

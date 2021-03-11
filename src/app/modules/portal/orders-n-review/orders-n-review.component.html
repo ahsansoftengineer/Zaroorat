@@ -11,33 +11,30 @@
         <div class=" card-body">
           <ul class="nav nav-tabs" style="font-size: 18px;">
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.ALL)"
-                [ngClass]="{'active': oRDER_STATUS_ENUM.ALL == currentORDER_STATUS_ENUM}"
+              <a class="nav-link" (click)="filterOrders('ALL')" [ngClass]="{'active': 'ALL'  === currentFilter}"
                 style="cursor: pointer;">All</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.URGENT)"
-                [ngClass]="{'active':oRDER_STATUS_ENUM.URGENT === currentORDER_STATUS_ENUM}"
+              <a class="nav-link" (click)="filterOrders('URGENT')" [ngClass]="{'active':'URGENT' === currentFilter}"
                 style="cursor: pointer;">Urgent</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.ONWAY)"
-                [ngClass]="{'active':oRDER_STATUS_ENUM.ONWAY === currentORDER_STATUS_ENUM}" style="cursor:pointer">On
+              <a class="nav-link" (click)="filterOrders('ONWAY')" [ngClass]="{'active':'ONWAY' === currentFilter}"
+                style="cursor:pointer">
+                On
                 Way</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.PENDING)"
-                [ngClass]="{'active': oRDER_STATUS_ENUM.PENDING === currentORDER_STATUS_ENUM}" style="cursor: pointer;">
+              <a class="nav-link" (click)="filterOrders('PENDING')" [ngClass]="{'active': 'PENDING' === currentFilter}"
+                style="cursor: pointer;">
                 Pending</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.COMPLETE)"
-                [ngClass]="{'active': oRDER_STATUS_ENUM.COMPLETE == currentORDER_STATUS_ENUM}"
-                style="cursor: pointer;">History</a>
+              <a class="nav-link" (click)="filterOrders('COMPLETED')"
+                [ngClass]="{'active': 'COMPLETED' === currentFilter}" style="cursor: pointer;">History</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="filterOrders(oRDER_STATUS_ENUM.CANCEL)"
-                [ngClass]="{'active':oRDER_STATUS_ENUM.CANCEL === currentORDER_STATUS_ENUM}"
+              <a class="nav-link" (click)="filterOrders('CANCEL')" [ngClass]="{'active':'CANCEL' === currentFilter}"
                 style="cursor: pointer;">Rejected</a>
             </li>
 
@@ -69,22 +66,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let order of orders" class="card-title productCategoryRow">
-                      <td data-toggle="tooltip" [title]="order.orderStatus" [ngStyle]="{'color':order.orderStatus === 'icon-bell-55' ||
-                       order.orderStatus === 'icon-simple-remove'? 'red' : 'abc' }" style="text-align:center;">
-                        <span class="tim-icons {{order.orderStatus}} "></span>
+                    <tr *ngFor="let order of orderDisplayed" class="card-title productCategoryRow">
+                      <td style="text-align:center;">
+                        <span class="tim-icons  {{ getClass(order.orderStatus) }}"></span>
                       </td>
                       <td style="text-align:center;">{{order.id}}</td>
-                      <td style="text-align:left;">{{order.productOrder.productTitle}} </td>
+                      <td style="text-align:left;">{{ getProductName(order.productOrder) }} </td>
                       <td style="text-align:right; padding-right:5px">{{order.quantity}}</td>
                       <td style="text-align:right; padding-right:5px">{{order.amount}} </td>
                       <td style="text-align:center;">{{order.orderDate}} </td>
                       <td style="text-align:center;">{{order.deliveryDate}}</td>
-                      <td style="text-align:left;">{{order.orderedTo.fullName.slice(0, 10) }} </td>
-                      <td style="text-align:left;">{{order.orderedBy.fullName.slice(0, 10) }} </td>
-                      <td style="text-align:left;">{{order.reciver.slice(0, 10) }} </td>
-                      <td style="text-align:left;">{{ order.address.slice(0, 40) }} <span
-                          *ngIf="order.address.length > 40">...</span> </td>
+                      <td style="text-align:left;">{{ getUserName(order.orderedTo) }} </td>
+                      <td style="text-align:left;">{{ getUserName(order.orderedBy) }} </td>
+                      <td style="text-align:left;">{{order.reciver }} </td>
+                      <td style="text-align:left;">{{ order.address.slice(0, 40) }}
+                        <span *ngIf="order.address.length > 40">...</span>
+                      </td>
                     </tr>
                   </tbody>
 

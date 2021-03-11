@@ -3,9 +3,8 @@
   width: 15px;
   border-radius: 10px;
   margin-top:-19px;
-  margin-right:25px;
+  margin-right:12px;
   right:2px;
-
   position: absolute;
 }
 .user-active{
@@ -14,4 +13,6 @@
 .user-disable{
   background-image: radial-gradient(rgba(255, 1, 1, 0.664), rgba(248, 0, 0, 0.5), white);
 }
-
+.activeUser{
+  border:3px solid rgba(153, 149, 149, 0.541)
+}

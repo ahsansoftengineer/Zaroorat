@@ -5,7 +5,7 @@ import { UserSidebarSettings } from "../enums/user-sidebar-settings.enums";
 
 export interface IUser{
   id:number;
-  fullName:string;
+  name:string;
   userName:string; // Login Name
   businessName:string; // -Admin / Vendor Authority / Client Name
   password:string; // Only Vendor
@@ -16,8 +16,8 @@ export interface IUser{
   userType:UserTypeEnum; // Admin, Vendor
   userStatus:UserStatusEnum; // Enabled, Disabled, Pending
   online:boolean;
-  image?:string;
-  imagetitle?:string; // -Admin
+  userImage?:string;
+  userBanner?:string; // -Admin
   complain?:string;
   address?:string;
   city?:string;

@@ -13,8 +13,8 @@ import { ProductCategoryComponent } from '../modules/portal/product-category/pro
 
 export class ProductCategoryGuard implements CanDeactivate<ProductCategoryComponent> {
   canDeactivate(component: ProductCategoryComponent): boolean {
-    if(component.productCategoryForm.dirty){
-      return confirm('Are you sure want to discard your changes?')
+    if(component.form.dirty){
+      return confirm('Are you sure want to discard changes of Product Category Form?')
     }
     return true;
   }

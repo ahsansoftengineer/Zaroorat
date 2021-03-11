@@ -10,17 +10,17 @@
       "email": "ahsan@domain.com",
       "contact": "0321-2827700",
       "nTNNumber": "NTN-25458",
-      "userType": "Vendor",
-      "userStatus": "Pending",
-      "imagetitle": "./assets/img/Banner/BlueBlue.jpg",
-      "image": "./assets/img/User/User7.PNG",
+      "userType": "vendor",
+      "userStatus": "pending",
+      "online": true,
+      "userImage": "User7.PNG",
+      "userBanner": "BlueBlue.jpg",
       "complain": "New Vendor",
       "address": "Korangi 3 1/2",
       "city": "Karachi",
       "postal": 74900,
-      "online": true,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "background": "white-content",
+      "sidebar": "blue"
     },
     {
       "id": 2,
@@ -32,17 +32,17 @@
       "email": "asim@domain.com",
       "contact": "0321-2358900",
       "nTNNumber": "NTN-28900",
-      "userType": "Admin",
-      "userStatus": "Enabled",
-      "imagetitle": "./assets/img/Banner/BlueCircle.jpg",
-      "image": "./assets/img/User/User2.png",
-      "complain": "Admin",
+      "userType": "admin",
+      "userStatus": "pending",
+      "online": true,
+      "userImage": "User6.png",
+      "userBanner": "pink.jpg",
+      "complain": "Asim Enterprises",
       "address": "Landhi 36/B",
       "city": "Karachi",
       "postal": 74900,
-      "online": true,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "background": "black-content",
+      "sidebar": "primary"
     },
     {
       "id": 3,
@@ -54,17 +54,17 @@
       "email": "asrin@domain.com",
       "contact": "0333-2695447",
       "nTNNumber": "NTN-3698514",
-      "userType": "Vendor",
-      "userStatus": "Enabled",
-      "imagetitle": "./assets/img/Banner/bluepink.jpg",
-      "image": "./assets/img/User/User3.jpg",
+      "userType": "vendor",
+      "userStatus": "enabled",
+      "userBanner": "bluepink.jpg",
+      "userImage": "User3.jpg",
       "complain": "Fraud",
       "address": "Nazimabad 48/C",
       "city": "Karachi",
       "postal": 74900,
       "online": false,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "sidebar": "red",
+      "background": "white-content"
     },
     {
       "id": 4,
@@ -76,17 +76,17 @@
       "email": "mehmood@domain.com",
       "contact": "0333-1245896",
       "nTNNumber": "NTN-258741",
-      "userType": "Vendor",
-      "userStatus": "Enabled",
-      "imagetitle": "./assets/img/Banner/clip.jpg",
-      "image": "./assets/img/User/User4.png",
+      "userType": "vendor",
+      "userStatus": "enabled",
+      "userBanner": "clip.jpg",
+      "userImage": "User4.png",
       "complain": "Mehmood Sahab",
       "address": "Gulshan 48/C",
       "city": "Karachi",
       "postal": 74900,
       "online": true,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "sidebar": "green",
+      "background": "white-content"
     },
     {
       "id": 5,
@@ -98,17 +98,83 @@
       "email": "aqueela@domain.com",
       "contact": "0333-2587146",
       "nTNNumber": "NTN-369852",
-      "userType": "Admin",
-      "userStatus": "Disabled",
-      "imagetitle": "./assets/img/Banner/pink.jpg",
-      "image": "./assets/img/User/User5.jpg",
-      "complain": "Mehmood Sahab",
+      "userType": "vendor",
+      "userStatus": "disabled",
+      "online": false,
+      "userImage": "User1.png",
+      "userBanner": "BlueBlue.jpg",
+      "complain": "Aqeela Madam ",
       "address": "Ibrahim Haidre",
       "city": "Karachi",
       "postal": 74900,
-      "online": false,
-      "sidebar": "Blue",
-      "background": "BgWhite"
+      "background": "black-content",
+      "sidebar": "blue"
+    },
+    {
+      "id": 6,
+      "name": "Furqan",
+      "userName": "furqan@zaroorat.com",
+      "businessName": "Interior Designer",
+      "password": "**asim**",
+      "gender": "male",
+      "email": "furqan@gmail.com",
+      "contact": "0333-4455887",
+      "nTNNumber": "NTN-332211",
+      "userType": "admin",
+      "userStatus": "enabled",
+      "online": true,
+      "userImage": "User6.png",
+      "userBanner": "upload.png",
+      "complain": "Furqan Brother",
+      "address": "Korangi 34/1",
+      "city": "Karachi",
+      "postal": 74900,
+      "background": "white-content",
+      "sidebar": "green"
+    },
+    {
+      "id": 7,
+      "name": "Kumar",
+      "userName": "kumar@tips.com",
+      "businessName": "Kumar Sano",
+      "password": "",
+      "gender": "male",
+      "email": "kumar@gmail.com",
+      "contact": "913212535369",
+      "nTNNumber": "XYZ-666-555",
+      "userType": "admin",
+      "userStatus": "pending",
+      "online": "",
+      "userImage": "User6.png",
+      "userBanner": "BlueCircle.jpg",
+      "complain": "Newly Created Person",
+      "address": "India",
+      "city": "Mumbai",
+      "postal": 74005,
+      "background": "black-content",
+      "sidebar": "green"
+    },
+    {
+      "id": 8,
+      "name": "Touseef",
+      "userName": "touseefazeem@gmail.com",
+      "businessName": "Touseef Furnchise",
+      "password": "",
+      "gender": "others",
+      "email": "abc@domain.com",
+      "contact": "0326-2689789",
+      "nTNNumber": "NTN-265-897",
+      "userType": "vendor",
+      "userStatus": "pending",
+      "online": "",
+      "userImage": "User4.png",
+      "userBanner": "BlueCircle.jpg",
+      "complain": "Nothing Just new Vendor",
+      "address": "Sector 34/1",
+      "city": "Karachi",
+      "postal": 74900,
+      "background": "white-content",
+      "sidebar": "green"
     }
   ],
   "ProductCategory": [
@@ -243,68 +309,126 @@
       "pId": 10,
       "description": "",
       "category": "Toshiba"
+    },
+    {
+      "id": 23,
+      "pId": null,
+      "category": "Mechanical",
+      "description": ""
+    },
+    {
+      "id": 24,
+      "pId": 23,
+      "description": "small carriadge",
+      "category": "Car"
+    },
+    {
+      "id": 25,
+      "pId": 23,
+      "description": "Nothing",
+      "category": "Suzuki"
+    },
+    {
+      "id": 26,
+      "pId": null,
+      "description": "Motor Bikes",
+      "category": "Motorcycle"
+    },
+    {
+      "id": 27,
+      "pId": 26,
+      "description": "2017",
+      "category": "Honda"
+    },
+    {
+      "id": 28,
+      "pId": 26,
+      "description": "2018",
+      "category": "Suzuki"
+    },
+    {
+      "id": 29,
+      "pId": 26,
+      "description": "2019",
+      "category": "Superpower"
+    },
+    {
+      "id": 30,
+      "pId": 26,
+      "description": "2020",
+      "category": "Unique"
+    },
+    {
+      "id": 31,
+      "pId": 26,
+      "description": "abc",
+      "category": "abc"
     }
   ],
   "Product": [
     {
       "id": 1,
+      "productTitle": "Camera",
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": 20,
+      "shipmentCharges": 5,
+      "productImage": "img_3115.jpg",
+      "galleryImage": "mike.jpg",
+      "featured": false,
       "userId": 1,
-      "productTitle": "Pepsi",
-      "productTypeId":2,
-      "stock": 100,
-      "sale": 20,
-      "wholeSaleRate": 50,
-      "retailRate": 55,
-      "tex": 17,
-      "shipmentCharges": 2,
-      "featured": true,
-      "description": "Not Yet define",
-      "image": "https://banner2.cleanpng.com/20180202/cte/kisspng-soft-drink-coca-cola-pepsi-one-pepsi-max-pepsi-png-file-5a7527a82193c3.3912714915176273041375.jpg"
+      "description": "Updated Record 6 03 2021",
+      "productTypeId": 9
     },
     {
       "id": 2,
-      "userId": 1,
       "productTitle": "Cocacola",
-      "productTypeId": 3,
       "stock": 120,
       "sale": 30,
       "wholeSaleRate": 50,
       "retailRate": 55,
       "tex": 17,
       "shipmentCharges": 2,
+      "productImage": "anime3.png",
+      "galleryImage": "Select Image.png",
       "featured": false,
+      "userId": 1,
       "description": "Not Yet define",
-      "image": "https://www.pngfind.com/pngs/m/675-6757496_coca-cola-cold-drink-can-hd-png-download.png"
+      "productTypeId": 3
     },
     {
       "id": 3,
-      "userId": 2,
       "productTitle": "Lays",
-      "productTypeId": 4,
       "stock": 150,
       "sale": 40,
       "wholeSaleRate": 20,
       "retailRate": 22,
       "tex": 17,
       "shipmentCharges": 2,
-      "featured": false,
+      "productImage": "angular.jpg",
+      "galleryImage": "anime6.png",
+      "featured": true,
+      "userId": 2,
       "description": "Not Yet define",
-      "image": "https://e7.pngegg.com/pngimages/484/133/png-clipart-potato-chip-pepsi-flavor-lay-s-frito-lay-pepsi.png"
+      "productTypeId": 4
     },
     {
       "id": 4,
-      "userId": 5,
       "productTitle": "Nugets",
-      "productTypeId": 5,
       "stock": 200,
       "sale": 30,
       "wholeSaleRate": 150,
       "retailRate": 155,
       "tex": 17,
       "shipmentCharges": 2,
+      "productImage": "img_3115.jpg",
+      "galleryImage": "Select Image.png",
       "featured": true,
+      "userId": 5,
       "description": "Not Yet define",
-      "image": "https://www.vhv.rs/dpng/d/422-4223979_chicken-nugget-png-download-dominos-chicken-nuggets-transparent.png"
+      "productTypeId": 5
     },
     {
       "id": 5,
@@ -319,22 +443,24 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "I am loving it",
-      "image": "https://i.pinimg.com/originals/82/b7/53/82b753702b41b811df5a80ed807c0987.jpg"
+      "productImage": "img_3115.jpg",
+      "galleryImage": "emilyz.jpg"
     },
     {
       "id": 6,
-      "userId": 3,
       "productTitle": "Merinda",
-      "productTypeId": 3,
       "stock": 120,
       "sale": 30,
       "wholeSaleRate": 50,
       "retailRate": 55,
       "tex": 17,
       "shipmentCharges": 2,
+      "productImage": "Camera1.jpeg",
+      "galleryImage": "Camera2.jpg",
       "featured": true,
+      "userId": 3,
       "description": "Not Yet define",
-      "image": "https://thumbnail.imgbin.com/24/14/10/imgbin-milkshake-fizzy-drinks-pepsi-mirinda-soft-drink-mirinda-juice-illustration-DaiehRgXP2Jvgu1ecatTj1vjq_t.jpg"
+      "productTypeId": 3
     },
     {
       "id": 7,
@@ -349,7 +475,8 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "image": "https://simg.nicepng.com/png/small/301-3015690_wavy-lays-original-potato-chips-wavy-original-potato.png"
+      "productImage": "apple-icon.png",
+      "galleryImage": "argon-white.png"
     },
     {
       "id": 8,
@@ -364,13 +491,14 @@
       "shipmentCharges": 2,
       "featured": true,
       "description": "Not Yet define",
-      "image": "https://png.pngtree.com/png-clipart/20190214/ourmid/pngtree-baby-diaper-element-png-image_553220.jpg"
+      "productImage": "anime6.png",
+      "galleryImage": "anime3.png"
     },
     {
       "id": 9,
       "userId": 5,
       "productTitle": "Sooper",
-      "productTypeId":8,
+      "productTypeId": 8,
       "stock": 1000,
       "sale": 200,
       "wholeSaleRate": 20,
@@ -379,7 +507,72 @@
       "shipmentCharges": 2,
       "featured": false,
       "description": "Not Yet define",
-      "image": "https://xambeel.com/wp-content/uploads/2019/04/sooper.png"
+      "productImage": "angular.png",
+      "galleryImage": "angular2-logo-red.png"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "productTitle": "Brand New Pepsi ",
+      "productTypeId": 2,
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": 20,
+      "shipmentCharges": 5,
+      "featured": true,
+      "description": "Updated Record 6 03 2021",
+      "productImage": "angular2-logo-red.png",
+      "galleryImage": "angular2-logo-white.png"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "productTitle": "Laser Jet 2000",
+      "productTypeId": 9,
+      "stock": 999,
+      "sale": 1,
+      "wholeSaleRate": 2500,
+      "retailRate": 3000,
+      "tex": 17,
+      "shipmentCharges": 200,
+      "featured": true,
+      "description": "New Item",
+      "productImage": "img_3115.jpg",
+      "galleryImage": "bg5.jpg"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "productTitle": "Random Data",
+      "productTypeId": 2,
+      "stock": 120,
+      "sale": null,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": null,
+      "shipmentCharges": 5,
+      "featured": true,
+      "description": "Updated Record 6 03 2021",
+      "productImage": "mike.jpg",
+      "galleryImage": "emilyz.jpg"
+    },
+    {
+      "id": 13,
+      "productTitle": "Mike Person to be Sold",
+      "stock": 120,
+      "sale": 30,
+      "wholeSaleRate": 55,
+      "retailRate": 60,
+      "tex": 20,
+      "shipmentCharges": 5,
+      "productImage": "mike.jpg",
+      "galleryImage": "emilyz.jpg",
+      "featured": true,
+      "userId": 1,
+      "description": "Updated Record 6 03 2021",
+      "productTypeId": 2
     }
   ],
   "Order": [
@@ -438,7 +631,7 @@
     {
       "id": 5,
       "productOrder": 5,
-      "orderStatus": "COMPLETE",
+      "orderStatus": "COMPLETED",
       "amount": 10,
       "quantity": 10000,
       "orderedTo": 1,
@@ -503,7 +696,7 @@
     {
       "id": 10,
       "productOrder": 8,
-      "orderStatus": "COMPLETE",
+      "orderStatus": "COMPLETED",
       "amount": 100,
       "quantity": 50,
       "orderedTo": 2,
@@ -517,45 +710,44 @@
   "Contact": [
     {
       "id": 1,
-      "user": 5,
       "contacts": [
-        1,
+        3,
         2,
-        3
+        4,
+        5
       ]
     },
     {
       "id": 2,
-      "user": 1,
       "contacts": [
         4,
-        2,
-        3
+        3,
+        1
       ]
     },
     {
       "id": 3,
-      "user": 2,
       "contacts": [
-        1,
-        4,
-        3
+        5,
+        2,
+        1
       ]
     },
     {
       "id": 4,
-      "user": 4,
       "contacts": [
+        1,
         2,
         3
       ]
     },
     {
       "id": 5,
-      "user": 5,
       "contacts": [
         1,
-        3
+        3,
+        2,
+        4
       ]
     }
   ],
@@ -564,99 +756,204 @@
       "id": 1,
       "userA": 1,
       "userB": 2,
+      "message": " open your browser on http://localhost:5200/ ** Angular Live Development Server is listening on localhost:5200, open your browser on http://localhost:5200/ ** Angular Live Development Server is listening on localhost:5200, open your browser on http://localhost:5200/ ",
+      "date": "February 6, 2021 11:30:00"
+    },
+    {
+      "id": 1,
+      "userA": 1,
+      "userB": 2,
       "message": "Bhi Kesay Ho",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 7, 2021 11:45:00"
     },
     {
       "id": 2,
       "userA": 1,
       "userB": 2,
       "message": "Jawab to de do",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 8, 2021 10:45:00"
     },
     {
       "id": 3,
       "userA": 2,
       "userB": 1,
       "message": "Yar Busy tha bolo",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 8:30:00"
     },
     {
       "id": 4,
       "userA": 1,
       "userB": 2,
       "message": "Assignment ka kiya huwa",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 12:30:00"
     },
     {
       "id": 5,
       "userA": 2,
       "userB": 1,
       "message": "Jama karwa diya hai",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 12:40:00"
     },
     {
       "id": 6,
       "userA": 2,
       "userB": 3,
       "message": "Computer required in bulk quantity",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 12:39:00"
     },
     {
       "id": 7,
       "userA": 3,
       "userB": 2,
       "message": "20 piece per 10% discount hai aur 50 piece per 20%",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 11:45:00"
     },
     {
       "id": 8,
       "userA": 3,
       "userB": 2,
       "message": "Apko kitna Chahiya",
-      "date": "February 26, 2021 11:21:00"
-    },
-    {
-      "id": 9,
-      "userA": 1,
-      "userB": 3,
-      "message": "Samsung Galxy Required 10",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 11:45:00"
     },
     {
       "id": 10,
       "userA": 3,
       "userB": 1,
       "message": "Mal End Ho Gaya Hai",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 11:45:00"
     },
     {
       "id": 11,
       "userA": 1,
       "userB": 3,
       "message": "Agla Mal Kab Aye Ga",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 11:45:00"
     },
     {
       "id": 12,
       "userA": 3,
       "userB": 1,
       "message": "March / April mai Maloom Karlena",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 11:45:00"
     },
     {
       "id": 13,
       "userA": 1,
       "userB": 4,
       "message": "Ap ka kiya hal hai",
-      "date": "February 26, 2021 11:21:00"
+      "date": "March 9, 2021 11:45:00"
     },
     {
-      "id": 14,
+      "id": 15,
+      "userA": 5,
+      "userB": 1,
+      "message": "I Want some Tea Cup",
+      "date": "March 9, 2021 11:45:00"
+    },
+    {
+      "id": 17,
+      "userA": 1,
+      "userB": 3,
+      "message": "Ahsan Wants to Talk",
+      "date": "2021-03-09T19:38:26.938Z"
+    },
+    {
+      "id": 18,
       "userA": 1,
       "userB": 4,
-      "message": "Bhi Reply to kar do",
-      "date": "February 26, 2021 11:21:00"
+      "message": "Hello are you listening",
+      "date": "2021-03-10T10:39:57.585Z"
+    },
+    {
+      "id": 19,
+      "userA": 4,
+      "userB": 1,
+      "message": "May be we can have meeting now",
+      "date": "2021-03-10T10:43:20.915Z"
+    },
+    {
+      "id": 20,
+      "userA": 1,
+      "userB": 4,
+      "message": "Sir I want 100 Packet of Rofza",
+      "date": "2021-03-10T10:44:44.899Z"
+    },
+    {
+      "id": 21,
+      "userA": 4,
+      "userB": 1,
+      "message": "When do you want",
+      "date": "2021-03-10T10:45:11.593Z"
+    },
+    {
+      "id": 22,
+      "userA": 1,
+      "userB": 4,
+      "message": "Today at 9 PM",
+      "date": "2021-03-10T10:45:39.138Z"
+    },
+    {
+      "id": 23,
+      "userA": 4,
+      "userB": 1,
+      "message": "Its a Deal",
+      "date": "2021-03-10T10:46:11.654Z"
+    },
+    {
+      "id": 24,
+      "userA": 1,
+      "userB": 4,
+      "message": "Deal",
+      "date": "2021-03-10T10:46:27.690Z"
+    },
+    {
+      "id": 28,
+      "userA": 2,
+      "userB": 4,
+      "message": "Mehmood Sahab Bol bole mei kia ho raha hai",
+      "date": "2021-03-11T08:47:57.278Z"
+    },
+    {
+      "id": 29,
+      "userA": 4,
+      "userB": 2,
+      "message": "Oh Yar Acting Ho rahi ahi",
+      "date": "2021-03-11T08:48:31.199Z"
+    },
+    {
+      "id": 30,
+      "userA": 2,
+      "userB": 4,
+      "message": "To Jo ap Karrahi hain usko Acting kehte hain",
+      "date": "2021-03-11T08:49:08.900Z"
+    },
+    {
+      "id": 31,
+      "userA": 4,
+      "userB": 2,
+      "message": "Han Ji",
+      "date": "2021-03-11T08:49:16.322Z"
+    },
+    {
+      "id": 32,
+      "userA": 1,
+      "userB": 3,
+      "message": "Again Test Message",
+      "date": "2021-03-11T08:56:22.996Z"
+    },
+    {
+      "id": 33,
+      "userA": 1,
+      "userB": 3,
+      "message": "New Message",
+      "date": "2021-03-11T08:56:38.458Z"
+    },
+    {
+      "id": 34,
+      "userA": 1,
+      "userB": 5,
+      "message": "May be you should have some cup of Teas Rather than Tea Cup",
+      "date": "2021-03-11T11:22:44.155Z"
     }
   ]
 }
