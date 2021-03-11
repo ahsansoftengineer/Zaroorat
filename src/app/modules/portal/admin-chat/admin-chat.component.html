@@ -5,7 +5,6 @@
       <div class=" card card-user">
         <!-- Search Contacts -->
         <div class="card-header pb-2">
-          <h4 class="card-title">Contacts </h4>
           <div class="input-group">
             <input [formControl]="searchControl" (keyup.enter)="filterContacts()" type="text" class="form-control"
               placeholder="Search Contacts">
@@ -16,7 +15,7 @@
           </div>
         </div>
         <!-- My Contects -->
-        <div *ngIf="myContactUser" class="card-body border-bottom border-top" style="height:500px; cursor: pointer;">
+        <div *ngIf="myContactUser" class="card-body border-bottom border-top" style="height:600px; cursor: pointer;">
           <div *ngFor="let contact of myContactUser, let ev = even" (click)="letsChat(contact)"
             class="row mb-1 pt-2 pb-2" [ngClass]="{'activeUser': contact.id === chatedUser?.id}"
             [style.background-color]="ev ?  'rgba(128, 128, 128, 0.363)' : 'rgba(10, 186, 255, 0.459)'">
@@ -32,10 +31,9 @@
         </div>
         <!-- Change User Temporary -->
         <div class="card-footer">
-          <h6 class="card-title">Change User By ID </h6>
           <div class="input-group">
             <input [formControl]="changeUserControl" (keyup.enter)="changeUser()" type="text" class="form-control"
-              placeholder="Search Contacts">
+              placeholder="ID for Switching Different User">
             <button type="submit" class="btn pr-3 pl-3" (click)="changeUser()"
               style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
               <span class="tim-icons icon-zoom-split" style="font-size:16px"></span>
@@ -47,6 +45,7 @@
     <!-- Chat Area -->
     <div class="col-md-8">
       <div class=" card card-user">
+        <!-- Chated User Details -->
         <div class="card-header pb-2">
           <div class="row">
             <div class="col-1">
@@ -57,18 +56,20 @@
               </div>
             </div>
             <div class="col-11 p-0 m-0 pr-2" style="margin-left:-20px;">
-              <h4 class="card-title m-0 p-0" style>{{chatedUser ? chatedUser.name : 'User Name'}}
+              <h3 class="card-title m-0 p-0" style>{{chatedUser ? chatedUser.name : 'User Name'}}
+              </h3>
+              <h4 class="card-title float-left m-0 p-0">
+                {{chatedUser ? chatedUser.businessName : 'Business Name'}}
+                {{chatedUser ? ' (' + chatedUser.userName + ')': 'User Name'}}
               </h4>
-              <h5 class="card-title m-0 p-0">{{chatedUser ? chatedUser.businessName : 'Business Name'}}</h5>
-              <h6 class="card-title m-0 p-0">{{chatedUser ? chatedUser.userName : 'Business Name'}}</h6>
             </div>
           </div>
         </div>
-        <!-- show Hide Toggle  -->
+        <!-- Chats  -->
         <div id="chatBody" class="card-body  border-bottom border-top" style="height:600px; overflow-y: auto;">
           <div class="row">
             <div class="col-12" *ngIf="myChats">
-              <span *ngFor="let chat of myChats"  [ngClass]="chat.userA === user.id ? 'float-left': 'float-right'">
+              <span *ngFor="let chat of myChats" [ngClass]="chat.userA === user.id ? 'float-left': 'float-right'">
                 <div class="alert alert-primary p-2 float-left" style="min-height: 70px; clear:both"
                   [ngClass]="chat.userA === user.id ? 'alert-primary' : 'alert-info'" role="alert">
                   <table style="min-width: 450px;">
@@ -78,19 +79,23 @@
                           [src]="chat.userA === user.id ? imgPath + user.userImage : imgPath + chatedUser.userImage ">
                       </td>
                       <td>
-                        <h4 class="alert-heading m-0 p-0"> {{chat.userA === user.id ? user.name : chatedUser.name }} </h4>
+                        <h4 class="alert-heading m-0 p-0"> {{chat.userA === user.id ? user.name : chatedUser.name }}
+                        </h4>
                         <span> {{chat.message}}</span>
                       </td>
-                      <td  *ngIf="chat.userA !== user.id " style="width: 75px;">
+                      <td *ngIf="chat.userA !== user.id " style="width: 75px;">
                         <img class="rounded-circle m-0 float-right" style="height:55px; width:55px" alt="Targated User"
                           [src]="chat.userA === user.id ? imgPath + user.userImage : imgPath + chatedUser.userImage ">
                       </td>
                     </tr>
                     <tr>
                       <td colspan="2" style="min-width:200px;">
-                        <span *ngIf="chat.userA === user.id " class="tim-icons icon-simple-remove float-right" style="cursor:pointer"></span>
-                        <span *ngIf="chat.userA === user.id " class="float-right pr-3"> {{computeDuration(chat.date)}}</span>
-                        <span *ngIf="chat.userA !== user.id " class="tim-icons icon-simple-remove" style="cursor:pointer"></span>
+                        <span *ngIf="chat.userA === user.id " (click)="deleteChat(chat.id)" class="text-info tim-icons icon-simple-remove float-right"
+                          style="cursor:pointer"></span>
+                        <span *ngIf="chat.userA === user.id " class="float-right pr-3">
+                          {{computeDuration(chat.date)}}</span>
+                        <span *ngIf="chat.userA !== user.id "  (click)="deleteChat(chat.id)"class="tim-icons icon-simple-remove text-danger"
+                          style="cursor:pointer"></span>
                         <span *ngIf="chat.userA !== user.id " class="pl-3"> {{computeDuration(chat.date)}}</span>
                       </td>
                     </tr>
@@ -101,15 +106,16 @@
             </div>
           </div>
         </div>
+        <!-- Send Message Area -->
         <div class="card-footer">
           <div class="input-group">
             <button class="btn pr-3 pl-3"
               style="border-top-right-radius: 0; border-bottom-right-radius: 0;  margin-top: 0px;">
               <span class="tim-icons icon-attach-87" style="font-size: 16px;"></span>
             </button>
-            <input type="text" class="form-control" placeholder="your Message"
+            <input type="text" [formControl]="chatMessage" (keyup.enter)="sendChat()" class="form-control" placeholder="your Message"
               style="border-top-right-radius: 0; border-bottom-right-radius: 0; border-right:0px">
-            <button class="btn pr-3 pl-3"
+            <button class="btn pr-3 pl-3" (click)="sendChat()"
               style="border-top-left-radius: 0; border-bottom-left-radius: 0;  margin-top: 0px;">
               <span class="tim-icons icon-send" style="font-size: 16px;"></span>
             </button>

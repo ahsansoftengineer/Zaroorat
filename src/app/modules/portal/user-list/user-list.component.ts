@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../../services/user.service";
 import { IUser } from "../../../models/interfaces/user.interface";
+import { CustomMethods } from "../../../shared/custom-method";
 
 @Component({
   selector: "app-user-list",
@@ -9,7 +10,7 @@ import { IUser } from "../../../models/interfaces/user.interface";
 })
 export class UserListComponent implements OnInit {
   public users: IUser[];
-  defaultPath: string = "../../../../assets/img/";
+  defaultPath: string = CustomMethods.userPath;
   errMessage: string = "no error";
   isError: boolean = false;
   constructor(private userService: UserService) {}

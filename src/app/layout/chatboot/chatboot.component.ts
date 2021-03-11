@@ -49,6 +49,18 @@ export class ChatbootComponent implements OnInit {
       (err) => console.log(err)
     );
   }
+    // // Start Chating with Specific Person in List
+    // letsChat(chatedUser: IUser) {
+    //   this.chatedUser = chatedUser;
+    //   if (this.allChats.length < 1) {
+    //     this.getallChats();
+    //   }
+    //   this.myChats = this.allChats.filter(
+    //     (x) =>
+    //       (x.userA === this.user.id && x.userB === this.chatedUser.id) ||
+    //       (x.userA === this.chatedUser.id && x.userB === this.user.id)
+    //   );
+    // }
   // editButtonClick(employeeId: number) {
   //   this._router.navigate(['/employees/edit', employeeId]);
   // }

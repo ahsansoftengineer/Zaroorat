@@ -7,7 +7,7 @@
     <router-outlet></router-outlet>
     <app-footer></app-footer>
     <!-- <app-chatboot *ngIf="false" [(meUser)]="meUser" [contactedUser]="myContactedUser" [chatBotHide]="chatBotHide"></app-chatboot> -->
-    <!-- <app-contacts  *ngIf="false" [(meUser)]="meUser"  (chatBotwithContact)="letsChat($event)" (chatBotContact)="chatBotLayout($event)"></app-contacts> -->
+    <app-contacts [(user)]="meUser"  (chatBotwithContact)="letsChat($event)" (chatBotContact)="chatBotLayout($event)"></app-contacts>
   </div>
 </div>
 
