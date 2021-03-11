@@ -2,8 +2,7 @@
   <ul *ngFor="let f of productCategoryTreeView" style="margin-left:0px; padding-left:0px" class="card-title">
     <li class="productCategory pb-2" [class.text-danger]="f.value === list1"
       (click)="productCategoryItemClick(f.value, f.text, 1)">{{f.text}}
-      <!-- [class.d-none]="f.value !== list1" -->
-      <ul *ngFor="let s of f.children">
+      <ul *ngFor="let s of f.children" [class.d-none]="f.value !== list1">
         <li class="productCategory pb-2" [class.text-warning]="s.value === list2"
           (click)="productCategoryItemClick(s.value, s.text, 2)">{{ s.text }}
           <ul *ngFor="let t of s.children" [class.d-none]="s.value !== list2">

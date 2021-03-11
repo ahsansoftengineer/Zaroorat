@@ -5,12 +5,12 @@ import { IUser } from "../models/interfaces/user.interface";
 import { ContactService } from "../services/contact.service";
 import { UserService } from "../services/user.service";
 import { IContact } from "../models/interfaces/contact.interface";
-import { CustomMethods } from "../shared/custom-method";
 
+// Is Service ka Koi Faida Nai Hai
 @Injectable({
   providedIn: "root",
 })
-export class ContactsChatingService {
+export class CommonService {
   // Public Properties
   public user: IUser;
   public chatedUser: IUser;
@@ -31,17 +31,14 @@ export class ContactsChatingService {
   ) {
     this.getuser(1);
   }
-
-  ngOnInit(): void {}
   // Chain 1
-  getuser(id: number = 1) {
+  getuser(id: number = 1){
     this.userService.getUser(id).subscribe(
       (user: IUser) => {
         this.user = user;
       },
       (err: any) => {
         console.log(err);
-        this.isError = true;
         this.errMessage = "Unable to display result of ID " + id;
       },
       () => {
@@ -94,7 +91,8 @@ export class ContactsChatingService {
     );
   }
   // Contacts Search Functionality
-  filterContacts(searchText: string): void {
+  filterContacts(searchText: string) {
+
     if (searchText === "") {
       this.myContactUser = [];
       this.mycontacts.contacts.forEach((y) => {
@@ -159,41 +157,25 @@ export class ContactsChatingService {
     );
   }
   // Send Chat
-  sendChat(chatMessage: string, chatObject: any = null) {
-    this.newChat = {
-      id: 0,
-      userA: this.user.id,
-      userB: this.chatedUser.id,
-      message: chatMessage,
-      date: new Date(),
-    };
-    this.chatService.addChat(this.newChat).subscribe(
+  sendChat(newChat: IChat, ImageNfile: any = null) {
+    this.chatService.addChat(newChat).subscribe(
       (sendMessage) => console.log(sendMessage),
       (err) => console.log("Chat Send Error = " + err),
       () => {
-        this.allChats.push(this.newChat);
+        this.allChats.push(newChat);
         this.letsChat(this.chatedUser);
       }
     );
   }
   deleteChat(chatId: number) {
     this.chatService.deleteChat(chatId).subscribe(
-      (sendMessage) => console.log(sendMessage),
+      (deleteMessage) => console.log(deleteMessage),
       (err) => console.log("Chat not Deleted Error = " + err),
       () => {
         this.getallChats(true);
       }
     );
   }
-  // Temporary
-  // changeUserControl = new FormControl("");
-  // changeUser() {
-  //   this.myContactUser = [];
-  //   const Uid = +this.changeUserControl.value;
-  //   this.getuser(Uid);
-  // }
-  //compute duration (Last Message / User Online State)
-  computeDuration(date: string): string {
-    return CustomMethods.computeDuration(date);
-  }
 }
+
+

@@ -22,7 +22,7 @@ import { UserService } from "./services/user.service";
 import { ContactsComponent } from './layout/contacts/contacts.component';
 import { ContactService } from "./services/contact.service";
 import { ChatService } from "./services/chat.service";
-import { ContactsChatingService } from "./services/contacts-chating.service";
+import { CommonService } from "./services/common.service";
 
 @NgModule({
   imports: [
@@ -46,7 +46,7 @@ import { ContactsChatingService } from "./services/contacts-chating.service";
   ],
   providers: [
     OrderService, ProductService, ProductCategoryService, UserService, ContactService, ChatService,
-    ContactsChatingService
+    CommonService
   ],
   bootstrap: [AppComponent],
 })

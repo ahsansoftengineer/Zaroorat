@@ -1,13 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { IChat } from "../../../models/interfaces/chat.interface";
-import { ChatService } from "../../../services/chat.service";
 import { IUser } from "../../../models/interfaces/user.interface";
-import { ContactService } from "../../../services/contact.service";
-import { UserService } from "../../../services/user.service";
 import { IContact } from "../../../models/interfaces/contact.interface";
 import { CustomMethods } from "../../../shared/custom-method";
-import { ContactsChatingService } from "../../../services/contacts-chating.service";
+import { UserService } from "../../../services/user.service";
+import { ContactService } from "../../../services/contact.service";
+import { ChatService } from "../../../services/chat.service";
 
 @Component({
   selector: "app-admin-chat",
@@ -39,15 +38,12 @@ export class AdminChatComponent implements OnInit {
   constructor(
     private userService: UserService,
     private contactService: ContactService,
-    private chatService: ChatService,
-    private contactschating: ContactsChatingService
-  ) {
-  }
-
-  ngOnInit(): void {
+    private chatService: ChatService
+  ) {}
+  ngOnInit() {
     this.getuser(1);
-    this.contactschating.getuser(1)
   }
+  // Chain 1
   getuser(id: number = 1) {
     this.userService.getUser(id).subscribe(
       (user: IUser) => {
@@ -55,7 +51,6 @@ export class AdminChatComponent implements OnInit {
       },
       (err: any) => {
         console.log(err);
-        this.isError = true;
         this.errMessage = "Unable to display result of ID " + id;
       },
       () => {
@@ -65,6 +60,7 @@ export class AdminChatComponent implements OnInit {
       }
     );
   }
+  // Chain 2
   getContacts(myId: number = 1) {
     this.contactService.getContact(myId).subscribe(
       (mycontacts: IContact) => {
@@ -83,6 +79,7 @@ export class AdminChatComponent implements OnInit {
       }
     );
   }
+  // Chain 3
   getAllUser() {
     this.userService.getUsers().subscribe(
       (users: IUser[]) => {
@@ -102,15 +99,13 @@ export class AdminChatComponent implements OnInit {
           this.myContactUser.push(this.allUser.find((x) => x.id === y));
           this.getallChats(); // Temporary
         });
-        console.log(this.contactschating.user)
-        console.log(this.user)
       }
     );
   }
   // Contacts Search Functionality
-  filterContacts(): void {
-    this.searchText = this.searchControl.value;
-    if (this.searchText === "") {
+  filterContacts() {
+    const searchText: string = this.searchControl.value
+    if (searchText === "") {
       this.myContactUser = [];
       this.mycontacts.contacts.forEach((y) => {
         this.myContactUser.push(this.allUser.find((x) => x.id === y));
@@ -118,9 +113,9 @@ export class AdminChatComponent implements OnInit {
     } else {
       this.myContactUser = this.allUser.filter(
         (x) =>
-          x.name === this.searchText ||
-          x.businessName === this.searchText ||
-          x.userName === this.searchText
+          x.name === searchText ||
+          x.businessName === searchText ||
+          x.userName === searchText
       );
     }
   }
@@ -161,7 +156,6 @@ export class AdminChatComponent implements OnInit {
       }
     );
   }
-
   // Start Chating with Specific Person in List
   letsChat(chatedUser: IUser) {
     this.chatedUser = chatedUser;
@@ -173,6 +167,17 @@ export class AdminChatComponent implements OnInit {
         (x.userA === this.user.id && x.userB === this.chatedUser.id) ||
         (x.userA === this.chatedUser.id && x.userB === this.user.id)
     );
+  }
+  deleteChat(chatId: number) {
+    if (confirm("Are you sure you want to delete")) {
+      this.chatService.deleteChat(chatId).subscribe(
+        (deleteMessage) => console.log(deleteMessage),
+        (err) => console.log("Chat not Deleted Error = " + err),
+        () => {
+          this.getallChats(true);
+        }
+      );
+    }
   }
   // Send Chat
   sendChat() {
@@ -190,19 +195,9 @@ export class AdminChatComponent implements OnInit {
       () => {
         this.allChats.push(this.newChat);
         this.letsChat(this.chatedUser);
+        this.chatMessage.setValue('');
       }
     );
-  }
-  deleteChat(chatId: number) {
-    if (confirm("Are you sure you want to delete")) {
-      this.chatService.deleteChat(chatId).subscribe(
-        (sendMessage) => console.log(sendMessage),
-        (err) => console.log("Chat not Deleted Error = " + err),
-        () => {
-          this.getallChats(true);
-        }
-      );
-    }
   }
   // Temporary
   changeUserControl = new FormControl("");
@@ -210,6 +205,7 @@ export class AdminChatComponent implements OnInit {
     this.myContactUser = [];
     const Uid = +this.changeUserControl.value;
     this.getuser(Uid);
+    this.changeUserControl.setValue('');
   }
   //compute duration (Last Message / User Online State)
   computeDuration(date: string): string {
