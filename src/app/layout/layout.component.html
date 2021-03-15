@@ -6,13 +6,13 @@
     <app-navbar></app-navbar>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
-    <app-chatboot
+    <app-chatboot *ngIf="user"
         [(user)]="user"
         [chatedUser]="myContactedUser"
         [chatBotHide]="chatBotHide"
         (chatBotContact)="chatBotLayout($event)"
     ></app-chatboot>
-    <app-contacts
+    <app-contacts *ngIf="user"
         [(user)]="user"
         [chatvisible]="chatBotHide"
         (chatBotwithContact)="letsChat($event)"

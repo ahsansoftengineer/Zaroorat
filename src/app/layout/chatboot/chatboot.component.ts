@@ -53,7 +53,6 @@ export class ChatbootComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.chatedUser) {
       this.letsChat(this.chatedUser);
-
     }
   }
   ngOnInit(): void {

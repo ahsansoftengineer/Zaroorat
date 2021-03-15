@@ -955,5 +955,279 @@
       "message": "May be you should have some cup of Teas Rather than Tea Cup",
       "date": "2021-03-11T11:22:44.155Z"
     }
+  ],
+  "Notification":[
+    {
+      "id": 1,
+      "heading": "Password Expiration",
+      "type": "Admin",
+      "shortPara": "Your Password Soon be Expired",
+      "fullPara": "Please Change your Password before it get Expire before facing inconvinece",
+      "date": "February 6, 2021 11:30:00",
+      "presedence": "High"
+    },
+    {
+      "id": 2,
+      "heading": "Golden Package gets Expired",
+      "type": "Admin",
+      "shortPara": "Golden Package is getting Expired on 01-05-2021",
+      "fullPara": "Your Golden Package will gets expired on 12-01-2021 if you want to continue please renew with  EID limited time Offer Discont",
+      "date": "March 6, 2020 11:30:00",
+      "presedence": "Medium"
+    },
+    {
+      "id": 3,
+      "heading": "Promotion Offer",
+      "type": "Admin",
+      "shortPara": "The Offer will be valid until 25 Dec 2021",
+      "fullPara": "Chiristmas Offer on all Promotions please checkout the details Promotions on this link",
+      "date": "April 6, 2020 11:30:00",
+      "presedence": "Low"
+    },
+    {
+      "id": 4,
+      "heading": "Favorite Product Name",
+      "type": "Subscription",
+      "shortPara": "Product Removed",
+      "fullPara": "The Product has removed by Vendor",
+      "date": "May 6, 2020 11:30:00",
+      "presedence": "Low"
+    },
+    {
+      "id": 5,
+      "heading": "Favorite Product Name",
+      "type": "Subscription",
+      "shortPara": "Product Updated",
+      "fullPara": "Checkout the Product has updated by Vendor",
+      "date": "June 30, 2021 11:30:00",
+      "presedence": "Low"
+    },
+    {
+      "id": 6,
+      "heading": "Favorite Product Name",
+      "type": "Subscription",
+      "shortPara": "The Product is now Availaible in Stock",
+      "fullPara": "Checkout the Product has updated by Vendor",
+      "date": "July 30, 2021 11:30:00",
+      "presedence": "Low"
+    }
+  ],
+  "Account":[
+    {
+      "id": 1,
+      "userId": 1,
+      "accountNumber": "123456789",
+      "accountType":  "Current",
+      "balance": 10000
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "accountNumber": "123456789",
+      "accountType":  "At Work",
+      "balance": 2000
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "accountNumber": "987654332",
+      "accountType":  "Plus",
+      "balance": 1000
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "accountNumber": "987456321",
+      "accountType":  "Youth",
+      "balance": 3000
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "accountNumber": "147852369",
+      "accountType":  "Current",
+      "balance": 40000
+    },
+    {
+      "id": 6,
+      "userId": 5,
+      "accountNumber": "985632147",
+      "accountType":  "Current",
+      "balance": 5000
+    },
+    {
+      "id": 7,
+      "userId": 5,
+      "accountNumber": "854796321",
+      "accountType":  "Current",
+      "balance": 5000
+    },
+    {
+      "id": 8,
+      "userId": 3,
+      "accountNumber": "112233445",
+      "accountType":  "At Work",
+      "balance": 3256
+    }
+  ],
+  "CreditCard":[
+    {
+      "id": 1,
+      "user_id": 1,
+      "creditCardNo": "0000-0000-0000-0000",
+      "creditCardCode": 123 ,
+      "creditCardtype": "Visa",
+      "bank": "HBL",
+      "bankAccountNo": "000-0000-00000",
+      "expireDate": "February 6, 2021 11:30:00",
+      "creditCardTitle": "Muhammad Ahsan",
+      "creditCardStatus": "Pending"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "creditCardNo": "1111-1111-1111-1111",
+      "creditCardCode": 321 ,
+      "creditCardtype": "Master",
+      "bank": "AHBL",
+      "bankAccountNo": "111-1111-11111",
+      "expireDate": "March 7, 2021 11:30:00",
+      "creditCardTitle": "Muhammad Asim",
+      "creditCardStatus": "Valid"
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "creditCardNo": "2222-2222-2222-2222",
+      "creditCardCode": 456 ,
+      "creditCardtype": "Visa",
+      "bank": "UBL",
+      "bankAccountNo": "222-2222-22222",
+      "expireDate": "April 8, 2021 11:30:00",
+      "creditCardTitle": "Muhammad Mobin",
+      "creditCardStatus": "Invalid"
+    },
+    {
+      "id": 4,
+      "user_id": 4,
+      "creditCardNo": "3333-3333-3333-3333",
+      "creditCardCode": 789 ,
+      "creditCardtype": "Pay Pal",
+      "bank": "HBL",
+      "bankAccountNo": "333-3333-33333",
+      "expireDate": "May 9, 2021 11:30:00",
+      "creditCardTitle": "Sami",
+      "creditCardStatus": "Invalid"
+    },
+    {
+      "id": 5,
+      "user_id": 5,
+      "creditCardNo": "4444-4444-5555-4444",
+      "creditCardCode": 852 ,
+      "creditCardtype": "Master",
+      "bank": "UBL",
+      "bankAccountNo": "4444-44444-444",
+      "expireDate": "June 10, 2021 11:30:00",
+      "creditCardTitle": "Sohail",
+      "creditCardStatus": "Valid"
+    },
+    {
+      "id": 6,
+      "user_id": 5,
+      "creditCardNo": "6666-6666-6666-4444",
+      "creditCardCode": 753 ,
+      "creditCardtype": "Pay Pal",
+      "bank": "HBL",
+      "bankAccountNo": "8888-888-88888",
+      "expireDate": "July 11, 2021 11:30:00",
+      "creditCardTitle": "Sohail",
+      "creditCardStatus": "Valid"
+    },
+    {
+      "id": 7,
+      "user_id": 4,
+      "creditCardNo": "7777-7777-7777-7777",
+      "creditCardCode": 147,
+      "creditCardtype": "Amex",
+      "bank": "AHBL",
+      "bankAccountNo": "999-88888-8888",
+      "expireDate": "August 12, 2021 11:30:00",
+      "creditCardTitle": "Fardeen",
+      "creditCardStatus": "Pending"
+    }
+  ],
+  "Promotion":[
+    {
+      "id": 1,
+      "package": "Golden Package",
+      "packageType": "Golden",
+      "detail": "Every One Look your Product within Top 5 Items",
+      "keywords": ["Mobile","Phone", "Android", "Samsung", "Iphone", "Xiami", "Nokia", "Blank", "Electronics"],
+      "duration": "5 Years",
+      "presedence": "1",
+      "benefits": "Your Product will be Search by 10 Keywords and Visible within Top 5 Records"
+    },
+    {
+      "id": 2,
+      "package": "Enterprise Package",
+      "packageType": "Enterprise",
+      "detail": "Every One Look your Product within Top 10 Items",
+      "keywords": ["Mobile", "Phone", "Android", "Samsung", "Iphone"],
+      "duration": "3 Year",
+      "presedence": "2",
+      "benefits": "Your Product will be Search by 5 Keywords and Visible within Top 10 Records"
+    },
+    {
+      "id": 3,
+      "package": "Standard Package",
+      "packageType": "Standard",
+      "detail": "Every One Look your Product within Top 10 Items",
+      "keywords": ["Mobile", "Phone", "Android", "Samsung"],
+      "duration": "1 Year",
+      "presedence": "3",
+      "benefits": "Your Product will be Search by 4 Keywords and Visible within Top 15 Records"
+    },
+    {
+      "id": 3,
+      "package": "Standard Package",
+      "packageType": "Standard",
+      "detail": "Every One Look your Product within Top 10 Items",
+      "keywords": ["Mobile", "Phone", "Android"],
+      "duration": "6 Year",
+      "presedence": "4",
+      "benefits": "Your Product will be Search by 3 Keywords and Visible within Top 15 Records"
+    }
+  ],
+  "Wallet":[
+    {
+      "id": 1,
+      "userId": 1,
+      "accountNo": "112233445",
+      "totalAmount": "15000"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "accountNo": "123456789",
+      "totalAmount": "25000"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "accountNo": "987654321",
+      "totalAmount": "30000"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "accountNo": "321456987",
+      "totalAmount": "35000"
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "accountNo": "456879321",
+      "totalAmount": "40000"
+    }
   ]
 }
